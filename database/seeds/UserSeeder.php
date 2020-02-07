@@ -2,8 +2,6 @@
 
 use Illuminate\Database\Seeder;
 use App\User;
-use App\Apartment;
-use App\Message;
 class UserSeeder extends Seeder
 {
     /**
@@ -13,6 +11,6 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        factory(User::class, 49) ->create();
+        factory(User::class, 20) ->create();
     }
 }

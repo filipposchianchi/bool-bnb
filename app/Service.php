@@ -14,7 +14,7 @@ class Service extends Model
         'sauna',
         'seaView',
     ];
-    public function apartments(){
-        return $this -> belongsToMany(Apartment::class);
+    public function apartment(){
+        return $this -> belongsTo(Apartment::class);
     }
 }

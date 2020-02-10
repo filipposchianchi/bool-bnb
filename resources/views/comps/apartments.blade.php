@@ -4,7 +4,7 @@
             <input v-model="search" type="text" placeholder="Ricerca apartamenti giampa" class="text-center w-100">
         </div>
         <div class="apartments row">
-            <apartment  v-for="apartment in filteredApartments" v-bind:key="apartment.id"
+            <apartment  v-for="apartment in filteredApartments" v-bind:key="apartment.id" v-if="apartment.sponsored == 1"
             :id='apartment.id'
             :title='apartment.title'
             :address='apartment.address'

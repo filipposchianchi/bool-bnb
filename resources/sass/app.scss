@@ -1,8 +1,25 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url("https://fonts.googleapis.com/css?family=Nunito");
 
 // Variables
-@import 'variables';
+@import "variables";
 
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
+@import "~bootstrap/scss/bootstrap";
+
+//mockup-1
+.apartment {
+    .box:hover {
+        border: 3px dotted black;
+        background-color: lightgray;
+        a {
+            color: black;
+        }
+    }
+    .box img {
+        width: 100%;
+    }
+    a:hover {
+        text-decoration: none;
+    }
+}

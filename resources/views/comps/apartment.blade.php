@@ -1,23 +1,24 @@
 <script type="text/x-template" id="apartment">
-    <div class="apartment col-6">
-        <a href="">
+    <div class="apartment col-6 p-3">
+        <div class="box p-3">
+            <a href="">
             
-            <h3>
-                @{{apartmentTitle}}
-            </h3>
-            <img :src="apartmentImg " alt="">
-            <ul>
-                <li> <strong> Address :</strong>     @{{apartmentAddress}}      </li>
-                <li> <strong> Description :</strong>     @{{apartmentDescription}}      </li>
-                  
-                <li> <strong> RoomNum :</strong>     @{{apartmentRoomNum}}      </li>
-                <li> <strong> BedNum :</strong>     @{{apartmentBedNum}}      </li>
-                <li> <strong> MQ :</strong>     @{{apartmentMQ}}      </li>
-                <li> <strong> WcNum :</strong>     @{{apartmentWcNum}}      </li>
-                <li> <strong> View :</strong>     @{{apartmentView}}      </li>
-            </ul>
-        </a>
-
+                <h3 class="text-center">
+                    @{{apartmentTitle}}
+                </h3>
+                <img :src="apartmentImg " alt="">
+                <ul>
+                    <li> <strong> Address :</strong>     @{{apartmentAddress}}      </li>
+                    <li> <strong> Description :</strong>     @{{apartmentDescription}}      </li>
+                      
+                    {{-- <li> <strong> RoomNum :</strong>     @{{apartmentRoomNum}}      </li>
+                    <li> <strong> BedNum :</strong>     @{{apartmentBedNum}}      </li>
+                    <li> <strong> MQ :</strong>     @{{apartmentMQ}}      </li>
+                    <li> <strong> WcNum :</strong>     @{{apartmentWcNum}}      </li>
+                    <li> <strong> View :</strong>     @{{apartmentView}}      </li> --}}
+                </ul>
+            </a>
+        </div>
     </div>
 </script>
 
@@ -35,7 +36,7 @@
                 apartmentBedNum: this.bedNum,
                 apartmentMQ: this.mQ,
                 apartmentWcNum: this.wcNum,
-                apartmentView: this.view
+                apartmentView: this.view,
                 apartmentSponsored: this.sponsored
             }
         },
@@ -50,7 +51,7 @@
             mQ: Number,
             wcNum: Number,
             view: Number,
-            sponsored: Boolean
+            sponsored: Number
         }
     });
 </script>

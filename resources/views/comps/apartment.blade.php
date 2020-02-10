@@ -1,4 +1,4 @@
-<script type="text/x-template" id="apartment-template">
+<script type="text/x-template" id="apartment">
     <div class="apartment">
         <h3>
             @{{apartmentTitle}}
@@ -8,9 +8,10 @@
 
 <script type="text/javascript">
     Vue.component('apartment',{
-        template:"#apartment-template",
+        template:"#apartment",
         data: function(){
             return {
+                apartmentId: this.id,
                 apartmentTitle: this.title
             }
         },

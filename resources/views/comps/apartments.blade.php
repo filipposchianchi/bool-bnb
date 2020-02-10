@@ -1,6 +1,9 @@
 <script type="text/x-template" id="apartments-template">
     <div class="apartments">
-        <apartment v-for="apartments">
+        <apartment  v-for="apartment in apartments" v-bind:key="apartment.id"
+        :id='apartment.id'
+        :title='apartment.title'
+        >
         </apartment>
     </div>
 </script>

@@ -12,10 +12,23 @@ class ServiceSeeder extends Seeder
      */
     public function run()
     {
-        factory(Service::class, 100) ->make() -> each(function($service){
-            $apartment = Apartment::inRandomOrder() -> first();
-            $service -> apartment() -> associate($apartment);
-            $service -> save();
-        });
+        $services = [
+            ['name' => 'WiFi'],
+            ['name' => 'Posto Macchina'],
+            ['name' => 'Piscina'],
+            ['name' => 'Portineria'],
+            ['name' => 'Sauna'],
+            ['name' => 'Vista Mare']
+             
+        ];
+
+
+        foreach ($services as $service)
+        {
+            $newService = new Service;
+            $newService -> fill($service);
+            $newService -> save();
+            
+        }
     }
 }

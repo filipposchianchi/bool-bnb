@@ -49341,7 +49341,7 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 
 function init() {
   new Vue({
-    el: "#app"
+    el: "#apartments"
   });
 }
 

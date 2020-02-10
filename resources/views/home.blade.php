@@ -23,7 +23,7 @@
     @include('comps.apartment')
     @include('comps.apartments')
 
-    <div id="app">
+    <div id="apartments">
         <apartments
         :apartments='{{$apartments}}'
         ></apartments>

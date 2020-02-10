@@ -27,4 +27,10 @@ class HomeController extends Controller
         // dd($apartments);
         return view('home', compact('apartments'));
     }
+    public function user($id)
+    {
+        $apartments = Apartment::findOrFail;
+        // dd($apartments);
+        return view('userApartments', compact('apartments'));
+    }
 }

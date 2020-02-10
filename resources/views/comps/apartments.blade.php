@@ -1,20 +1,19 @@
-<script type="text/x-template" id="post-apartments">
-    <h1>
-        hello world
-    </h1>
+<script type="text/x-template" id="apartments-template">
+    <div class="apartments">
+        <apartment v-for="apartments">
+        </apartment>
+    </div>
 </script>
 
-
 <script type="text/javascript">
-    Vue.component('post-apartments',{
-        template:"#post-apartments",
+    Vue.component('apartments',{
+        template:"#apartments-template",
         data: function(){
             return {
-
             }
         },
         props:{
-            array: []
+            apartments: Array
         }
     });
 </script>

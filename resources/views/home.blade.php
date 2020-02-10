@@ -20,14 +20,13 @@
     @endforeach --}}
 
 
+    @include('comps.apartment')
     @include('comps.apartments')
 
     <div id="app">
-        @foreach ($apartments as $apartment)
-            <post-apartments>
-                ciao filippoasdsd
-            </post-apartments>
-        @endforeach
+        <apartments
+        :apartments='{{$apartments}}'
+        ></apartments>
     </div>
 </div>
 @endsection

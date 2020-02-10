@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <h1>Apartments:</h1>
+    {{-- <h1>Apartments:</h1>
     @foreach ($apartments as $apartment)
     <h3>
         {{$apartment -> title}}
@@ -16,8 +16,17 @@
         <li><strong>mQ</strong> {{$apartment -> mQ}}</li>
         <li><strong>wcNum</strong> {{$apartment -> wcNum}}</li>
         <li><strong>view</strong> {{$apartment -> view}}</li>
-        s
     </ul>
-    @endforeach
+    @endforeach --}}
+
+
+    @include('comps.apartments')
+
+    <div id="app">
+        @foreach ($apartments as $apartment)
+            <post-apartment>
+            </post-apartment>
+        @endforeach
+    </div>
 </div>
 @endsection

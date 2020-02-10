@@ -25,6 +25,7 @@
     <div id="app">
         @foreach ($apartments as $apartment)
             <post-apartments>
+                ciao filippo
             </post-apartments>
         @endforeach
     </div>

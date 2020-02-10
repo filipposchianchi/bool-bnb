@@ -24,10 +24,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $allApartments = Apartment::all();
-        foreach ($allApartment as $apartment) {
-            # code...
-        }
+        $allAp = Apartment::all();
+        $apartments = [];
+        foreach ($allAp  as $apartment) {
+            if ($apartment-> sponsored==1) {
+                array_push($apartments, $apartment);
+            }
+        };
         // dd($apartments);
         return view('home', compact('apartments'));
     }

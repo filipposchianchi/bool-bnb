@@ -36,6 +36,7 @@
                 apartmentMQ: this.mQ,
                 apartmentWcNum: this.wcNum,
                 apartmentView: this.view
+                apartmentSponsored: this.sponsored
             }
         },
         props:{
@@ -48,7 +49,8 @@
             bedNum: Number,
             mQ: Number,
             wcNum: Number,
-            view: Number
+            view: Number,
+            sponsored: Boolean
         }
     });
 </script>

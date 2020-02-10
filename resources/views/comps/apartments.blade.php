@@ -15,6 +15,7 @@
             :mQ='apartment.mQ'
             :wcNum='apartment.wcNum'
             :view='apartment.view'
+            :sponsored='apartment.sponsored'
             >
             </apartment>
         </div>

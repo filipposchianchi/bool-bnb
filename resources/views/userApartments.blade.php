@@ -1,4 +1,7 @@
 @extends('layouts.app')
 @section('content')
-    HEY THIS IS USER GIAMPA
+
+    @foreach ($apartments as $apartments)
+        <p>{{apartments->title}} </p>
+    @endforeach
 @endsection

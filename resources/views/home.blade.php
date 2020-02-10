@@ -24,8 +24,8 @@
 
     <div id="app">
         @foreach ($apartments as $apartment)
-            <post-apartment>
-            </post-apartment>
+            <post-apartments>
+            </post-apartments>
         @endforeach
     </div>
 </div>

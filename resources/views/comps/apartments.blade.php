@@ -7,6 +7,14 @@
 
 <script type="text/javascript">
     Vue.component('post-apartments',{
-        template:"#post-apartments"
+        template:"#post-apartments",
+        data: function(){
+            return {
+
+            }
+        },
+        props:{
+            array: []
+        }
     });
 </script>

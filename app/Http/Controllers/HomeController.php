@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Apartment;
+use App\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -30,8 +31,8 @@ class HomeController extends Controller
     public function userApartments()
     {
         $userId = auth()->user()->id;
-        // $apartments = Apartment::find(auth()->user()->id);
-        $apartments = Apartment::findOrFail($userId);
+        //$apartments = Apartment::find(auth()->user()->id);
+        $user = User::findOrFail($userId);
         $apartments = $user -> apartments;
         dd($apartments);
         // return view('userApartments', compact('apartments'));

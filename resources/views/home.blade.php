@@ -16,6 +16,7 @@
         <li><strong>mQ</strong> {{$apartment -> mQ}}</li>
         <li><strong>wcNum</strong> {{$apartment -> wcNum}}</li>
         <li><strong>view</strong> {{$apartment -> view}}</li>
+        s
     </ul>
     @endforeach
 </div>

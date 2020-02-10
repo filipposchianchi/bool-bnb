@@ -30,20 +30,20 @@ class AddForeignKey extends Migration
             $table->foreign('apartment_id', 'promos_apartments')->references('id')->on('apartments');
         });
 
-        // appartamenti - servizi (molti - molti)
-        // Schema::table('apartment_service', function (Blueprint $table) {
-        //     $table->bigInteger('apartment_id') ->unsigned() -> index();
-        //     $table->foreign('apartment_id', 'apartments_services_apartment')->references('id')->on('apartments');
-
-        //     $table->bigInteger('service_id') ->unsigned() -> index();
-        //     $table->foreign('service_id', 'apartments_services_service')->references('id')->on('services');
-        // });
-        // appartamenti - servizi (1 - 1)
-        Schema::table('services', function (Blueprint $table) {
+        //appartamenti - servizi (molti - molti)
+        Schema::table('apartment_service', function (Blueprint $table) {
             $table->bigInteger('apartment_id') ->unsigned() -> index();
-            $table->foreign('apartment_id', 'service_apartment')->references('id')->on('apartments');
+            $table->foreign('apartment_id', 'apartments_services_apartment')->references('id')->on('apartments');
+
+            $table->bigInteger('service_id') ->unsigned() -> index();
+            $table->foreign('service_id', 'apartments_services_service')->references('id')->on('services');
         });
-    }
+        // appartamenti - servizi (1 - 1)
+    //     Schema::table('services', function (Blueprint $table) {
+    //         $table->bigInteger('apartment_id') ->unsigned() -> index();
+    //         $table->foreign('apartment_id', 'service_apartment')->references('id')->on('apartments');
+    //     });
+     }
 
     /**
      * Reverse the migrations.
@@ -64,15 +64,15 @@ class AddForeignKey extends Migration
             $table->dropForeign('promos_apartments');
             $table->dropColumn('apartment_id');
         });
-        // Schema::table('apartment_service', function(Blueprint $table) {
-        //     $table->dropForeign('apartments_services_apartment');
-        //     $table->dropForeign('apartments_services_service');
-        //     $table->dropColumn('apartment_id');
-        //     $table->dropColumn('service_id');
-        // });
-        Schema::table('services', function(Blueprint $table) {
-            $table->dropForeign('service_apartment');
+        Schema::table('apartment_service', function(Blueprint $table) {
+            $table->dropForeign('apartments_services_apartment');
+            $table->dropForeign('apartments_services_service');
             $table->dropColumn('apartment_id');
+            $table->dropColumn('service_id');
         });
+        // Schema::table('services', function(Blueprint $table) {
+        //     $table->dropForeign('service_apartment');
+        //     $table->dropColumn('apartment_id');
+        // });
     }
 }

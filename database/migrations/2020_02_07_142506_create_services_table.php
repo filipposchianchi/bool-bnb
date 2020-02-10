@@ -15,12 +15,8 @@ class CreateServicesTable extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->boolean('wifi');
-            $table->boolean('garage');
-            $table->boolean('pool');
-            $table->boolean('reception');
-            $table->boolean('sauna');
-            $table->boolean('seaView');
+            $table->string('name');
+            
 
             $table->timestamps();
         });

@@ -3,6 +3,14 @@
         <apartment  v-for="apartment in apartments" v-bind:key="apartment.id"
         :id='apartment.id'
         :title='apartment.title'
+        :address='apartment.address'
+        :description='apartment.description'
+        :img='apartment.img'
+        :roomNum='apartment.roomNum'
+        :bedNum='apartment.bedNum'
+        :mQ='apartment.mQ'
+        :wcNum='apartment.wcNum'
+        :view='apartment.view'
         >
         </apartment>
     </div>

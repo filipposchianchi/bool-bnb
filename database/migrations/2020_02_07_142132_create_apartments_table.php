@@ -24,6 +24,7 @@ class CreateApartmentsTable extends Migration
             $table->integer('mQ');
             $table->integer('wcNum');
             $table->integer('view');
+            $table->boolean('sponsored');
             $table->timestamps();
         });
     }

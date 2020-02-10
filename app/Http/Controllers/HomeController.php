@@ -24,7 +24,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $apartments = Apartment::all();
+        $allApartments = Apartment::all();
+        foreach ($allApartment as $apartment) {
+            # code...
+        }
         // dd($apartments);
         return view('home', compact('apartments'));
     }
@@ -34,7 +37,7 @@ class HomeController extends Controller
         //$apartments = Apartment::find(auth()->user()->id);
         $user = User::findOrFail($userId);
         $apartments = $user -> apartments;
-        dd($apartments);
-        // return view('userApartments', compact('apartments'));
+        // dd($apartments);
+        return view('userApartments', compact('apartments'));
     }
 }

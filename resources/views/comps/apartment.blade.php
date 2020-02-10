@@ -1,18 +1,22 @@
 <script type="text/x-template" id="apartment">
-    <div class="apartment">
-        <h3>
-            @{{apartmentTitle}}
-        </h3>
-        <ul>
-            <li> <strong> Address :</strong>     @{{apartmentAddress}}      </li>
-            <li> <strong> Description :</strong>     @{{apartmentDescription}}      </li>
-            <li> <strong> Img :</strong>    @{{apartmentImg}}       </li>
-            <li> <strong> RoomNum :</strong>     @{{apartmentRoomNum}}      </li>
-            <li> <strong> BedNum :</strong>     @{{apartmentBedNum}}      </li>
-            <li> <strong> MQ :</strong>     @{{apartmentMQ}}      </li>
-            <li> <strong> WcNum :</strong>     @{{apartmentWcNum}}      </li>
-            <li> <strong> View :</strong>     @{{apartmentView}}      </li>
-        </ul>
+    <div class="apartment col-6">
+        <a href="">
+            
+            <h3>
+                @{{apartmentTitle}}
+            </h3>
+            <img :src="apartmentImg " alt="">
+            <ul>
+                <li> <strong> Address :</strong>     @{{apartmentAddress}}      </li>
+                <li> <strong> Description :</strong>     @{{apartmentDescription}}      </li>
+                  
+                <li> <strong> RoomNum :</strong>     @{{apartmentRoomNum}}      </li>
+                <li> <strong> BedNum :</strong>     @{{apartmentBedNum}}      </li>
+                <li> <strong> MQ :</strong>     @{{apartmentMQ}}      </li>
+                <li> <strong> WcNum :</strong>     @{{apartmentWcNum}}      </li>
+                <li> <strong> View :</strong>     @{{apartmentView}}      </li>
+            </ul>
+        </a>
 
     </div>
 </script>

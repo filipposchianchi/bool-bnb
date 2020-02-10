@@ -3,7 +3,7 @@
         <div class="searchbar">
             <input v-model="search" type="text" placeholder="Ricerca apartamenti giampa" class="text-center w-100">
         </div>
-        <div class="apartments">
+        <div class="apartments row">
             <apartment  v-for="apartment in filteredApartments" v-bind:key="apartment.id"
             :id='apartment.id'
             :title='apartment.title'

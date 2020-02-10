@@ -1,7 +1,12 @@
 @extends('layouts.app')
 @section('content')
 
-    @foreach ($apartments as $apartments)
-        <p>{{apartments->title}} </p>
-    @endforeach
+    @include('comps.apartment')
+    @include('comps.apartments')
+
+    <div id="apartments">
+        <apartments
+        :apartments='{{$apartments}}'
+        ></apartments>
+    </div>
 @endsection

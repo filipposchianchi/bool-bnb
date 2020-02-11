@@ -122,4 +122,12 @@ class HomeController extends Controller
         $apartment->update($data);
         return redirect() -> route('user');
     }
+
+    public function deleteApartment($id){
+        $apartment=Apartment::findOrFail($id);
+        $services=$apartment-> services;
+        $apartment->services()->detach($services);
+        $apartment->delete();
+        return redirect() -> route('user');
+    }
 }

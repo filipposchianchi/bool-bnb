@@ -9,7 +9,7 @@
               <h5 class="card-title">{{$apartment -> title}}</h5>
               <p class="card-text"><strong>address</strong> {{$apartment -> address}}</p>
               <p class="card-text"><strong>descrizione</strong> {{$apartment -> description}}</p>
-              <p class="card-text"><strong>roomNum</strong> {{$apartment -> roomNum}}/p>
+              <p class="card-text"><strong>roomNum</strong> {{$apartment -> roomNum}}</p>
               <p class="card-text"><strong>bedNum</strong> {{$apartment -> bedNum}}</p>
               <p class="card-text"><strong>mQ</strong> {{$apartment -> mQ}}</p>
               <p class="card-text"><strong>wcNum</strong> {{$apartment -> wcNum}}</p>

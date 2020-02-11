@@ -24,7 +24,7 @@
                 </div>
                 <div class="col-3">
                     <a class="btn btn-secondary" href="{{route("apartment.edit", $apartment -> id)}}" role="button">modifica annuncio</a>
-                    <a class="btn btn-primary" href="{{route("apartment.create")}}" role="button">cancella annuncio</a>
+                    <a class="btn btn-primary" href="{{route("apartment.delete",$apartment -> id)}}" role="button">cancella annuncio</a>
                 </div>
         </div>
         @endforeach

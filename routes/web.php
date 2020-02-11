@@ -20,10 +20,12 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@userApartments')->name('user');
 Route::get('/apartment/{id}', 'HomeController@showApartments')->name('apartmentShow');
-Route::get('/apartment/{id}/edit', 'HomeController@editApartments')->name('apartmentEdit');
 
-Route::post('/apartment/store', 'HomeController@storeApartments')->name('apartmentStore');
-Route::get('/apartment/create', 'HomeController@createApartment')->name('apartmentCreate');
+Route::get('/apartment/edit/{id}', 'HomeController@editApartment')->name('apartment.edit');
+Route::post('/apartment/update/{id}', 'HomeController@updateApartment')->name('apartment.update');
+
+Route::post('/apartments/store/', 'HomeController@storeApartments')->name('apartment.store');
+Route::get('/apartments/create/', 'HomeController@createApartment')->name('apartment.create');
 
 
 

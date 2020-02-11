@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Apartment;
+use App\Service;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -51,35 +52,74 @@ class HomeController extends Controller
     public function showApartments($id)
     {
         $apartment = Apartment::findOrFail($id);
-        
         // dd($apartments);
         return view('crud.show-apartment', compact('apartment'));
     }
-
-
-    public function createApartment()
-    {
-        
-        return view('crud.create-apartment');
+    public function createApartment(){
+        $services = Service::all();
+        return view('crud.create-apartment', compact('services'));
     }
 
-    public function storeApartments(Request $request, $id)
+    public function storeApartments(Request $request)
     {
-        
-        $validatedData = $request -> validated();
-
-        $apartment = Apartment::make($validatedData);
-        
+        $data = $request -> validate ([
+            "title" => 'required|string',
+            "address" => 'required|string',
+            "description" => 'nullable|string',
+            "img" => 'nullable|string',
+            "roomNum" => 'required|numeric',
+            "bedNum" => 'required|numeric',
+            "mQ" => 'required|numeric',
+            "wcNum" => 'required|numeric',
+            "services"=>'nullable|array'
+        ]);
+        $data=$request->all();
+        // dd($data);
+        $apartment = Apartment::make($data);
+        if(isset($data["services"])){
+            $services=Service::find($data['services']);
+        }else{
+            $services=[];
+        }
         $userId = auth()->user()->id;
         $user = User::findOrFail($userId);
-        
         $apartment -> user() -> associate($user);
         $apartment -> save();
+        $apartment->services()->sync($services);
 
 
-        return redirect() -> route('home');    
+        return redirect() -> route('user');    
     
     }
 
+    public function editApartment($id){
+        $services=Service::all();
+        $apartment=Apartment::findOrFail($id);
+        return view('crud.edit-apartment', compact('services','apartment'));
+    }
 
+    public function updateApartment(Request $request, $id){
+        $data = $request -> validate ([
+            "title" => 'required|string',
+            "address" => 'required|string',
+            "description" => 'nullable|string',
+            "img" => 'nullable|string',
+            "roomNum" => 'required|numeric',
+            "bedNum" => 'required|numeric',
+            "mQ" => 'required|numeric',
+            "wcNum" => 'required|numeric',
+            "services"=>'nullable|array'
+        ]);
+        // $data=$request->all();
+        // dd($data);
+        $apartment=Apartment::findOrFail($id);
+        if(isset($data["services"])){
+            $services=Service::find($data['services']);
+        }else{
+            $services=[];
+        }
+        $apartment->services()->sync($services);
+        $apartment->update($data);
+        return redirect() -> route('user');
+    }
 }

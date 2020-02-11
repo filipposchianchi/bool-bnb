@@ -17,14 +17,14 @@ class CreateApartmentsTable extends Migration
             $table->bigIncrements('id');
             $table->string('title');
             $table->string('address');
-            $table->string('description');
-            $table->string('img');
-            $table->integer('roomNum');
-            $table->integer('bedNum');
-            $table->integer('mQ');
-            $table->integer('wcNum');
-            $table->integer('view');
-            $table->boolean('sponsored');
+            $table->string('description')->nullable();
+            $table->string('img')->nullable();
+            $table->integer('roomNum')->default('0');
+            $table->integer('bedNum')->default('0');
+            $table->integer('mQ')->default('0');
+            $table->integer('wcNum')->default('0');
+            $table->integer('view')->default('0');
+            $table->boolean('sponsored')->default('0');
             $table->timestamps();
         });
     }

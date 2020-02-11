@@ -25,6 +25,10 @@ class Apartment extends Model
         return $this -> belongsToMany(Service::class);
     }
     public function promos(){
-        return $this -> hasMany(Promo::class);
+        return $this -> belongsToMany(Promo::class);
+    }
+
+    public function messages () {
+        return $this -> hasMany(Message::class);
     }
 }

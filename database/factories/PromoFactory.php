@@ -7,6 +7,6 @@ use Faker\Generator as Faker;
 
 $factory->define(Promo::class, function (Faker $faker) {
     return [
-        'type' => $faker->randomElement($array = array ('a','b','c'))
+        'type' => $faker->randomElement($array = array ('a','b','c', 'd'))
     ];
 });

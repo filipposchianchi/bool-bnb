@@ -19,4 +19,12 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@userApartments')->name('user');
-Route::get('/apartment/{id}', 'HomeController@ShowApartments')->name('apartmentShow');
+Route::get('/apartment/{id}', 'HomeController@showApartments')->name('apartmentShow');
+Route::get('/apartment/{id}/edit', 'HomeController@editApartments')->name('apartmentEdit');
+
+Route::post('/apartment/store', 'HomeController@storeApartments')->name('apartmentStore');
+Route::get('/apartment/create', 'HomeController@createApartments')->name('apartmentCreate');
+
+
+
+

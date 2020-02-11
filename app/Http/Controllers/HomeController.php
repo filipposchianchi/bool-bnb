@@ -57,7 +57,7 @@ class HomeController extends Controller
     }
 
 
-    public function createApartments()
+    public function createApartment()
     {
         
         return view('crud.create-apartment');

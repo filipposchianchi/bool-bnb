@@ -1,5 +1,7 @@
 @extends('layouts.app')
 @section('content')
+asdasd
+{{-- 
 
 <form action="{{ route('apartment.store') }}" method="post">
     @csrf
@@ -29,13 +31,13 @@
         <label for="indirizzo">Indirizzo</label>
         <input type="text" class="form-control" id="indirizzo" placeholder="Indirizzo">
       </div>
-    
+     --}}
     {{-- INSERIRE IMMAGINE --}}
 
     {{-- INSERIRE SERVIZI AGGIUNTIVI --}}
 
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
+    {{-- <button type="submit" class="btn btn-primary">Submit</button>
+  </form> --}}
     
         
 @endsection

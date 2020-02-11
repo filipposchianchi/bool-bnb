@@ -1,25 +1,11 @@
 @extends('layouts.app')
 @section('content')
 
-    {{-- @include('comps.apartment')
-    @include('comps.apartments')
-
-    <div class="row">
-        <div class="container">
-            <h4>Vuoi inserire un nuovo apartamento? </h4>
-        </div>
-    </div>
-
-    <div id="apartments">
-        <apartments
-        :apartments='{{$apartments}}'
-        ></apartments>
-    </div> --}}
     <div class="container">
         
         <div class="row">
-            <button class="btn-primary">
-                <h3 href="{{route("apartmentCreate", $apartment -> id)}}">Aggiungi appartamento</h3>
+            <button class="btn-primary" > 
+                <a class="btn btn-primary" href="{{route("apartmentCreate")}}" role="button">Inserisci un apartamento</a>
             </button>
         </div>
         
@@ -41,5 +27,4 @@
         </div>
         
     </div>
-        
-        @endsection
+@endsection

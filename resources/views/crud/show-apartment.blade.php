@@ -17,26 +17,16 @@
                     <li>
                         <img class="apartmentImg" src="{{$apartment -> img}}" alt="">
                     </li>
-                    {{-- <li><strong>roomNum</strong> {{$apartment -> roomNum}}</li>
+                    <li><strong>roomNum</strong> {{$apartment -> roomNum}}</li>
                     <li><strong>bedNum</strong> {{$apartment -> bedNum}}</li>
                     <li><strong>mQ</strong> {{$apartment -> mQ}}</li>
                     <li><strong>wcNum</strong> {{$apartment -> wcNum}}</li>
-                    <li><strong>view</strong> {{$apartment -> view}}</li> --}}
+                    <li><strong>view</strong> {{$apartment -> view}}</li>
                 </ul>
             </a>
 
         </div>
         @endforeach
     </div>
-
-
-    {{-- @include('comps.apartment')
-    @include('comps.apartments')
-
-    <div id="apartments">
-        <apartments
-        :apartments='{{$apartments}}'
-        ></apartments>
-    </div> --}}
 </div>
 @endsection

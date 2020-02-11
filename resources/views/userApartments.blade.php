@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
-    @include('comps.apartment')
+    {{-- @include('comps.apartment')
     @include('comps.apartments')
 
     <div class="row">
@@ -14,5 +14,7 @@
         <apartments
         :apartments='{{$apartments}}'
         ></apartments>
-    </div>
+    </div> --}}
+
+    
 @endsection

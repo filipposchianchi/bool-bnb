@@ -1,7 +1,7 @@
 <script type="text/x-template" id="apartment">
     <div class="apartment col-6 p-3">
         <div class="box p-3">
-            <a href="">
+            <a href="{{ route('apartmentShow', '@{{apartmentId}}') }}">
             
                 <h3 class="text-center">
                     @{{apartmentTitle}}

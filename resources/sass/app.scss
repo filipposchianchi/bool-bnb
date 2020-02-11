@@ -8,18 +8,7 @@
 @import "~bootstrap/scss/bootstrap";
 
 //mockup-1
-.apartment {
-    .box:hover {
-        border: 3px dotted black;
-        background-color: lightgray;
-        a {
-            color: black;
-        }
-    }
-    .box img {
-        width: 100%;
-    }
-    a:hover {
-        text-decoration: none;
-    }
+
+.apartmentImg {
+    width: 200px;
 }

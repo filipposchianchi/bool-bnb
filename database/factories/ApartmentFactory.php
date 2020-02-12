@@ -8,7 +8,12 @@ use Faker\Generator as Faker;
 $factory->define(Apartment::class, function (Faker $faker) {
     return [
         'title' => $faker->word,
-        'address' => $faker->address,
+        // 'address' => $faker->address,
+        'countryCode' => $faker->stateAbbr,
+        'streetNumber' => $faker->buildingNumber,
+        'streetName' => $faker->streetName ,
+        'municipality' => $faker->city,
+        'postalCode' => $faker->postcode,
         'description' => $faker->sentence,
         'img' => 'https://media.gettyimages.com/photos/idyllic-home-with-covered-porch-picture-id479767332?s=612x612',
         'roomNum' => rand(1,5),

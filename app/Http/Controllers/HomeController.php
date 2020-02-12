@@ -65,7 +65,11 @@ class HomeController extends Controller
     {
         $data = $request -> validate ([
             "title" => 'required|string',
-            "address" => 'required|string',
+            "countryCode" => 'required|string',
+            "streetNumber" => 'required|numeric',
+            "streetName" => 'required|string',
+            "municipality" => 'required|string',
+            "postalCode" => 'required|string',
             "description" => 'nullable|string',
             "img" => 'nullable|string',
             "roomNum" => 'required|numeric',
@@ -105,7 +109,11 @@ class HomeController extends Controller
     public function updateApartment(Request $request, $id){
         $data = $request -> validate ([
             "title" => 'required|string',
-            "address" => 'required|string',
+            "countryCode" => 'required|string',
+            "streetNumber" => 'required|numeric',
+            "streetName" => 'required|string',
+            "municipality" => 'required|string',
+            "postalCode" => 'required|string',
             "description" => 'nullable|string',
             "img" => 'nullable|string',
             "roomNum" => 'required|numeric',
@@ -154,9 +162,9 @@ class HomeController extends Controller
         $body = $response->getBody()->getContents();
 
     
-        $obj2 = json_decode( $body, true );
+        $position = json_decode( $body, true );
 
-        dd($obj2['results']['0']['position']);
+        dd($position['results']['0']['position']);
 
         
         // foreach($obj2['results'] as $key => $position) {

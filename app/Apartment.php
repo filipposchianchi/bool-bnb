@@ -15,16 +15,23 @@ class Apartment extends Model
         'bedNum',
         'mQ',
         'wcNum',
-        'view'
+        'view',
+        'visible',
+        'latitude',
+        'longitude'
     ];
 
     public function user(){
         return $this -> belongsTo(User::class);
     }
-    public function service(){
-        return $this -> hasOne(Service::class);
+    public function services(){
+        return $this -> belongsToMany(Service::class);
     }
     public function promos(){
-        return $this -> hasMany(Promo::class);
+        return $this -> belongsToMany(Promo::class);
+    }
+
+    public function messages () {
+        return $this -> hasMany(Message::class);
     }
 }

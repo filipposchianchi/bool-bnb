@@ -9,7 +9,7 @@ class Promo extends Model
     protected $fillable = [
         'type',
     ];
-    public function apartment(){
-        return $this -> belongsTo(Apartment::class);
+    public function apartments(){
+        return $this -> belongsToMany(Apartment::class);
     }
 }

@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Message;
-use App\User;
+use App\Apartment;
 class MessageSeeder extends Seeder
 {
     /**
@@ -15,8 +15,8 @@ class MessageSeeder extends Seeder
         factory(Message::class, 100)
         ->make()
         ->each(function($Message) {
-            $user = User::inRandomOrder() ->first();
-            $Message -> user() -> associate($user);
+            $apartment = Apartment::inRandomOrder() ->first();
+            $Message -> apartment() -> associate($apartment);
             $Message -> save();
         });
     }

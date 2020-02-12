@@ -10884,3 +10884,20 @@ a.text-dark:focus {
   }
 }
 
+.apartment .box:hover {
+  border: 3px dotted black;
+  background-color: lightgray;
+}
+
+.apartment .box:hover a {
+  color: black;
+}
+
+.apartment .box img {
+  width: 100%;
+}
+
+.apartment a:hover {
+  text-decoration: none;
+}
+

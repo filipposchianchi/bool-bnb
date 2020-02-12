@@ -10,11 +10,15 @@ $factory->define(Apartment::class, function (Faker $faker) {
         'title' => $faker->word,
         'address' => $faker->address,
         'description' => $faker->sentence,
-        'img' => 'img-link',
+        'img' => 'https://media.gettyimages.com/photos/idyllic-home-with-covered-porch-picture-id479767332?s=612x612',
         'roomNum' => rand(1,5),
         'bedNum' => rand(1,3),
         'mQ' => rand(50,200),
         'wcNum' => rand(1,2),
-        'view' => rand(0,100)
+        'view' => rand(0,100),
+        "visible" => rand(0,1),
+        'sponsored' => rand(0,1),
+        'latitude' => $faker->latitude,
+        'longitude' => $faker->longitude
     ];
 });

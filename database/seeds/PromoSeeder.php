@@ -12,12 +12,20 @@ class PromoSeeder extends Seeder
      */
     public function run()
     {
-        factory(Promo::class, 35)
-            ->make()
-            ->each(function($promo) {
-                $apartment = Apartment::inRandomOrder() -> first();
-                $promo -> apartment() -> associate($apartment);
-                $promo -> save();
-            });
+        $promos = [
+            ['type' => 'a'],
+            ['type' => 'b'],
+            ['type' => 'c']
+             
+        ];
+
+
+        foreach ($promos as $promo)
+        {
+            $newPromo = new Promo;
+            $newPromo -> fill($promo);
+            $newPromo -> save();
+            
+        }
     }
 }

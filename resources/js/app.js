@@ -32,8 +32,8 @@ window.Vue = require("vue");
 
 function init() {
     new Vue({
-        el: "#app"
+        el: "#apartments"
     });
 }
 
-$(document).ready(init);
+// $(document).ready(init);

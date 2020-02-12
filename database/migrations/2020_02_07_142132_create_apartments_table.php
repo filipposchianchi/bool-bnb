@@ -25,6 +25,10 @@ class CreateApartmentsTable extends Migration
             $table->integer('wcNum')->default('0');
             $table->integer('view')->default('0');
             $table->boolean('sponsored')->default('0');
+            $table->boolean('visible')->default('1');
+            $table->decimal('latitude', 10, 8);
+            $table->decimal('longitude', 11, 8);
+
             $table->timestamps();
         });
     }

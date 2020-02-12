@@ -23,19 +23,32 @@
     </div>
     <div class="form-group">
       <label for="roomNum">Room Num:</label>
-      <input class="form-control" type="text" name="roomNum" value="{{$apartment->roomNum}}">
+      {{-- <input class="form-control" type="text" name="roomNum" value="{{$apartment->roomNum}}"> --}}
+      <input class="form-control" type="number" name="roomNum" value="1" min="0" max="20">
     </div>
     <div class="form-group">
       <label for="bedNum">Bed numbers:</label>
-      <input class="form-control" type="text" name="bedNum" value="{{$apartment->bedNum}}">
+      {{-- <input class="form-control" type="text" name="bedNum" value="{{$apartment->bedNum}}"> --}}
+      <input class="form-control" type="number" name="bedNum" value="1" min="0" max="20">
     </div>
     <div class="form-group">
       <label for="mQ">Metri quadrati:</label>
-      <input class="form-control" type="text" name="mQ" value="{{$apartment->mQ}}">
+      {{-- <input class="form-control" type="text" name="mQ" value="{{$apartment->mQ}}"> --}}
+      <input class="form-control" type="number" name="mQ" value="1" min="0">
     </div>
     <div class="form-group">
       <label for="wcNum">Toilette:</label>
-      <input class="form-control" type="text" name="wcNum" value="{{$apartment->wcNum}}">
+      {{-- <input class="form-control" type="text" name="wcNum" value="{{$apartment->wcNum}}"> --}}
+      <input class="form-control" type="number" name="wcNum" value="1" min="0" max="20">
+    </div>
+    <div class="form-group">
+      <label for="visible">Visibilità dell'annuncio</label>
+      {{-- <input class="form-control" type="text" name="visible" value="{{$apartment->wcNum}}"> --}}
+      <select name="visible" class="form-control" id="visible">
+        <option value="1" selected>pubblica</option>
+        <option value="0" selected>nascosta</option>
+      </select>
+  
     </div>
     <div class="form-group col-8">
       <label for="services">Services:</label> <br>

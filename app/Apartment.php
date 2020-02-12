@@ -15,7 +15,10 @@ class Apartment extends Model
         'bedNum',
         'mQ',
         'wcNum',
-        'view'
+        'view',
+        'visible',
+        'latitude',
+        'longitude'
     ];
 
     public function user(){

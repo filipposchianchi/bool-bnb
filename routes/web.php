@@ -18,7 +18,7 @@
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
-Route::get('/home', 'HomeController@userApartments')->name('user');
+Route::get('/home', 'HomeController@userApartments')->name('user') ->middleware('auth');
 Route::get('/apartment/{id}', 'HomeController@showApartments')->name('apartmentShow');
 
 Route::get('/apartment/edit/{id}', 'HomeController@editApartment')->name('apartment.edit');

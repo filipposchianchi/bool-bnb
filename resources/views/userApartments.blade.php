@@ -25,6 +25,12 @@
                 <div class="col-3">
                     <a class="btn btn-secondary" href="{{route("apartment.edit", $apartment -> id)}}" role="button">modifica annuncio</a>
                     <a class="btn btn-primary" href="{{route("apartment.delete",$apartment -> id)}}" role="button">cancella annuncio</a>
+
+                    @if ($apartment -> visible == 0)
+                        <p class="green">Questo annuncio è nascosto</p>
+                    @else
+                        <p class="red">Questo annuncio è pubblico</p>
+                    @endif
                 </div>
         </div>
         @endforeach

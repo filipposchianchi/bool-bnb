@@ -2,12 +2,14 @@
 
 @section('content')
 <div class="container">
-    <div class="row">
+    <div class="row justify-content-center">
         <div class="card mb-3 col-9">
             <img class="card-img-top" src="{{$apartment -> img}}" alt="Card image cap">
             <div class="card-body">
               <h5 class="card-title">{{$apartment -> title}}</h5>
-              <p class="card-text"><strong>address</strong> {{$apartment -> address}}</p>
+              <p class="card-text"><strong>address</strong> {{$apartment -> address}} 
+                <div id='map' class='map'></div>
+            </p>
               <p class="card-text"><strong>descrizione</strong> {{$apartment -> description}}</p>
               <p class="card-text"><strong>roomNum</strong> {{$apartment -> roomNum}}</p>
               <p class="card-text"><strong>bedNum</strong> {{$apartment -> bedNum}}</p>
@@ -21,6 +23,9 @@
             @foreach ($apartment->services as $service)
                 {{$service -> name}} <br>
             @endforeach
+        </div>
+        <div class="col-8">
+            
         </div>
     </div>
 </div>

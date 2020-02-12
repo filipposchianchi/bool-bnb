@@ -71,7 +71,9 @@ class HomeController extends Controller
             "bedNum" => 'required|numeric',
             "mQ" => 'required|numeric',
             "wcNum" => 'required|numeric',
-            "visible" => 'required|numeric',
+            "visible" => 'nullable|numeric',
+            "latitude" => 'nullable|numeric',
+            "longitude" => 'nullable|numeric',
             "services"=>'nullable|array'
         ]);
         $data=$request->all();
@@ -110,6 +112,8 @@ class HomeController extends Controller
             "mQ" => 'required|numeric',
             "wcNum" => 'required|numeric',
             "visible" => 'required|numeric',
+            "latitude" => 'nullable|numeric',
+            "longitude" => 'nullable|numeric',
             "services"=>'nullable|array'
         ]);
         // $data=$request->all();

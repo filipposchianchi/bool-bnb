@@ -2,7 +2,6 @@
 
 @section('content')
 <div class="container">
-    <h1>michele filippo Giampa!</h1>
     <h1>Apartments:</h1>
     <div class="row">
         @foreach ($apartments as $apartment)

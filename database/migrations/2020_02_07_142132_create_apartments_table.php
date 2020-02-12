@@ -24,10 +24,10 @@ class CreateApartmentsTable extends Migration
             $table->integer('mQ')->default('0');
             $table->integer('wcNum')->default('0');
             $table->integer('view')->default('0');
-            $table->boolean('sponsored')->default('0');
-            $table->boolean('visible')->default('1');
-            $table->decimal('latitude', 10, 8);
-            $table->decimal('longitude', 11, 8);
+            $table->boolean('sponsored')->default('0')->nullable();
+            $table->boolean('visible')->default('1')->nullable();
+            $table->decimal('latitude', 10, 8)->nullable();
+            $table->decimal('longitude', 11, 8)->nullable();
 
             $table->timestamps();
         });

@@ -7,7 +7,12 @@
             <img class="card-img-top" src="{{$apartment -> img}}" alt="Card image cap">
             <div class="card-body">
               <h5 class="card-title">{{$apartment -> title}}</h5>
-              <p class="card-text"><strong>address</strong> {{$apartment -> address}} 
+              <p class="card-text"><strong>address</strong>
+                 {{$apartment -> countryCode}} 
+                 {{$apartment -> streetNumber}} 
+                 {{$apartment -> streetName}} 
+                 {{$apartment -> municipality}} 
+                 {{$apartment -> postalCode}} 
                 <div id='map' class='map'></div>
             </p>
               <p class="card-text"><strong>descrizione</strong> {{$apartment -> description}}</p>

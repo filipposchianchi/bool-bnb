@@ -143,6 +143,7 @@ class HomeController extends Controller
         $response = $client->request('GET', 'https://api.tomtom.com/search/2/structuredGeocode.json?',[
             'query'=> [
                 'countryCode' => 'IT',
+                'limit' => '1',
                 'streetNumber' => '223',
                 'streetName' => 'via della pineta',
                 'municipality' => 'CAGLIARI',
@@ -152,8 +153,15 @@ class HomeController extends Controller
         $statusCode = $response->getStatusCode();
         $body = $response->getBody()->getContents();
 
-        $x = $body->keys();
-        dd($x);
-        dd($result);
+    
+        $obj2 = json_decode( $body, true );
+
+        dd($obj2['results']['0']['position']);
+
+        
+        // foreach($obj2['results'] as $key => $position) {
+        //     dd($position);
+        // }
+        // dd($result);
     }
 }

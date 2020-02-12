@@ -30,6 +30,9 @@ Route::get('/apartments/create/', 'HomeController@createApartment')->name('apart
 Route::get('/apartments/delete/{id}', 'HomeController@deleteApartment')->name('apartment.delete');
 
 
+Route::get('/apartments/test', 'HomeController@searchAddress')->name('apartment.test');
+
+
 
 
 

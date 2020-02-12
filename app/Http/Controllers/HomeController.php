@@ -5,6 +5,7 @@ use App\Apartment;
 use App\Service;
 use App\User;
 use Illuminate\Http\Request;
+use GuzzleHttp\Client;
 
 class HomeController extends Controller
 {
@@ -135,5 +136,24 @@ class HomeController extends Controller
         $apartment->services()->detach($services);
         $apartment->delete();
         return redirect() -> route('user');
+    }
+
+    public function searchAddress(){
+        $client = new Client();
+        $response = $client->request('GET', 'https://api.tomtom.com/search/2/structuredGeocode.json?',[
+            'query'=> [
+                'countryCode' => 'IT',
+                'streetNumber' => '223',
+                'streetName' => 'via della pineta',
+                'municipality' => 'CAGLIARI',
+                'postalCode' => '09126',
+                'key' => 'yfpz8kRCWBBiIF0WZOIZLdtsH2DhAfBG'],
+            ]);
+        $statusCode = $response->getStatusCode();
+        $body = $response->getBody()->getContents();
+
+        $x = $body->keys();
+        dd($x);
+        dd($result);
     }
 }

@@ -8,11 +8,11 @@
             <div class="card-body">
               <h5 class="card-title">{{$apartment -> title}}</h5>
               <p class="card-text"><strong>address</strong>
-                 {{$apartment -> countryCode}} 
-                 {{$apartment -> streetNumber}} 
-                 {{$apartment -> streetName}} 
-                 {{$apartment -> municipality}} 
-                 {{$apartment -> postalCode}} 
+                {{$apartment -> streetName}} 
+                {{$apartment -> streetNumber}} 
+                {{$apartment -> municipality}} 
+                {{$apartment -> postalCode}} 
+                {{$apartment -> countryCode}} 
                 <div id='map' class='map'></div>
             </p>
               <p class="card-text"><strong>descrizione</strong> {{$apartment -> description}}</p>

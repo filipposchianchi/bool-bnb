@@ -139,6 +139,7 @@ class HomeController extends Controller
     }
 
     public function deleteApartment($id){
+        
         $apartment=Apartment::findOrFail($id);
         $services=$apartment-> services;
         $apartment->services()->detach($services);
@@ -146,7 +147,15 @@ class HomeController extends Controller
         return redirect() -> route('user');
     }
 
-    public function searchAddress(){
+    public function searchAddress($id){
+
+        $apartment=Apartment::findOrFail($id);
+
+        $countryApartment = $apartment -> countryCode;
+
+        dd($countryApartment);
+
+
         $client = new Client();
         $response = $client->request('GET', 'https://api.tomtom.com/search/2/structuredGeocode.json?',[
             'query'=> [

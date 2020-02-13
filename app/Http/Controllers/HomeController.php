@@ -5,6 +5,7 @@ use App\Apartment;
 use App\Service;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use GuzzleHttp\Client;
 
 class HomeController extends Controller
@@ -81,9 +82,35 @@ class HomeController extends Controller
             "longitude" => 'nullable|numeric',
             "services"=>'nullable|array'
         ]);
+
+        // inserire dati per chiamata ajax tomtom
+        $client = new Client();
+        $response = $client->request('GET', 'https://api.tomtom.com/search/2/structuredGeocode.json?',[
+            'query'=> [
+                'countryCode' => $data['countryCode'],
+                'limit' => '1',
+                'streetNumber' => $data['streetNumber'],
+                'streetName' => $data['streetName'],
+                'municipality' => $data['municipality'],
+                'postalCode' => $data['postalCode'],
+                'key' => 'yfpz8kRCWBBiIF0WZOIZLdtsH2DhAfBG'],
+            ]);
+        $statusCode = $response->getStatusCode();
+        $body = $response->getBody()->getContents();
+        //prendere quei dati e mettere long e lat
+        $position = json_decode( $body, true );
+        $latitude = $position['results']['0']['position']['lat'];
+        $longitude = $position['results']['0']['position']['lon'];
+        
+        
         $data=$request->all();
         // dd($data);
         $apartment = Apartment::make($data);
+        //salva nel db lat e long
+        $apartment -> latitude = $latitude;
+        $apartment -> longitude = $longitude;
+
+
         if(isset($data["services"])){
             $services=Service::find($data['services']);
         }else{
@@ -125,9 +152,28 @@ class HomeController extends Controller
             "longitude" => 'nullable|numeric',
             "services"=>'nullable|array'
         ]);
+        $client = new Client();
+        $response = $client->request('GET', 'https://api.tomtom.com/search/2/structuredGeocode.json?',[
+            'query'=> [
+                'countryCode' => $data['countryCode'],
+                'limit' => '1',
+                'streetNumber' => $data['streetNumber'],
+                'streetName' => $data['streetName'],
+                'municipality' => $data['municipality'],
+                'postalCode' => $data['postalCode'],
+                'key' => 'yfpz8kRCWBBiIF0WZOIZLdtsH2DhAfBG'],
+            ]);
+        $statusCode = $response->getStatusCode();
+        $body = $response->getBody()->getContents();
+        //prendere quei dati e mettere long e lat
+        $position = json_decode( $body, true );
+        $latitude = $position['results']['0']['position']['lat'];
+        $longitude = $position['results']['0']['position']['lon'];
         // $data=$request->all();
         // dd($data);
         $apartment=Apartment::findOrFail($id);
+        $apartment -> latitude = $latitude;
+        $apartment -> longitude = $longitude;
         if(isset($data["services"])){
             $services=Service::find($data['services']);
         }else{
@@ -186,5 +232,27 @@ class HomeController extends Controller
         //     dd($position);
         // }
         // dd($result);
+    }
+    public function searchApartment(Request $request){
+        $search = $request->get('search');
+        $apartments = DB::table('apartments')->where('municipality', 'like', '%'.$search.'%') ->paginate(7);
+        // dd($search);
+        //controllo se -> 
+        $client = new Client();
+        $response = $client->request('GET', 'https://api.tomtom.com/search/2/structuredGeocode.json?',[
+            'query'=> [
+                'countryCode' => 'IT',
+                'municipality' => $search,
+                'radius'=> 20000,
+                'key' => 'yfpz8kRCWBBiIF0WZOIZLdtsH2DhAfBG'],
+            'data'=>[
+
+            ]
+        ]);
+        $statusCode = $response->getStatusCode();
+        $body = $response->getBody()->getContents();
+        // dd($position['results']['0']['position']);
+        dd($body);
+        return view('search-result', ['apartments' => $apartments]);
     }
 }

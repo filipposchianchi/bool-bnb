@@ -11,11 +11,11 @@
     </div>
     <div class="form-group">
       <label for="address">address:</label>
-      <input class="" type="text" name="countryCode" value="{{$apartment-> countryCode}}" >
-      <input class="" type="number" name="streetNumber" value="{{$apartment-> streetNumber}}">
       <input class="" type="text" name="streetName" value="{{$apartment-> streetName}}" >
+      <input class="" type="number" name="streetNumber" value="{{$apartment-> streetNumber}}">
       <input class="" type="text" name="municipality" value="{{$apartment-> municipality}}" >
       <input class="" type="text" name="postalCode" value="{{$apartment-> postalCode}}">
+      <input class="" type="text" name="countryCode" value="{{$apartment-> countryCode}}" >
     </div> 
     <div class="form-group">
       <label for="description">description:</label>

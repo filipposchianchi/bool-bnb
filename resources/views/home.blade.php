@@ -2,7 +2,21 @@
 
 @section('content')
 <div class="container">
-    <h1>Apartments:</h1>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <form action="/search-apartment" method="get">
+                <div class="input-group">
+                    <input type="search" name="search" class="form-control">
+                    <span class="input-group-prepend">
+                        <button class="btn btn-primary">CERCA</button>
+                    </span>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <h1>Apartments:</h1>
+    </div>
     <div class="row">
         @foreach ($apartments as $apartment)
         <div class="card mb-3 col-6 apartment">

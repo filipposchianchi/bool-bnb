@@ -143,8 +143,12 @@ class HomeController extends Controller
         $apartment=Apartment::findOrFail($id);
         $services=$apartment-> services;
         $messages=$apartment-> messages;
+        $promos = $apartment -> promos;
+
         $apartment->services()->detach($services);
         $apartment->messages()->delete();
+        $apartment->promos()->detach($promos);
+
         $apartment->delete();
         return redirect() -> route('user');
     }

@@ -35,6 +35,7 @@ Route::get('/apartments/test/{id}', 'HomeController@searchAddress')->name('apart
 // search route rf3
 Route::get('/search-apartment', 'HomeController@searchApartment');
 
-
+// auto complete
+Route::post('/autocomplete/fetch', 'TomtomController@fetch')->name('autocomplete.fetch');
 
 

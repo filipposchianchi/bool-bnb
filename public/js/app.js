@@ -49338,12 +49338,45 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+// new Vue({
+//     el: "#apartments"
+// });
+
+function outputDropdown(data) {
+  $("#addressList").html(address);
+}
+
+function keyUpQuery() {
+  $("#address").keyup(function () {
+    var query = $(this).val();
+
+    if (query != "") {
+      console.log(query); // var _token = $('input[name="_token"]').val();
+
+      $.ajax({
+        url: "https://api.tomtom.com/search/2/geocode/" + query + ".json",
+        method: "GET",
+        data: {
+          countrySet: "IT",
+          extendedPostalCodesFor: "Addr",
+          key: "yfpz8kRCWBBiIF0WZOIZLdtsH2DhAfBG"
+        },
+        success: function success(data) {
+          var results = data["results"];
+          results.forEach(function (item) {
+            console.log(item["address"]["freeformAddress"]);
+          });
+        }
+      });
+    }
+  });
+}
 
 function init() {
-  new Vue({
-    el: "#apartments"
-  });
-} // $(document).ready(init);
+  keyUpQuery();
+}
+
+$(document).ready(init);
 
 /***/ }),
 
@@ -49410,8 +49443,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Filippo\Documents\GitHub\bool-bnb\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Filippo\Documents\GitHub\bool-bnb\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Axl\Documents\GitHub\bool-bnb\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Axl\Documents\GitHub\bool-bnb\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -29,11 +29,44 @@ window.Vue = require("vue");
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+// new Vue({
+//     el: "#apartments"
+// });
+function outputDropdown(data) {
+    $("#addressList").html(address);
+}
 
-function init() {
-    new Vue({
-        el: "#apartments"
+function keyUpQuery() {
+    $("#address").keyup(function() {
+        var query = $(this).val();
+        if (query != "") {
+            console.log(query);
+
+            // var _token = $('input[name="_token"]').val();
+            $.ajax({
+                url:
+                    "https://api.tomtom.com/search/2/geocode/" +
+                    query +
+                    ".json",
+                method: "GET",
+                data: {
+                    countrySet: "IT",
+                    extendedPostalCodesFor: "Addr",
+                    key: "yfpz8kRCWBBiIF0WZOIZLdtsH2DhAfBG"
+                },
+                success: function(data) {
+                    var results = data["results"];
+                    results.forEach(item => {
+                        console.log(item["address"]["freeformAddress"]);
+                    });
+                }
+            });
+        }
     });
 }
 
-// $(document).ready(init);
+function init() {
+    keyUpQuery();
+}
+
+$(document).ready(init);

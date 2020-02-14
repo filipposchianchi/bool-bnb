@@ -9,14 +9,24 @@
       <label for="title">Title:</label>
       <input class="form-control" type="text" name="title" value="">
     </div>
-    <div class="form-group">
+
+    {{-- ADDRESS --}}
+    {{-- <div class="form-group">
       <label for="address">address:</label>
       <input class="" type="text" name="streetName" value="" placeholder="streetName">
       <input class="" type="number" name="streetNumber" value="" placeholder="streetNumber">
       <input class="" type="text" name="municipality" value="" placeholder="municipality">
       <input class="" type="text" name="postalCode" value="" placeholder="postalCode">
       <input class="" type="text" name="countryCode" value="" placeholder="countryCode" >
-    </div> 
+    </div>  --}}
+    <div class="form-group">
+      <label for="address">address:</label>
+      <input type="text" name="address" id="address" class="form-control input-lg" placeholder="Inserisci l'indirizzo" />
+      <div id="addressList">
+      </div>
+      {{ csrf_field() }}
+     </div>
+
     <div class="form-group">
       <label for="description">description:</label>
       <input class="form-control" type="text" name="description" value="">

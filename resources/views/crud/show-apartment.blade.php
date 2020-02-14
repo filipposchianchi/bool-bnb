@@ -29,31 +29,39 @@
                 {{$service -> name}} <br>
             @endforeach
 
-            <form action="{{route('message.store')}}" method="post">
+            <form action="{{route('message.store', $apartment -> id)}}" method="post">
                 @csrf
                 @method('POST')
                 <div class="form-group">
-                    <label for="email">Email:</label> <br>
-                    <input class="" type="text" name="emailUser" value="" >
+                    <label for="email">Email:</label> 
+
+                    @auth
+                    <input class="" type="email" name="email" value="{{ Auth::user() -> email }}">
+                    @else
+                    <input class="" type="email" name="email" value="">
+                    @endauth
+                    
                     <label for="titolomsg">Titolo messaggio:</label>
-                    <input class="" type="text" name="titleMsg" value="">
+                    <input class="" type="text" name="title" value="">
                     <label for="messaggio">Messaggio:</label>
-                    <input class="" type="text" name="msg" value="">
+                    <input class="" type="text" name="body" value="">
                     
                     <button type="submit">INVIO MESSAGGIO</button>
+                    
+
+                    @if(Session::has('msg'))
+                    <p class="alert {{ Session::get('alert-class', 'alert-info') }}">
+                        {{ Session::get('msg') }}
+                    </p>
+                    @endif
+
                 </div> 
             </form>
 
         </div>
 
-        <div class="col-8">
-            
-        </div>
     </div>
 </div>
 
 
-
-
 @endsection
-

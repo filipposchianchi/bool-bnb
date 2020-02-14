@@ -8,6 +8,7 @@ use App\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use GuzzleHttp\Client;
+use Session;
 use Auth;
 
 class HomeController extends Controller
@@ -274,24 +275,27 @@ class HomeController extends Controller
         return view('search-result', ['apartments' => $apartments]);
     }
 
-
-    // public function createMessage() {
-
-    //     return view('crud.create-apartment', compact('services'));
-
-    // }
-
-    public function storeMessage(Request $request){
-
+    public function storeMessage(Request $request, $id) {
         $data = $request -> validate ([
+            "email" => 'required|string',
             "title" => 'required|string',
             "body" => 'required|string'
-            
         ]);
+        //dd($data);
+        //$data=$request->all();
+        $message = Message::make($data);
+        $message -> apartment_id = $id;
 
-        $message = Message :: make($data);
+        
         $message -> save();
+        //Session::flash('msg', 'Thanks');
 
-        return redirect() -> route('crud.show-apartment');    
+
+        Session::flash('msg', 'Email inviata'); 
+        Session::flash('alert-class', 'alert-danger');
+
+        return redirect() -> route('apartmentShow', compact('id'));
+
+
     }
 }

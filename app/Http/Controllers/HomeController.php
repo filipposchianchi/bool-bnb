@@ -47,10 +47,10 @@ class HomeController extends Controller
         //$apartments = Apartment::find(auth()->user()->id);
         $user = User::findOrFail($userId);
         $apartments = $user -> apartments;
-        $apartmentCount = $apartments->count();
+        // $messages = $apartments -> messages;
         
         // dd($apartments);
-        return view('userApartments', compact('apartments', 'apartmentCount'));
+        return view('userApartments', compact('apartments'));
     }
 
 

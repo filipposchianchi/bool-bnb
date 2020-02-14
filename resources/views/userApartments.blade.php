@@ -2,7 +2,25 @@
 @section('content')
 
     <div class="container">
-        
+        {{-- DIV MESSAGES --}}
+        <h2>MESSAGES</h2>
+        <div class="row justify-content-center p-5">
+            <div class="col-8 messages">
+                @foreach ($apartments as $apartment)
+                <p><strong>{{$apartment->title}} {{$apartment->id}} </strong></p>
+                    @foreach ($apartment -> messages as $message)
+                        <p>from : {{$message->email}} </p>
+                        <p>{{$message->title}} [{{$message->id}}] </p>
+                        <p>{{$message->body}} </p>
+                    @endforeach
+                @endforeach
+            </div>
+        </div>
+
+
+
+
+
         <div class="row">
             <button class="btn-primary" > 
                 <a class="btn btn-primary" href="{{route("apartment.create")}}" role="button">Inserisci un nuovo apartamento</a>

@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 use App\Apartment;
 use App\Service;
 use App\User;
+use App\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use GuzzleHttp\Client;
+use Session;
 use Auth;
 
 class HomeController extends Controller
@@ -271,5 +273,29 @@ class HomeController extends Controller
         // dd($position['results']['0']['position']);
         // dd($body);ss
         return view('search-result', ['apartments' => $apartments]);
+    }
+
+    public function storeMessage(Request $request, $id) {
+        $data = $request -> validate ([
+            "email" => 'required|string',
+            "title" => 'required|string',
+            "body" => 'required|string'
+        ]);
+        //dd($data);
+        //$data=$request->all();
+        $message = Message::make($data);
+        $message -> apartment_id = $id;
+
+        
+        $message -> save();
+        //Session::flash('msg', 'Thanks');
+
+
+        Session::flash('msg', 'Email inviata'); 
+        Session::flash('alert-class', 'alert-danger');
+
+        return redirect() -> route('apartmentShow', compact('id'));
+
+
     }
 }

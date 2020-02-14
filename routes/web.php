@@ -36,5 +36,4 @@ Route::get('/apartments/test/{id}', 'HomeController@searchAddress')->name('apart
 Route::get('/search-apartment', 'HomeController@searchApartment');
 
 
-
-
+Route::post('/message/store/apartment{id}', 'HomeController@storeMessage')->name('message.store');

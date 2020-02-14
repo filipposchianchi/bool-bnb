@@ -35,6 +35,11 @@ Route::get('/apartments/test/{id}', 'HomeController@searchAddress')->name('apart
 // search route rf3
 Route::get('/search-apartment', 'HomeController@searchApartment');
 
+Route::post('/message/store', 'HomeController@storeMessage')->name('message.store');
+//Route::get('/message/create/', 'HomeController@createMessage')->name('message.create');
+
+
+
 
 
 

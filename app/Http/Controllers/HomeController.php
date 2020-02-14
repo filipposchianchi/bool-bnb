@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Apartment;
 use App\Service;
 use App\User;
+use App\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use GuzzleHttp\Client;
@@ -271,5 +272,26 @@ class HomeController extends Controller
         // dd($position['results']['0']['position']);
         // dd($body);ss
         return view('search-result', ['apartments' => $apartments]);
+    }
+
+
+    // public function createMessage() {
+
+    //     return view('crud.create-apartment', compact('services'));
+
+    // }
+
+    public function storeMessage(Request $request){
+
+        $data = $request -> validate ([
+            "title" => 'required|string',
+            "body" => 'required|string'
+            
+        ]);
+
+        $message = Message :: make($data);
+        $message -> save();
+
+        return redirect() -> route('crud.show-apartment');    
     }
 }

@@ -28,11 +28,32 @@
             @foreach ($apartment->services as $service)
                 {{$service -> name}} <br>
             @endforeach
+
+            <form action="{{route('message.store')}}" method="post">
+                @csrf
+                @method('POST')
+                <div class="form-group">
+                    <label for="email">Email:</label> <br>
+                    <input class="" type="text" name="emailUser" value="" >
+                    <label for="titolomsg">Titolo messaggio:</label>
+                    <input class="" type="text" name="titleMsg" value="">
+                    <label for="messaggio">Messaggio:</label>
+                    <input class="" type="text" name="msg" value="">
+                    
+                    <button type="submit">INVIO MESSAGGIO</button>
+                </div> 
+            </form>
+
         </div>
+
         <div class="col-8">
             
         </div>
     </div>
 </div>
+
+
+
+
 @endsection
 

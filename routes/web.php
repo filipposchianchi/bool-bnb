@@ -25,7 +25,7 @@ Route::get('/apartment/edit/{id}', 'HomeController@editApartment')->name('apartm
 Route::post('/apartment/update/{id}', 'HomeController@updateApartment')->name('apartment.update');
 
 Route::post('/apartments/store/', 'HomeController@storeApartments')->name('apartment.store');
-Route::get('/apartments/create/', 'HomeController@createApartment')->name('apartment.create');
+Route::get('/apartments/create/', 'HomeController@createApartment')->name('apartment.create')->middleware('auth');
 
 Route::get('/apartments/delete/{id}', 'HomeController@deleteApartment')->name('apartment.delete');
 

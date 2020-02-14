@@ -14,7 +14,7 @@ class Apartment extends Model
         'municipality',
         'postalCode',
         'description',
-        'img',
+        'image',
         'roomNum',
         'bedNum',
         'mQ',

@@ -2,7 +2,7 @@
 @section('content')
 
 <div class="container">
-  <form action="{{route('apartment.store')}}" method="post">
+  <form action="{{route('apartment.store')}}" method="post" enctype='multipart/form-data'  >
     @csrf
     @method('POST')
     <div class="form-group">
@@ -22,8 +22,10 @@
       <input class="form-control" type="text" name="description" value="">
     </div>
     <div class="form-group">
-      <label for="img">img:</label>
-      <input class="form-control" type="text" name="img" value="">
+      <label for="image">img:</label>
+      {{-- <input class="form-control" type="text" name="img" value=""> --}}
+      <input class="form-control" type="file" name="image" value="">
+      {{-- <input type="submit" value="save image"> --}}
     </div>
     <div class="form-group">
       {{-- <label for="roomNum">Room Num:</label>
@@ -50,7 +52,7 @@
       @foreach ($services as $service)
       <input name="services[]" type="checkbox"  value="{{$service->id}}">{{$service->name}}
       @endforeach
-  </div> 
+    </div> 
     <button type="submit">SALVA</button>
   </form>
 </div>

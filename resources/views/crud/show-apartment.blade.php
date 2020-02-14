@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="card mb-3 col-9">
-            <img class="card-img-top" src="{{$apartment -> img}}" alt="Card image cap">
+            <img src="{{asset('images/'.$apartment -> image)}}" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title">{{$apartment -> title}}</h5>
               <p class="card-text"><strong>address</strong>

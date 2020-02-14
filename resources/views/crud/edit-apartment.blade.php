@@ -2,7 +2,7 @@
 @section('content')
 
 <div class="container">
-  <form action="{{route('apartment.update', $apartment -> id)}}" method="post">
+  <form action="{{route('apartment.update', $apartment -> id)}}" method="post" enctype='multipart/form-data'>
     @csrf
     @method('POST')
     <div class="form-group">
@@ -23,7 +23,7 @@
     </div>
     <div class="form-group">
       <label for="img">img:</label>
-      <input class="form-control" type="text" name="img" value="{{$apartment->img}}">
+      <input class="form-control" type="file" name="image" value="">
     </div>
     <div class="form-group">
       <label for="roomNum">Room Num:</label>

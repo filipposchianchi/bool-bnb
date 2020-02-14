@@ -15,7 +15,7 @@ $factory->define(Apartment::class, function (Faker $faker) {
         'municipality' => $faker->city,
         'postalCode' => $faker->postcode,
         'description' => $faker->sentence,
-        'img' => 'https://media.gettyimages.com/photos/idyllic-home-with-covered-porch-picture-id479767332?s=612x612',
+        'image' => 'house1.jpg',
         'roomNum' => rand(1,5),
         'bedNum' => rand(1,3),
         'mQ' => rand(50,200),

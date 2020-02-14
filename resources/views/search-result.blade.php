@@ -4,7 +4,7 @@
     @foreach ($apartments as $apartment)
     <div class="card mb-3 col-6 apartment">
         <a class="m-3" href="{{route('apartmentShow', $apartment -> id)}}">
-            <img src="{{$apartment -> img}}" class="card-img-top" alt="...">
+            <img src="{{asset('images/'.$apartment -> image)}}" class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title">{{$apartment -> title}}</h5>
                 <p class="card-text"><strong>address</strong>

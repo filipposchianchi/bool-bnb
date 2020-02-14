@@ -22,7 +22,7 @@ class CreateApartmentsTable extends Migration
             $table->string('municipality');
             $table->string('postalCode');
             $table->string('description')->nullable();
-            $table->string('img')->nullable();
+            $table->string('image')->nullable();
             $table->integer('roomNum')->default('0');
             $table->integer('bedNum')->default('0');
             $table->integer('mQ')->default('0');

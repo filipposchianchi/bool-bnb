@@ -7,6 +7,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use GuzzleHttp\Client;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -72,7 +73,7 @@ class HomeController extends Controller
             "municipality" => 'required|string',
             "postalCode" => 'required|string',
             "description" => 'nullable|string',
-            "img" => 'nullable|string',
+            "image" => 'nullable||image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             "roomNum" => 'required|numeric',
             "bedNum" => 'required|numeric',
             "mQ" => 'required|numeric',
@@ -105,12 +106,20 @@ class HomeController extends Controller
         
         $data=$request->all();
         // dd($data);
+        $file = $request -> file('image');
+        $filename = $file -> getClientOriginalName();
+        $file -> move('images',$filename);
+        $newUserData = [
+            'image'=>$filename
+        ];
+        // dd($filename);
         $apartment = Apartment::make($data);
+        
         //salva nel db lat e long
         $apartment -> latitude = $latitude;
         $apartment -> longitude = $longitude;
-
-
+        
+        
         if(isset($data["services"])){
             $services=Service::find($data['services']);
         }else{
@@ -120,6 +129,7 @@ class HomeController extends Controller
         $user = User::findOrFail($userId);
         $apartment -> user() -> associate($user);
         $apartment -> save();
+        $apartment -> update($newUserData);
         $apartment->services()->sync($services);
 
 
@@ -142,7 +152,7 @@ class HomeController extends Controller
             "municipality" => 'required|string',
             "postalCode" => 'required|string',
             "description" => 'nullable|string',
-            "img" => 'nullable|string',
+            "image" => 'nullable||image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             "roomNum" => 'required|numeric',
             "bedNum" => 'required|numeric',
             "mQ" => 'required|numeric',
@@ -152,6 +162,12 @@ class HomeController extends Controller
             "longitude" => 'nullable|numeric',
             "services"=>'nullable|array'
         ]);
+        $file = $request -> file('image');
+        $filename = $file -> getClientOriginalName();
+        $file -> move('images',$filename);
+        $newUserData = [
+            'image'=>$filename
+        ];
         $client = new Client();
         $response = $client->request('GET', 'https://api.tomtom.com/search/2/structuredGeocode.json?',[
             'query'=> [
@@ -181,6 +197,7 @@ class HomeController extends Controller
         }
         $apartment->services()->sync($services);
         $apartment->update($data);
+        $apartment -> update($newUserData);
         return redirect() -> route('user');
     }
 
@@ -245,14 +262,14 @@ class HomeController extends Controller
                 'municipality' => $search,
                 'radius'=> 20000,
                 'key' => 'yfpz8kRCWBBiIF0WZOIZLdtsH2DhAfBG'],
-            'data'=>[
-
+            'database'=>[
+                'apartments'
             ]
         ]);
         $statusCode = $response->getStatusCode();
         $body = $response->getBody()->getContents();
         // dd($position['results']['0']['position']);
-        dd($body);
+        // dd($body);ss
         return view('search-result', ['apartments' => $apartments]);
     }
 }

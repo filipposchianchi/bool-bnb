@@ -10888,6 +10888,10 @@ a.text-dark:focus {
   position: relative;
 }
 
+.position {
+  display: none;
+}
+
 #map {
   width: 100%;
   height: 60%;

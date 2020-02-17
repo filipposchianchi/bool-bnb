@@ -49397,7 +49397,7 @@ function keyUpQuery() {
       console.log(query);
       ajaxCall(query);
     }
-  }, 500));
+  }, 1300));
 }
 
 function init() {

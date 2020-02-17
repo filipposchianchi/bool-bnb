@@ -31,8 +31,8 @@
      </div>
 
     <div class="form-group position">
-        <input type="text" name="latitude" id="latitude" disabled/>
-        <input type="text" name="longitude" id="longitude"disabled/> 
+        <input type="text" name="latitude" id="latitude"/>
+        <input type="text" name="longitude" id="longitude"/> 
     </div>
     <div class="form-group">
       <label for="description">description:</label>

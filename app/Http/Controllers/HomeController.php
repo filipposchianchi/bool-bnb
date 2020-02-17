@@ -28,7 +28,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $apartments = Apartment::all();
+        $apartments = Apartment::orderBy('id', 'DESC') -> get();
         // $apartments = [];
         // foreach ($allAp  as $apartment) {
         //     if ($apartment-> sponsored==1) {
@@ -67,11 +67,6 @@ class HomeController extends Controller
     {
         $data = $request -> validate ([
             "title" => 'required|string',
-            // "countryCode" => 'required|string',
-            // "streetNumber" => 'required|numeric',
-            // "streetName" => 'required|string',
-            // "municipality" => 'required|string',
-            // "postalCode" => 'required|string',
             "address" => 'required|string',
             "description" => 'nullable|string',
             "image" => 'nullable||image|mimes:jpeg,png,jpg,gif,svg|max:2048',
@@ -84,29 +79,10 @@ class HomeController extends Controller
             "longitude" => 'nullable|numeric',
             "services"=>'nullable|array'
         ]);
-
-        // inserire dati per chiamata ajax tomtom
-        // $client = new Client();
-        // $response = $client->request('GET', 'https://api.tomtom.com/search/2/structuredGeocode.json?',[
-        //     'query'=> [
-        //         'countryCode' => $data['countryCode'],
-        //         'limit' => '1',
-        //         'streetNumber' => $data['streetNumber'],
-        //         'streetName' => $data['streetName'],
-        //         'municipality' => $data['municipality'],
-        //         'postalCode' => $data['postalCode'],
-        //         'key' => 'yfpz8kRCWBBiIF0WZOIZLdtsH2DhAfBG'],
-        //     ]);
-        // $statusCode = $response->getStatusCode();
-        // $body = $response->getBody()->getContents();
-        // //prendere quei dati e mettere long e lat
-        // $position = json_decode( $body, true );
-        // $latitude = $position['results']['0']['position']['lat'];
-        // $longitude = $position['results']['0']['position']['lon'];
         
         
         $data=$request->all();
-        dd($data);
+        // dd($data);
         $file = $request -> file('image');
         $filename = $file -> getClientOriginalName();
         $file -> move('images',$filename);
@@ -117,8 +93,6 @@ class HomeController extends Controller
         $apartment = Apartment::make($data);
         
         //salva nel db lat e long
-        $apartment -> latitude = $latitude;
-        $apartment -> longitude = $longitude;
         
         
         if(isset($data["services"])){
@@ -147,18 +121,14 @@ class HomeController extends Controller
     public function updateApartment(Request $request, $id){
         $data = $request -> validate ([
             "title" => 'required|string',
-            "countryCode" => 'required|string',
-            "streetNumber" => 'required|numeric',
-            "streetName" => 'required|string',
-            "municipality" => 'required|string',
-            "postalCode" => 'required|string',
+            "address" => 'required|string',
             "description" => 'nullable|string',
             "image" => 'nullable||image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             "roomNum" => 'required|numeric',
             "bedNum" => 'required|numeric',
             "mQ" => 'required|numeric',
             "wcNum" => 'required|numeric',
-            "visible" => 'required|numeric',
+            "visible" => 'nullable|numeric',
             "latitude" => 'nullable|numeric',
             "longitude" => 'nullable|numeric',
             "services"=>'nullable|array'
@@ -169,28 +139,10 @@ class HomeController extends Controller
         $newUserData = [
             'image'=>$filename
         ];
-        $client = new Client();
-        $response = $client->request('GET', 'https://api.tomtom.com/search/2/structuredGeocode.json?',[
-            'query'=> [
-                'countryCode' => $data['countryCode'],
-                'limit' => '1',
-                'streetNumber' => $data['streetNumber'],
-                'streetName' => $data['streetName'],
-                'municipality' => $data['municipality'],
-                'postalCode' => $data['postalCode'],
-                'key' => 'yfpz8kRCWBBiIF0WZOIZLdtsH2DhAfBG'],
-            ]);
-        $statusCode = $response->getStatusCode();
-        $body = $response->getBody()->getContents();
-        //prendere quei dati e mettere long e lat
-        $position = json_decode( $body, true );
-        $latitude = $position['results']['0']['position']['lat'];
-        $longitude = $position['results']['0']['position']['lon'];
+        
         // $data=$request->all();
         // dd($data);
         $apartment=Apartment::findOrFail($id);
-        $apartment -> latitude = $latitude;
-        $apartment -> longitude = $longitude;
         if(isset($data["services"])){
             $services=Service::find($data['services']);
         }else{

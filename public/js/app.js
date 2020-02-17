@@ -49357,7 +49357,7 @@ function ajaxCall(query) {
       $("#addressList").append('<ul class="dropdown-menu" style="display:block; position:absolute">');
       var results = data["results"];
       results.forEach(function (item) {
-        $("#addressList ul").append('<li><a href="#">' + item["address"]["freeformAddress"] + "</a></li>");
+        $("#addressList ul").append('<li data-lat="' + item["position"]["lat"] + '" data-lon="' + item["position"]["lon"] + '"><a href="#">' + item["address"]["freeformAddress"] + "</a></li>");
         console.log(item["position"]["lat"]); // $("#addressList").append(item["address"]["freeformAddress"]);
         // console.log(item["address"]["freeformAddress"]);
       });
@@ -49368,6 +49368,8 @@ function ajaxCall(query) {
 
 function addressClick() {
   $(document).on("click", "li", function () {
+    $("#latitude").val($(this).data("lat"));
+    $("#longitude").val($(this).data("lon"));
     $("#address").val($(this).text());
     $("#addressList").fadeOut();
   });

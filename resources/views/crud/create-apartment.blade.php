@@ -30,6 +30,10 @@
       </div>
      </div>
 
+    <div class="form-group position">
+        <input type="text" name="latitude" id="latitude" disabled/>
+        <input type="text" name="longitude" id="longitude"disabled/> 
+    </div>
     <div class="form-group">
       <label for="description">description:</label>
       <input class="form-control" type="text" name="description" value="">

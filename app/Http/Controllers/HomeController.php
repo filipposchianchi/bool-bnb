@@ -67,11 +67,12 @@ class HomeController extends Controller
     {
         $data = $request -> validate ([
             "title" => 'required|string',
-            "countryCode" => 'required|string',
-            "streetNumber" => 'required|numeric',
-            "streetName" => 'required|string',
-            "municipality" => 'required|string',
-            "postalCode" => 'required|string',
+            // "countryCode" => 'required|string',
+            // "streetNumber" => 'required|numeric',
+            // "streetName" => 'required|string',
+            // "municipality" => 'required|string',
+            // "postalCode" => 'required|string',
+            "address" => 'required|string',
             "description" => 'nullable|string',
             "image" => 'nullable||image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             "roomNum" => 'required|numeric',
@@ -85,27 +86,27 @@ class HomeController extends Controller
         ]);
 
         // inserire dati per chiamata ajax tomtom
-        $client = new Client();
-        $response = $client->request('GET', 'https://api.tomtom.com/search/2/structuredGeocode.json?',[
-            'query'=> [
-                'countryCode' => $data['countryCode'],
-                'limit' => '1',
-                'streetNumber' => $data['streetNumber'],
-                'streetName' => $data['streetName'],
-                'municipality' => $data['municipality'],
-                'postalCode' => $data['postalCode'],
-                'key' => 'yfpz8kRCWBBiIF0WZOIZLdtsH2DhAfBG'],
-            ]);
-        $statusCode = $response->getStatusCode();
-        $body = $response->getBody()->getContents();
-        //prendere quei dati e mettere long e lat
-        $position = json_decode( $body, true );
-        $latitude = $position['results']['0']['position']['lat'];
-        $longitude = $position['results']['0']['position']['lon'];
+        // $client = new Client();
+        // $response = $client->request('GET', 'https://api.tomtom.com/search/2/structuredGeocode.json?',[
+        //     'query'=> [
+        //         'countryCode' => $data['countryCode'],
+        //         'limit' => '1',
+        //         'streetNumber' => $data['streetNumber'],
+        //         'streetName' => $data['streetName'],
+        //         'municipality' => $data['municipality'],
+        //         'postalCode' => $data['postalCode'],
+        //         'key' => 'yfpz8kRCWBBiIF0WZOIZLdtsH2DhAfBG'],
+        //     ]);
+        // $statusCode = $response->getStatusCode();
+        // $body = $response->getBody()->getContents();
+        // //prendere quei dati e mettere long e lat
+        // $position = json_decode( $body, true );
+        // $latitude = $position['results']['0']['position']['lat'];
+        // $longitude = $position['results']['0']['position']['lon'];
         
         
         $data=$request->all();
-        // dd($data);
+        dd($data);
         $file = $request -> file('image');
         $filename = $file -> getClientOriginalName();
         $file -> move('images',$filename);

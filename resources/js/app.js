@@ -50,7 +50,11 @@ function ajaxCall(query) {
             var results = data["results"];
             results.forEach(item => {
                 $("#addressList ul").append(
-                    '<li><a href="#">' +
+                    '<li data-lat="' +
+                        item["position"]["lat"] +
+                        '" data-lon="' +
+                        item["position"]["lon"] +
+                        '"><a href="#">' +
                         item["address"]["freeformAddress"] +
                         "</a></li>"
                 );
@@ -65,6 +69,8 @@ function ajaxCall(query) {
 }
 function addressClick() {
     $(document).on("click", "li", function() {
+        $("#latitude").val($(this).data("lat"));
+        $("#longitude").val($(this).data("lon"));
         $("#address").val($(this).text());
         $("#addressList").fadeOut();
     });

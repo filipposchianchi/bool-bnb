@@ -49353,31 +49353,25 @@ function ajaxCall(query) {
     },
     success: function success(data) {
       // console.log("TEST");
+      $("#addressList").append('<ul class="dropdown-menu" style="display:block; position:absolute">');
       var results = data["results"];
       results.forEach(function (item) {
-        $("#addressList").append(item["address"]["freeformAddress"]);
-        console.log(item["address"]["freeformAddress"]);
+        $("#addressList ul").append('<li><a href="#">' + item["address"]["freeformAddress"] + "</a></li>"); // $("#addressList").append(item["address"]["freeformAddress"]);
+        // console.log(item["address"]["freeformAddress"]);
       });
+      $("#addressList").append("</ul>");
     }
   });
 }
 
-function outputDropdown(data) {
-  $("#addressList").html(address);
+function addressClick() {
+  $(document).on("click", "li", function () {
+    $("#address").val($(this).text());
+    $("#addressList").fadeOut();
+  });
 }
 
 function keyUpQuery() {
-  // var time = 3000;
-  // $("#address").keyup(function() {
-  //     time = time + 1000;
-  //     var query = $(this).val();
-  //     if (query != "") {
-  //         console.log(query);
-  //         setTimeout(function() {
-  //             ajaxCall(query);
-  //         }, time);
-  //     }
-  // });
   function delay(callback, ms) {
     var timer = 0;
     return function () {
@@ -49393,16 +49387,18 @@ function keyUpQuery() {
 
   $("#address").keyup(delay(function (e) {
     var query = $(this).val();
+    $("#addressList").html("");
 
     if (query != "") {
       console.log(query);
       ajaxCall(query);
     }
-  }, 2000));
+  }, 500));
 }
 
 function init() {
   keyUpQuery();
+  addressClick();
 }
 
 $(document).ready(init);

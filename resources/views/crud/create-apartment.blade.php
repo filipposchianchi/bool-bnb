@@ -21,10 +21,13 @@
     </div>  --}}
     <div class="form-group">
       <label for="address">address:</label>
-      <input type="text" name="address" id="address" class="form-control input-lg" placeholder="Inserisci l'indirizzo" />
+      <input type="text" name="address" id="address" class="form-control input-lg" placeholder="Inserisci l'indirizzo" autocomplete="off"
+      />
       <div id="addressList">
       </div>
-      {{ csrf_field() }}
+      <div>
+        {{ csrf_field() }}
+      </div>
      </div>
 
     <div class="form-group">

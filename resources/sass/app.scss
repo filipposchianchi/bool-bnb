@@ -10,6 +10,7 @@
 //mockup-1
 @import "home";
 @import "userApartments";
+@import "crudCreate";
 #map {
     width: 100%;
     height: 60%;
@@ -42,4 +43,7 @@ footer {
             }
         }
     }
+}
+.imgstyle {
+    min-height: 100%;
 }

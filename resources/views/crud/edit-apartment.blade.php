@@ -11,19 +11,22 @@
     </div>
     <div class="form-group">
       <label for="address">address:</label>
-      <input class="" type="text" name="streetName" value="{{$apartment-> streetName}}" >
-      <input class="" type="number" name="streetNumber" value="{{$apartment-> streetNumber}}">
-      <input class="" type="text" name="municipality" value="{{$apartment-> municipality}}" >
-      <input class="" type="text" name="postalCode" value="{{$apartment-> postalCode}}">
-      <input class="" type="text" name="countryCode" value="{{$apartment-> countryCode}}" >
-    </div> 
+      <input type="text" name="address" id="address" class="form-control input-lg" value="{{$apartment->address}}" autocomplete="off"
+      required/>
+      <div id="addressList">
+      </div>
+      </div> 
+    <div class="form-group position">
+      <input type="text" name="latitude" id="latitude"/>
+      <input type="text" name="longitude" id="longitude"/> 
+    </div>
     <div class="form-group">
       <label for="description">description:</label>
       <input class="form-control" type="text" name="description" value="{{$apartment->description}}">
     </div>
     <div class="form-group">
       <label for="img">img:</label>
-      <input class="form-control" type="file" name="image" value="">
+      <input class="form-control" type="file" name="image" value="{{$apartment -> image}} {{asset('images/'.$apartment -> image)}}" required>
     </div>
     <div class="form-group">
       <label for="roomNum">Room Num:</label>

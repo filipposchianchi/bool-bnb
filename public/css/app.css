@@ -10899,6 +10899,14 @@ a.text-dark:focus {
   overflow-y: auto;
 }
 
+#addressList {
+  position: relative;
+}
+
+.position {
+  display: none;
+}
+
 #map {
   width: 100%;
   height: 60%;
@@ -10927,5 +10935,9 @@ footer ul li {
 
 footer ul li a {
   color: black;
+}
+
+.imgstyle {
+  min-height: 100%;
 }
 

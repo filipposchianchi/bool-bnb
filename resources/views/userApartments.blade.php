@@ -34,12 +34,7 @@
                         <img src="{{asset('images/'.$apartment -> image)}}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">{{$apartment -> title}}</h5>
-                            <p class="card-text"><strong>Indirizzo : </strong>
-                                {{$apartment -> countryCode}} 
-                                {{$apartment -> streetNumber}} 
-                                {{$apartment -> streetName}} 
-                                {{$apartment -> municipality}} 
-                                {{$apartment -> postalCode}} </p>
+                            <p class="card-text">{{$apartment -> address}}</p>
                             <p class="card-text">{{$apartment -> description}}</p>
                             <p class="card-text"><small class="text-muted">Aggiunto : {{$apartment -> created_at}}</small></p>
                         </div>

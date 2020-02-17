@@ -64,12 +64,16 @@
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
+                                    <a class="dropdown-item" href="{{ route('user') }}">
+                                        Appartamenti
+                                    </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
                                 </div>
                             </li>
+                            
                         @endguest
                     </ul>
                 </div>
@@ -79,7 +83,7 @@
         <main class="py-4 mb-5">
             @yield('content')
         </main>
-        <footer class="row mt-5">
+        <footer class="mt-5">
             <div class="container">
                 <div class="row justify-content-center faqs">
                     <div class="col-md-3">

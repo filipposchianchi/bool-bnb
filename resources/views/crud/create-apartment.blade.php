@@ -11,12 +11,18 @@
     </div>
     <div class="form-group">
       <label for="address">address:</label>
-      <input class="" type="text" name="streetName" value="" placeholder="streetName">
-      <input class="" type="number" name="streetNumber" value="" placeholder="streetNumber">
-      <input class="" type="text" name="municipality" value="" placeholder="municipality">
-      <input class="" type="text" name="postalCode" value="" placeholder="postalCode">
-      <input class="" type="text" name="countryCode" value="" placeholder="countryCode" >
-    </div> 
+      <input type="text" name="address" id="address" class="form-control input-lg" placeholder="Inserisci l'indirizzo" autocomplete="off" required/>
+      <div id="addressList">
+      </div>
+      <div>
+        {{ csrf_field() }}
+      </div>
+     </div>
+
+    <div class="form-group position">
+        <input type="text" name="latitude" id="latitude"/>
+        <input type="text" name="longitude" id="longitude"/> 
+    </div>
     <div class="form-group">
       <label for="description">description:</label>
       <input class="form-control" type="text" name="description" value="">
@@ -24,8 +30,7 @@
     <div class="form-group">
       <label for="image">img:</label>
       {{-- <input class="form-control" type="text" name="img" value=""> --}}
-      <input class="form-control" type="file" name="image" value="">
-      {{-- <input type="submit" value="save image"> --}}
+      <input id="image" class="form-control" type="file" name="image" value="" required>
     </div>
     <div class="form-group">
       {{-- <label for="roomNum">Room Num:</label>

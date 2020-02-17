@@ -7,27 +7,28 @@
             <img src="{{asset('images/'.$apartment -> image)}}" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title">{{$apartment -> title}}</h5>
-              <p class="card-text"><strong>address</strong>
-                {{$apartment -> streetName}} 
-                {{$apartment -> streetNumber}} 
-                {{$apartment -> municipality}} 
-                {{$apartment -> postalCode}} 
-                {{$apartment -> countryCode}} 
-                <div id='map' class='map'></div>
-            </p>
-              <p class="card-text"><strong>descrizione</strong> {{$apartment -> description}}</p>
-              <p class="card-text"><strong>roomNum</strong> {{$apartment -> roomNum}}</p>
-              <p class="card-text"><strong>bedNum</strong> {{$apartment -> bedNum}}</p>
-              <p class="card-text"><strong>mQ</strong> {{$apartment -> mQ}}</p>
-              <p class="card-text"><strong>wcNum</strong> {{$apartment -> wcNum}}</p>
-              <p class="card-text"><strong>view</strong> {{$apartment -> view}}</p>
+              <p class="card-text"><strong>Indirizzo:</strong> {{$apartment -> address}}</p>
+              <p class="card-text"><strong>Descrizione</strong> {{$apartment -> description}}</p>
+              <p class="card-text"><strong>Numero di stanze</strong> {{$apartment -> roomNum}}</p>
+              <p class="card-text"><strong>Posti letto</strong> {{$apartment -> bedNum}}</p>
+              <p class="card-text"><strong>Mq</strong> {{$apartment -> mQ}}</p>
+              <p class="card-text"><strong>Numero di bagni</strong> {{$apartment -> wcNum}}</p>
+              {{-- <p class="card-text"><strong>view</strong> {{$apartment -> view}}</p> --}}
               <p class="card-text"><small class="text-muted">{{$apartment -> created_at}}</small></p>
             </div>
         </div>
         <div class="col-3">
+            <h3>SERVIZI</h3>
             @foreach ($apartment->services as $service)
-                {{$service -> name}} <br>
-            @endforeach
+                    {{$service -> name}} <br>
+                @endforeach
+        </div>
+        
+
+    </div>
+    <div class="row h-50">
+        <div class="col-6">
+            
 
             <form action="{{route('message.store', $apartment -> id)}}" method="post">
                 @csrf
@@ -36,16 +37,20 @@
                     <label for="email">Email:</label> 
 
                     @auth
-                    <input class="" type="email" name="email" value="{{ Auth::user() -> email }}">
+                    <br>
+                    <input class="form-control" type="email" name="email" value="{{ Auth::user() -> email }}">
                     @else
-                    <input class="" type="email" name="email" value="">
+                    <br>
+                    <input class="form-control" type="email" name="email" value="">
                     @endauth
                     
-                    <label for="titolomsg">Titolo messaggio:</label>
-                    <input class="" type="text" name="title" value="">
-                    <label for="messaggio">Messaggio:</label>
-                    <input class="" type="text" name="body" value="">
-                    
+                    <br>
+                    <label for="titolomsg">Titolo messaggio:</label> 
+                    <input class="form-control" type="text" name="title" value="">
+                    <br>
+                    <label for="messaggio">Messaggio:</label> 
+                    <input class="form-control" type="text" name="body" value="">
+                    <br>
                     <button type="submit">INVIO MESSAGGIO</button>
                     
 
@@ -59,7 +64,9 @@
             </form>
 
         </div>
-
+        <div class="col-6">
+            <div id='map' class='map'></div>
+        </div>
     </div>
 </div>
 

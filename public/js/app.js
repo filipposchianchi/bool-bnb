@@ -49342,34 +49342,63 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 //     el: "#apartments"
 // });
 
+function ajaxCall(query) {
+  $.ajax({
+    url: "https://api.tomtom.com/search/2/geocode/" + query + ".json",
+    method: "GET",
+    data: {
+      countrySet: "IT",
+      extendedPostalCodesFor: "Addr",
+      key: "yfpz8kRCWBBiIF0WZOIZLdtsH2DhAfBG"
+    },
+    success: function success(data) {
+      // console.log("TEST");
+      var results = data["results"];
+      results.forEach(function (item) {
+        $("#addressList").append(item["address"]["freeformAddress"]);
+        console.log(item["address"]["freeformAddress"]);
+      });
+    }
+  });
+}
+
 function outputDropdown(data) {
   $("#addressList").html(address);
 }
 
 function keyUpQuery() {
-  $("#address").keyup(function () {
+  // var time = 3000;
+  // $("#address").keyup(function() {
+  //     time = time + 1000;
+  //     var query = $(this).val();
+  //     if (query != "") {
+  //         console.log(query);
+  //         setTimeout(function() {
+  //             ajaxCall(query);
+  //         }, time);
+  //     }
+  // });
+  function delay(callback, ms) {
+    var timer = 0;
+    return function () {
+      var context = this,
+          args = arguments;
+      clearTimeout(timer);
+      timer = setTimeout(function () {
+        callback.apply(context, args);
+      }, ms || 0);
+    };
+  } // Example usage:
+
+
+  $("#address").keyup(delay(function (e) {
     var query = $(this).val();
 
     if (query != "") {
-      console.log(query); // var _token = $('input[name="_token"]').val();
-
-      $.ajax({
-        url: "https://api.tomtom.com/search/2/geocode/" + query + ".json",
-        method: "GET",
-        data: {
-          countrySet: "IT",
-          extendedPostalCodesFor: "Addr",
-          key: "yfpz8kRCWBBiIF0WZOIZLdtsH2DhAfBG"
-        },
-        success: function success(data) {
-          var results = data["results"];
-          results.forEach(function (item) {
-            $("#addressList").append(item["address"]["freeformAddress"]); // console.log(item["address"]["freeformAddress"]);
-          });
-        }
-      });
+      console.log(query);
+      ajaxCall(query);
     }
-  });
+  }, 2000));
 }
 
 function init() {

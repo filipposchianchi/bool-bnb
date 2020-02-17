@@ -32,41 +32,67 @@ window.Vue = require("vue");
 // new Vue({
 //     el: "#apartments"
 // });
+function ajaxCall(query) {
+    $.ajax({
+        url: "https://api.tomtom.com/search/2/geocode/" + query + ".json",
+        method: "GET",
+        data: {
+            countrySet: "IT",
+            extendedPostalCodesFor: "Addr",
+            key: "yfpz8kRCWBBiIF0WZOIZLdtsH2DhAfBG"
+        },
+        success: function(data) {
+            // console.log("TEST");
+
+            var results = data["results"];
+
+            results.forEach(item => {
+                $("#addressList").append(item["address"]["freeformAddress"]);
+                console.log(item["address"]["freeformAddress"]);
+            });
+        }
+    });
+}
 function outputDropdown(data) {
     $("#addressList").html(address);
 }
 
 function keyUpQuery() {
-    $("#address").keyup(function() {
-        var query = $(this).val();
+    // var time = 3000;
+    // $("#address").keyup(function() {
+    //     time = time + 1000;
+    //     var query = $(this).val();
+    //     if (query != "") {
+    //         console.log(query);
+    //         setTimeout(function() {
+    //             ajaxCall(query);
+    //         }, time);
+    //     }
+    // });
 
-        if (query != "") {
-            console.log(query);
+    function delay(callback, ms) {
+        var timer = 0;
+        return function() {
+            var context = this,
+                args = arguments;
+            clearTimeout(timer);
+            timer = setTimeout(function() {
+                callback.apply(context, args);
+            }, ms || 0);
+        };
+    }
 
-            // var _token = $('input[name="_token"]').val();
-            $.ajax({
-                url:
-                    "https://api.tomtom.com/search/2/geocode/" +
-                    query +
-                    ".json",
-                method: "GET",
-                data: {
-                    countrySet: "IT",
-                    extendedPostalCodesFor: "Addr",
-                    key: "yfpz8kRCWBBiIF0WZOIZLdtsH2DhAfBG"
-                },
-                success: function(data) {
-                    var results = data["results"];
-                    results.forEach(item => {
-                        $("#addressList").append(
-                            item["address"]["freeformAddress"]
-                        );
-                        // console.log(item["address"]["freeformAddress"]);
-                    });
-                }
-            });
-        }
-    });
+    // Example usage:
+
+    $("#address").keyup(
+        delay(function(e) {
+            var query = $(this).val();
+            if (query != "") {
+                console.log(query);
+                ajaxCall(query);
+            }
+        }, 2000)
+    );
 }
 
 function init() {

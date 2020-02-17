@@ -43,6 +43,7 @@ function ajaxCall(query) {
         },
         success: function(data) {
             // console.log("TEST");
+            $("#addressList").fadeIn();
             $("#addressList").append(
                 '<ul class="dropdown-menu" style="display:block; position:absolute">'
             );
@@ -53,6 +54,8 @@ function ajaxCall(query) {
                         item["address"]["freeformAddress"] +
                         "</a></li>"
                 );
+                console.log(item["position"]["lat"]);
+
                 // $("#addressList").append(item["address"]["freeformAddress"]);
                 // console.log(item["address"]["freeformAddress"]);
             });
@@ -83,7 +86,7 @@ function keyUpQuery() {
     // Example usage:
 
     $("#address").keyup(
-        delay(function(e) {
+        delay(function() {
             var query = $(this).val();
             $("#addressList").html("");
 

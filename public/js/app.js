@@ -49353,10 +49353,12 @@ function ajaxCall(query) {
     },
     success: function success(data) {
       // console.log("TEST");
+      $("#addressList").fadeIn();
       $("#addressList").append('<ul class="dropdown-menu" style="display:block; position:absolute">');
       var results = data["results"];
       results.forEach(function (item) {
-        $("#addressList ul").append('<li><a href="#">' + item["address"]["freeformAddress"] + "</a></li>"); // $("#addressList").append(item["address"]["freeformAddress"]);
+        $("#addressList ul").append('<li><a href="#">' + item["address"]["freeformAddress"] + "</a></li>");
+        console.log(item["position"]["lat"]); // $("#addressList").append(item["address"]["freeformAddress"]);
         // console.log(item["address"]["freeformAddress"]);
       });
       $("#addressList").append("</ul>");
@@ -49385,7 +49387,7 @@ function keyUpQuery() {
   } // Example usage:
 
 
-  $("#address").keyup(delay(function (e) {
+  $("#address").keyup(delay(function () {
     var query = $(this).val();
     $("#addressList").html("");
 

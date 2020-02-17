@@ -49364,7 +49364,7 @@ function keyUpQuery() {
         success: function success(data) {
           var results = data["results"];
           results.forEach(function (item) {
-            console.log(item["address"]["freeformAddress"]);
+            $("#addressList").append(item["address"]["freeformAddress"]); // console.log(item["address"]["freeformAddress"]);
           });
         }
       });

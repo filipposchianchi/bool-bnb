@@ -39,6 +39,7 @@ function outputDropdown(data) {
 function keyUpQuery() {
     $("#address").keyup(function() {
         var query = $(this).val();
+
         if (query != "") {
             console.log(query);
 
@@ -57,7 +58,10 @@ function keyUpQuery() {
                 success: function(data) {
                     var results = data["results"];
                     results.forEach(item => {
-                        console.log(item["address"]["freeformAddress"]);
+                        $("#addressList").append(
+                            item["address"]["freeformAddress"]
+                        );
+                        // console.log(item["address"]["freeformAddress"]);
                     });
                 }
             });

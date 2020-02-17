@@ -75,7 +75,7 @@
                 </div>
             </div>
         </nav>
-        
+
         <main class="py-4 mb-5">
             @yield('content')
         </main>
@@ -85,41 +85,41 @@
                     <div class="col-md-3">
                         <p>Airbnb</p>
                         <ul class="list-unstyled">
-                            <li><a href=""> Lorem ipsum dolor sit amet </a></li>
-                            <li><a href=""> Consectetur adipiscing elit </a></li>
-                            <li><a href=""> Integer molestie lorem at massa </a></li>
-                            <li><a href=""> Facilisis in pretium nisl aliquet </a></li>
-                            <li><a href=""> Nulla volutpat aliquam velit </a></li>
+                            <li><a href=""> Opportunità di lavoro </a></li>
+                            <li><a href=""> News </a></li>
+                            <li><a href=""> Condizioni </a></li>
+                            <li><a href=""> Diversità e appartenenza </a></li>
+                            <li><a href=""> Accessibilità </a></li>
+                            <li><a href=""> Informazioni di contatto </a></li>
                         </ul>
                     </div>
                     <div class="col-md-3">
-                        <p>Airbnb</p>
+                        <p>Scopri</p>
                         <ul class="list-unstyled">
-                            <li><a href=""> Lorem ipsum dolor sit amet </a></li>
-                            <li><a href=""> Consectetur adipiscing elit </a></li>
-                            <li><a href=""> Integer molestie lorem at massa </a></li>
-                            <li><a href=""> Facilisis in pretium nisl aliquet </a></li>
-                            <li><a href=""> Nulla volutpat aliquam velit </a></li>
+                            <li><a href=""> Affidabilità e sicurezza </a></li>
+                            <li><a href=""> Crediti di viaggio </a></li>
+                            <li><a href=""> Cittadino di Airbnb </a></li>
+                            <li><a href=""> Viaggi di lavoro </a></li>
+                            <li><a href=""> Attività </a></li>
+                            <li><a href=""> Airbnbmag </a></li>
                         </ul>
                     </div>
                     <div class="col-md-3">
-                        <p>Airbnb</p>
+                        <p>Ospita</p>
                         <ul class="list-unstyled">
-                            <li><a href=""> Lorem ipsum dolor sit amet </a></li>
-                            <li><a href=""> Consectetur adipiscing elit </a></li>
-                            <li><a href=""> Integer molestie lorem at massa </a></li>
-                            <li><a href=""> Facilisis in pretium nisl aliquet </a></li>
-                            <li><a href=""> Nulla volutpat aliquam velit </a></li>
+                            <li><a href=""> Perché affittare </a></li>
+                            <li><a href=""> Ospitalità </a></li>
+                            <li><a href=""> Ospitare responsabilmente </a></li>
+                            <li><a href=""> Community Center </a></li>
+                            <li><a href=""> Offri un'esperienza </a></li>
+                            <li><a href=""> Open Homes </a></li>
                         </ul>
                     </div>
                     <div class="col-md-3">
-                        <p>Airbnb</p>
+                        <p>Assistenza</p>
                         <ul class="list-unstyled">
-                            <li><a href=""> Lorem ipsum dolor sit amet </a></li>
-                            <li><a href=""> Consectetur adipiscing elit </a></li>
-                            <li><a href=""> Integer molestie lorem at massa </a></li>
-                            <li><a href=""> Facilisis in pretium nisl aliquet </a></li>
-                            <li><a href=""> Nulla volutpat aliquam velit </a></li>
+                            <li><a href=""> Aiuto </a></li>
+                            <li><a href=""> Servizio di assistenza di quartiere </a></li>
                         </ul>
                     </div>
                 </div>
@@ -132,7 +132,7 @@
                             <li class="list-inline-item"><a href="">socials</a> </li>
                             <li class="list-inline-item"><a href="">socials</a> </li>
                             <li class="list-inline-item"><a href="">socials</a> </li>
-                          </ul>  
+                          </ul>
                     </div>
                 </div>
             </div>

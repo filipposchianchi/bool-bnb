@@ -75,7 +75,6 @@ function addressClick() {
         $("#addressList").fadeOut();
     });
 }
-
 function keyUpQuery() {
     function delay(callback, ms) {
         var timer = 0;

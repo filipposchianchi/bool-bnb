@@ -21,8 +21,7 @@
     </div>  --}}
     <div class="form-group">
       <label for="address">address:</label>
-      <input type="text" name="address" id="address" class="form-control input-lg" placeholder="Inserisci l'indirizzo" autocomplete="off"
-      />
+      <input type="text" name="address" id="address" class="form-control input-lg" placeholder="Inserisci l'indirizzo" autocomplete="off" required/>
       <div id="addressList">
       </div>
       <div>
@@ -41,8 +40,7 @@
     <div class="form-group">
       <label for="image">img:</label>
       {{-- <input class="form-control" type="text" name="img" value=""> --}}
-      <input class="form-control" type="file" name="image" value="">
-      {{-- <input type="submit" value="save image"> --}}
+      <input id="image" class="form-control" type="file" name="image" value="" required>
     </div>
     <div class="form-group">
       {{-- <label for="roomNum">Room Num:</label>

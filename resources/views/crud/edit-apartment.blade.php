@@ -12,7 +12,7 @@
     <div class="form-group">
       <label for="address">address:</label>
       <input type="text" name="address" id="address" class="form-control input-lg" value="{{$apartment->address}}" autocomplete="off"
-      />
+      required/>
       <div id="addressList">
       </div>
       </div> 
@@ -26,7 +26,7 @@
     </div>
     <div class="form-group">
       <label for="img">img:</label>
-      <input class="form-control" type="file" name="image" src="{{asset('images/'.$apartment -> image)}}">
+      <input class="form-control" type="file" name="image" value="{{$apartment -> image}} {{asset('images/'.$apartment -> image)}}" required>
     </div>
     <div class="form-group">
       <label for="roomNum">Room Num:</label>

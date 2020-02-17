@@ -69,7 +69,7 @@ class HomeController extends Controller
             "title" => 'required|string',
             "address" => 'required|string',
             "description" => 'nullable|string',
-            "image" => 'nullable||image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            "image" => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             "roomNum" => 'required|numeric',
             "bedNum" => 'required|numeric',
             "mQ" => 'required|numeric',
@@ -83,6 +83,7 @@ class HomeController extends Controller
         
         $data=$request->all();
         // dd($data);
+        
         $file = $request -> file('image');
         $filename = $file -> getClientOriginalName();
         $file -> move('images',$filename);
@@ -123,7 +124,7 @@ class HomeController extends Controller
             "title" => 'required|string',
             "address" => 'required|string',
             "description" => 'nullable|string',
-            "image" => 'nullable||image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            "image" => 'required||image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             "roomNum" => 'required|numeric',
             "bedNum" => 'required|numeric',
             "mQ" => 'required|numeric',
@@ -169,40 +170,6 @@ class HomeController extends Controller
         return redirect() -> route('user');
     }
 
-    public function searchAddress($id){
-
-        $apartment=Apartment::findOrFail($id);
-
-        $countryApartment = $apartment -> countryCode;
-
-        dd($countryApartment);
-
-
-        $client = new Client();
-        $response = $client->request('GET', 'https://api.tomtom.com/search/2/structuredGeocode.json?',[
-            'query'=> [
-                'countryCode' => 'IT',
-                'limit' => '1',
-                'streetNumber' => '223',
-                'streetName' => 'via della pineta',
-                'municipality' => 'CAGLIARI',
-                'postalCode' => '09126',
-                'key' => 'yfpz8kRCWBBiIF0WZOIZLdtsH2DhAfBG'],
-            ]);
-        $statusCode = $response->getStatusCode();
-        $body = $response->getBody()->getContents();
-
-    
-        $position = json_decode( $body, true );
-
-        dd($position['results']['0']['position']);
-
-        
-        // foreach($obj2['results'] as $key => $position) {
-        //     dd($position);
-        // }
-        // dd($result);
-    }
     public function searchApartment(Request $request){
         $search = $request->get('search');
         $apartments = DB::table('apartments')->where('municipality', 'like', '%'.$search.'%') ->paginate(7);

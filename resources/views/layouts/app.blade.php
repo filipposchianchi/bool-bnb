@@ -26,9 +26,9 @@
 <body>
     <div id="sapp">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    boolBnb
+            <div class="container-fluid">
+                <a class="navbar-brand logo" href="{{ url('/') }}">
+                    <img src="{{url('/images/logo.svg')}}" alt="" style="color: red">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -75,10 +75,68 @@
                 </div>
             </div>
         </nav>
-
-        <main class="py-4">
+        
+        <main class="py-4 mb-5">
             @yield('content')
         </main>
+        <footer class="row mt-5">
+            <div class="container">
+                <div class="row justify-content-center faqs">
+                    <div class="col-md-3">
+                        <p>Airbnb</p>
+                        <ul class="list-unstyled">
+                            <li><a href=""> Lorem ipsum dolor sit amet </a></li>
+                            <li><a href=""> Consectetur adipiscing elit </a></li>
+                            <li><a href=""> Integer molestie lorem at massa </a></li>
+                            <li><a href=""> Facilisis in pretium nisl aliquet </a></li>
+                            <li><a href=""> Nulla volutpat aliquam velit </a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <p>Airbnb</p>
+                        <ul class="list-unstyled">
+                            <li><a href=""> Lorem ipsum dolor sit amet </a></li>
+                            <li><a href=""> Consectetur adipiscing elit </a></li>
+                            <li><a href=""> Integer molestie lorem at massa </a></li>
+                            <li><a href=""> Facilisis in pretium nisl aliquet </a></li>
+                            <li><a href=""> Nulla volutpat aliquam velit </a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <p>Airbnb</p>
+                        <ul class="list-unstyled">
+                            <li><a href=""> Lorem ipsum dolor sit amet </a></li>
+                            <li><a href=""> Consectetur adipiscing elit </a></li>
+                            <li><a href=""> Integer molestie lorem at massa </a></li>
+                            <li><a href=""> Facilisis in pretium nisl aliquet </a></li>
+                            <li><a href=""> Nulla volutpat aliquam velit </a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <p>Airbnb</p>
+                        <ul class="list-unstyled">
+                            <li><a href=""> Lorem ipsum dolor sit amet </a></li>
+                            <li><a href=""> Consectetur adipiscing elit </a></li>
+                            <li><a href=""> Integer molestie lorem at massa </a></li>
+                            <li><a href=""> Facilisis in pretium nisl aliquet </a></li>
+                            <li><a href=""> Nulla volutpat aliquam velit </a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row socials justify-content-between">
+                    <div class="col-6">
+                        © 2020 Airbnb, Inc. All rights reserved.Termini · Privacy · Mappa del sito
+                    </div>
+                    <div class="col-3">
+                        <ul class="list-inline">
+                            <li class="list-inline-item"><a href="">socials</a> </li>
+                            <li class="list-inline-item"><a href="">socials</a> </li>
+                            <li class="list-inline-item"><a href="">socials</a> </li>
+                          </ul>  
+                    </div>
+                </div>
+            </div>
+        </footer>
     </div>
     <script>
         tt.map({

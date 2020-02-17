@@ -8,8 +8,38 @@
 @import "~bootstrap/scss/bootstrap";
 
 //mockup-1
+@import "home";
 @import "userApartments";
 #map {
     width: 100%;
     height: 60%;
+}
+body {
+    * {
+        color: $secondaryColor;
+    }
+}
+.hero {
+    height: 75vh;
+    width: 100vw;
+    background: url("https://a0.muscache.com/4ea/air/r:w3100-h2074-sfit,e:fjpg-c80/pictures/0ffd8594-f123-43f0-85bb-7ef88c6f0624.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+.logo {
+    & img {
+        width: 2rem;
+    }
+}
+
+footer {
+    ul {
+        li {
+            margin-bottom: 0.3rem;
+            a {
+                color: $secondaryColor;
+            }
+        }
+    }
 }

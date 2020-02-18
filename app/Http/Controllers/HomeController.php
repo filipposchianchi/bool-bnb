@@ -220,7 +220,7 @@ class HomeController extends Controller
 
 
         Session::flash('msg', 'Email inviata'); 
-        Session::flash('alert-class', 'alert-danger');
+        Session::flash('alert-class', 'alert-success');
 
         return redirect() -> route('apartmentShow', compact('id'));
 

@@ -1,11 +1,12 @@
 @extends('layouts.app')
 @section('content')
 
-    <div class="container">
+    <div class="container mt-2">
         {{-- DIV MESSAGES --}}
-        <h2>Inbox</h2>
-        <div class="row p-5">
-            <div class="col-12 messages">
+        
+        <div class="row py-5" >
+            <h2>Inbox</h2>
+            <div class="col-12 messages mt-4">
                 @foreach ($apartments as $apartment)
                 @if (!$apartment -> messages ->count() == 0)
                     <p class="text-center mb-3">Nome Appartamento:<b> {{$apartment->title}}</b></p>

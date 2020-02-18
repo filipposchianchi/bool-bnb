@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container mt-2">
     <div class="row justify-content-center">
-        <div class="card mb-3 col-9">
+        <div class="card mb-3 col-9 p-3" >
             <img src="{{asset('images/'.$apartment -> image)}}" class="card-img-top" alt="...">
             <div class="card-body row">
                 <div class="col-8">
@@ -15,7 +15,7 @@
                     <p class="card-text"><strong>Mq</strong> {{$apartment -> mQ}}</p>
                     <p class="card-text"><strong>Numero di bagni</strong> {{$apartment -> wcNum}}</p>
                     {{-- <p class="card-text"><strong>view</strong> {{$apartment -> view}}</p> --}}
-                    <p class="card-text"><small class="text-muted">{{$apartment -> created_at}}</small></p>
+                    <p class="card-text"><small class="text-muted">Aggiunto il: {{$apartment -> created_at}}</small></p>
                 </div>
                 <div class="col-3 offset-1">
                     @if (!$apartment->services->count() == 0)
@@ -30,9 +30,10 @@
         
 
     </div>
-    <div class="row jutify-items-center h-50">
-        <div class="col-6">
-            
+    <div class="row mt-3 jutify-items-center h-50">
+        
+        <div class="card col-6 p-3">
+            <h5 class="card-title">Contatta il proprietario</h5>
 
             <form action="{{route('message.store', $apartment -> id)}}" method="post">
                 @csrf
@@ -50,16 +51,16 @@
                     
                     <br>
                     <label for="titolomsg">Titolo messaggio:</label> 
-                    <input class="form-control" type="text" name="title" value="">
+                    <input class="form-control" type="text" name="title" value="" required>
                     <br>
                     <label for="messaggio">Messaggio:</label> 
-                    <input class="form-control" type="text" name="body" value="">
+                    <textarea class="form-control" type="text" name="body" value="" required></textarea>
                     <br>
                     <button type="submit">INVIO MESSAGGIO</button>
                     
 
                     @if(Session::has('msg'))
-                    <p class="alert {{ Session::get('alert-class', 'alert-info') }}">
+                    <p class="alert mt-3 {{ Session::get('alert-class', 'alert-info') }}">
                         {{ Session::get('msg') }}
                     </p>
                     @endif

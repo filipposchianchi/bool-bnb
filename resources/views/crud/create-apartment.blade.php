@@ -51,12 +51,19 @@
         <input class="form-control" type="number" name="wcNum" value="1" min="0" max="20">
       </div>
     </div>
-    <div class="form-group col-8">
-      <label for="services">Servizi:</label> <br>
-      @foreach ($services as $service)
-      <input name="services[]" type="checkbox"  value="{{$service->id}}">{{$service->name}}
-      @endforeach
-    </div> 
+
+    <div class="row">
+
+      <div class="form-group col-8">
+        <label for="services">Servizi:</label> <br>
+        @foreach ($services as $service)
+        <input name="services[]" type="checkbox"  value="{{$service->id}}">
+          <span class="mr-4" style="display:inline;">{{$service->name}}
+        </span>
+        @endforeach
+      </div> 
+    </div>
+
     <button type="submit">SALVA</button>
   </form>
 </div>

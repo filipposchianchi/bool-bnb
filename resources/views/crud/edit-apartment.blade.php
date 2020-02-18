@@ -10,7 +10,7 @@
       <input class="form-control" type="text" name="title" value="{{$apartment->title}}">
     </div>
     <div class="form-group">
-      <label for="address">address:</label>
+      <label for="address">Indirizzo:</label>
       <input type="text" name="address" id="address" class="form-control input-lg" value="{{$apartment->address}}" autocomplete="off"
       required/>
       <div id="addressList">
@@ -24,11 +24,18 @@
       <label for="description">Descrizione:</label>
       <textarea id="description" class="form-control" type="text" name="description" value="">{{$apartment->description}}</textarea>
     </div>
-    <div class="form-group">
-      <label for="img">img:</label>
-      <img src="{{asset('images/'.$apartment -> image)}}" style="width:5rem">
-      <input class="form-control" type="file" name="image" src="{{asset('images/'.$apartment -> image)}}" >
-    </div>
+
+    <div class="row">
+      <div class="col-3">
+        <label for="img">Immagine precedente: </label>
+        <img class="ml-1" src="{{asset('images/'.$apartment -> image)}}" style="width:5rem;">
+      </div>  
+      <div class="form-group col-9 ">
+        <input class="form-control mt-1" type="file" name="image" src="{{asset('images/'.$apartment -> image)}}">
+      </div>
+      
+  </div>
+      
     <div class="row">
 
       <div class="form-group col-3">
@@ -57,16 +64,18 @@
       </select>
   
     </div>
-    <div class="form-group col-8">
-      <label for="services">Services:</label> <br>
-      @foreach ($services as $service)
-      <input name="services[]" type="checkbox"  value="{{$service->id}}"
-      @if ($apartment->services()-> find($service->id))
-          checked
-      @endif
-      >{{$service->name}}
-      @endforeach
-  </div> 
+    <div class="row">
+      <div class="form-group col-8">
+        <label for="services">Servizi:</label> <br>
+        @foreach ($services as $service)
+        <input name="services[]" type="checkbox"  value="{{$service->id}}"
+        @if ($apartment->services()-> find($service->id))
+        checked
+        @endif>
+        <p class="mr-4" style="display:inline;">{{$service->name}}</p>
+        @endforeach
+      </div> 
+    </div>
     <button type="submit">SALVA</button>
   </form>
 </div>

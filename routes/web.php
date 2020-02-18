@@ -35,12 +35,11 @@ Route::get('/apartments/test/{id}', 'HomeController@searchAddress')->name('apart
 // search route rf3
 Route::get('/search-apartment', 'HomeController@searchApartment');
 
-<<<<<<< HEAD
+
 // auto complete
 Route::post('/autocomplete/fetch', 'TomtomController@fetch')->name('autocomplete.fetch');
 
 
-=======
+
 
 Route::post('/message/store/apartment{id}', 'HomeController@storeMessage')->name('message.store');
->>>>>>> master

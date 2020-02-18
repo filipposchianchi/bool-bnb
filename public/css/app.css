@@ -16821,8 +16821,14 @@ a.text-dark:focus {
   }
 }
 
-<<<<<<< HEAD
-=======
+#addressList {
+  position: relative;
+}
+
+.position {
+  display: none;
+}
+
 .apartments {
   width: 90%;
   max-height: 70vh;
@@ -16847,7 +16853,6 @@ a.text-dark:focus {
   background-color: lightgray;
 }
 
->>>>>>> master
 #addressList {
   position: relative;
 }

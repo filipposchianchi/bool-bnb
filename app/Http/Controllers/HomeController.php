@@ -31,16 +31,7 @@ class HomeController extends Controller
     public function index()
     {
         $apartments = Apartment::orderBy('id', 'DESC') -> get();
-<<<<<<< HEAD
-        // $apartments = [];
-        // foreach ($allAp  as $apartment) {
-        //     if ($apartment-> sponsored==1) {
-        //         array_push($apartments, 'apartment');
-        //     }
-        // };
-        // dd($apartments);
-=======
->>>>>>> master
+
         return view('home', compact('apartments'));
     }
 
@@ -175,10 +166,7 @@ class HomeController extends Controller
         return redirect() -> route('user');
     }
 
-<<<<<<< HEAD
-=======
-    
->>>>>>> master
+
     public function searchApartment(Request $request){
         $search = $request->get('search');
         $apartments = DB::table('apartments')->where('municipality', 'like', '%'.$search.'%') ->paginate(7);

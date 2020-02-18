@@ -120,7 +120,7 @@ class HomeController extends Controller
             "title" => 'required|string',
             "address" => 'required|string',
             "description" => 'nullable|string',
-            "image" => 'required||image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            "image" => 'nullable||image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             "roomNum" => 'required|numeric',
             "bedNum" => 'required|numeric',
             "mQ" => 'required|numeric',
@@ -130,12 +130,14 @@ class HomeController extends Controller
             "longitude" => 'nullable|numeric',
             "services"=>'nullable|array'
         ]);
-        $file = $request -> file('image');
-        $filename = $file -> getClientOriginalName();
-        $file -> move('images',$filename);
-        $newUserData = [
-            'image'=>$filename
-        ];
+        if (!$request -> file('image') == 0) {
+            $file = $request -> file('image');
+            $filename = $file -> getClientOriginalName();
+            $file -> move('images',$filename);
+            $newUserData = [
+                'image'=>$filename
+            ];
+        }
         
         // $data=$request->all();
         // dd($data);
@@ -147,7 +149,9 @@ class HomeController extends Controller
         }
         $apartment->services()->sync($services);
         $apartment->update($data);
-        $apartment -> update($newUserData);
+        if (!$request -> file('image') == 0) {
+            $apartment -> update($newUserData);
+        }
         return redirect() -> route('user');
     }
 
@@ -168,25 +172,34 @@ class HomeController extends Controller
 
 
     public function searchApartment(Request $request){
-        $search = $request->get('search');
-        $apartments = DB::table('apartments')->where('municipality', 'like', '%'.$search.'%') ->paginate(7);
-        // dd($search);
-        //controllo se -> 
-        $client = new Client();
-        $response = $client->request('GET', 'https://api.tomtom.com/search/2/structuredGeocode.json?',[
-            'query'=> [
-                'countryCode' => 'IT',
-                'municipality' => $search,
-                'radius'=> 20000,
-                'key' => 'yfpz8kRCWBBiIF0WZOIZLdtsH2DhAfBG'],
-            'database'=>[
-                'apartments'
-            ]
-        ]);
-        $statusCode = $response->getStatusCode();
-        $body = $response->getBody()->getContents();
-        // dd($position['results']['0']['position']);
-        // dd($body);ss
+        // $data = $request -> validate([
+        //     "address" => 'nullable|string',
+        // ]);
+        // dd($data['address']);
+        $lat = $request->get('latitude');;// latitude of centre of bounding circle in degrees
+        $lon = $request->get('longitude');// longitude of centre of bounding circle in degrees
+        $rad = 20; // radius of bounding circle in kilometers
+        $R = 6371; // earth's mean radius, km
+
+        $maxLat = $lat + rad2deg($rad/$R);
+        $minLat = $lat - rad2deg($rad/$R);
+        $maxLon = $lon + rad2deg(asin($rad/$R) / cos(deg2rad($lat)));
+        $minLon = $lon - rad2deg(asin($rad/$R) / cos(deg2rad($lat)));
+
+        $apartments = DB::select(
+            'SELECT * FROM
+                 (SELECT id, title, description, image,  (' . $R . ' * acos(cos(radians(' . $lat . ')) * cos(radians(latitude)) *
+                 cos(radians(longitude) - radians(' . $lon . ')) +
+                 sin(radians(' . $lat . ')) * sin(radians(latitude))))
+                 AS distance
+                 FROM apartments) AS distances
+             WHERE distance < ' . $rad . '
+             ORDER BY distance
+             OFFSET 0
+             LIMIT 20;
+         ');
+
+         dd($apartments);
         return view('search-result', ['apartments' => $apartments]);
     }
 

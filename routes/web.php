@@ -33,7 +33,7 @@ Route::get('/apartments/delete/{id}', 'HomeController@deleteApartment')->name('a
 Route::get('/apartments/test/{id}', 'HomeController@searchAddress')->name('apartment.test');
 
 // search route rf3
-Route::get('/search-apartment', 'HomeController@searchApartment');
+Route::post('/search-apartment', 'HomeController@searchApartment')->name('apartment.search');
 
 
 // auto complete

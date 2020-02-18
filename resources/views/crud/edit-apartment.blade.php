@@ -6,7 +6,7 @@
     @csrf
     @method('POST')
     <div class="form-group">
-      <label for="title">Title:</label>
+      <label for="title">Nome Appartamento:</label>
       <input class="form-control" type="text" name="title" value="{{$apartment->title}}">
     </div>
     <div class="form-group">
@@ -21,20 +21,20 @@
       <input type="text" name="longitude" id="longitude"/> 
     </div>
     <div class="form-group">
-      <label for="description">description:</label>
-      <input class="form-control" type="text" name="description" value="{{$apartment->description}}">
+      <label for="description">Descrizione:</label>
+      <textarea id="description" class="form-control" type="text" name="description" value="{{$apartment->description}}"> </textarea>
     </div>
     <div class="form-group">
       <label for="img">img:</label>
       <input class="form-control" type="file" name="image" value="{{$apartment -> image}} {{asset('images/'.$apartment -> image)}}" required>
     </div>
     <div class="form-group">
-      <label for="roomNum">Room Num:</label>
+      <label for="roomNum">Numero stanze</label>
       {{-- <input class="form-control" type="text" name="roomNum" value="{{$apartment->roomNum}}"> --}}
       <input class="form-control" type="number" name="roomNum" value="1" min="0" max="20">
     </div>
     <div class="form-group">
-      <label for="bedNum">Bed numbers:</label>
+      <label for="bedNum">Numero letti:</label>
       {{-- <input class="form-control" type="text" name="bedNum" value="{{$apartment->bedNum}}"> --}}
       <input class="form-control" type="number" name="bedNum" value="1" min="0" max="20">
     </div>
@@ -44,7 +44,7 @@
       <input class="form-control" type="number" name="mQ" value="1" min="0">
     </div>
     <div class="form-group">
-      <label for="wcNum">Toilette:</label>
+      <label for="wcNum">Bagni:</label>
       {{-- <input class="form-control" type="text" name="wcNum" value="{{$apartment->wcNum}}"> --}}
       <input class="form-control" type="number" name="wcNum" value="1" min="0" max="20">
     </div>

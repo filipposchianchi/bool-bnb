@@ -4,9 +4,21 @@
 <div class="container-fluid">
     <div class="row">
         <div class="hero col-md-12">
+            <div class="row align-items-center">
+                <div class="col-3 heroSearch p-5 m-5">
+                    <h3>
+                        <b> Prenota alloggi e attività unici.</b>
+                    </h3>
+                    <form action="">
+                        <label for="">Prenota</label>
+                        <input type="search" name="search" class="form-control mb-3" placeholder="Ovunque">
+                        <button type="submit">Cerca</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="row justify-content-center mt-4 p-8">
+    <div class="row justify-content-center mt-4 p-5">
         <div class="col-md-8">
             <form action="/search-apartment" method="get">
                 <div class="input-group">
@@ -17,11 +29,11 @@
                 </div>
             </form>
         </div>
-        <div class="col-md-10 text-center">
-            <h1>Appartamenti in evidenza</h1>
+        <div class="col-md-12 mt-3">
+            <h1 class="text-center">Appartamenti in evidenza</h1>
         </div>
         <hr>
-        <div class="row flex-column apartments">
+        <div class="row flex-column apartments mt-3">
 
             @foreach ($apartments as $apartment)
             <div class="col-sm-12 col-md-4 apartment">

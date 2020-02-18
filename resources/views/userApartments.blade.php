@@ -3,16 +3,30 @@
 
     <div class="container">
         {{-- DIV MESSAGES --}}
-        <h2>MESSAGES</h2>
-        <div class="row justify-content-center p-5">
-            <div class="col-8 messages">
+        <h2>Inbox</h2>
+        <div class="row p-5">
+            <div class="col-12 messages">
                 @foreach ($apartments as $apartment)
-                <p><strong>{{$apartment->title}} {{$apartment->id}} </strong></p>
+                @if (!$apartment -> messages ->count() == 0)
+                    <p class="text-center mb-3">Nome Appartamento:<b> {{$apartment->title}}</b></p>
                     @foreach ($apartment -> messages as $message)
-                        <p>from : {{$message->email}} </p>
-                        <p>{{$message->title}} [{{$message->id}}] </p>
-                        <p>{{$message->body}} </p>
+                    <div class="apartmentMsg row p-3">
+                        <div class="col-3">
+                            {{-- <strong><strong>{{$apartment->title}} {{$apartment->id}} </strong></strong> --}}
+                            <a href="{{route('apartmentShow', $apartment -> id)}}"">
+                                <img src="{{asset('images/'.$apartment -> image)}}" alt="aparment logo" style="width:100%">
+                            </a>
+                        </div>
+                        <div class="col-8 offset-1">
+                            <p>Da: {{$message->email}} </p>
+                            <p>Titolo: {{$message->title}} [{{$message->id}}] </p>
+                            <p>Messaggio: {{$message->body}} </p>
+                        </div>
+                    </div>
                     @endforeach
+                @else
+                    <p>0 messaggi</p>
+                @endif
                 @endforeach
             </div>
         </div>
@@ -21,12 +35,10 @@
 
 
 
-        <div class="row">
-            <button class="btn-primary" > 
-                <a class="btn btn-primary" href="{{route("apartment.create")}}" role="button">Inserisci un nuovo apartamento</a>
-            </button>
+        <div class="row column justify-content-between align-items-around mb-5">
+            <h2>Appartamenti:</h2>
+            <a class="btn btn-success" href="{{route("apartment.create")}}" role="button">Inserisci un nuovo appartamento</a>
         </div>
-        
         @foreach ($apartments as $apartment)
             <div class="row">
                 <div class="card mb-3 col-9 apartment">
@@ -40,10 +52,10 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-3">
+                <div class="col-3 mt-5">
                     <a class="btn btn-warning mb-3" href="{{route("apartment.edit" , $apartment -> id)}}" role="button">modifica annuncio</a>
                     <a class="btn btn-danger mb-3" href="{{route("apartment.delete" , $apartment -> id)}}" role="button">cancella annuncio</a>
-                    <a class="btn btn-success" href="{{route("apartment.test" , $apartment -> id)}}" role="button">test annuncio</a>
+                    {{-- <a class="btn btn-success" href="{{route("apartment.test" , $apartment -> id)}}" role="button">test annuncio</a> --}}
 
                     @if ($apartment -> visible == 0)
                         <p class="green">Questo annuncio è nascosto</p>

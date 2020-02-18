@@ -45,11 +45,11 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Accedi') }}</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Registrati') }}</a>
                                 </li>
                             @endif
                         @else
@@ -59,13 +59,13 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('user') }}">
+                                        Appartamenti
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
-                                    </a>
-                                    <a class="dropdown-item" href="{{ route('user') }}">
-                                        Appartamenti
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -80,14 +80,14 @@
             </div>
         </nav>
 
-        <main class="py-4 mb-5">
+        <main class="">
             @yield('content')
         </main>
         <footer class="mt-5">
             <div class="container">
                 <div class="row justify-content-center faqs">
                     <div class="col-md-3">
-                        <p>Airbnb</p>
+                        <p><b>Airbnb</b></p>
                         <ul class="list-unstyled">
                             <li><a href=""> Opportunità di lavoro </a></li>
                             <li><a href=""> News </a></li>
@@ -98,7 +98,7 @@
                         </ul>
                     </div>
                     <div class="col-md-3">
-                        <p>Scopri</p>
+                        <p><b>Scopri</b></p>
                         <ul class="list-unstyled">
                             <li><a href=""> Affidabilità e sicurezza </a></li>
                             <li><a href=""> Crediti di viaggio </a></li>
@@ -109,7 +109,7 @@
                         </ul>
                     </div>
                     <div class="col-md-3">
-                        <p>Ospita</p>
+                        <p><b>Ospita</b></p>
                         <ul class="list-unstyled">
                             <li><a href=""> Perché affittare </a></li>
                             <li><a href=""> Ospitalità </a></li>
@@ -120,22 +120,22 @@
                         </ul>
                     </div>
                     <div class="col-md-3">
-                        <p>Assistenza</p>
+                        <p><b>Assistenza</b></p>
                         <ul class="list-unstyled">
                             <li><a href=""> Aiuto </a></li>
                             <li><a href=""> Servizio di assistenza di quartiere </a></li>
                         </ul>
                     </div>
                 </div>
-                <div class="row socials justify-content-between">
+                <div class="row socials justify-content-between mt-4">
                     <div class="col-6">
                         © 2020 Airbnb, Inc. All rights reserved.Termini · Privacy · Mappa del sito
                     </div>
                     <div class="col-3">
                         <ul class="list-inline">
-                            <li class="list-inline-item"><a href="">socials</a> </li>
-                            <li class="list-inline-item"><a href="">socials</a> </li>
-                            <li class="list-inline-item"><a href="">socials</a> </li>
+                            <li class="list-inline-item"><a href=""><i class="fab fa-facebook-f"></i></a> </li>
+                            <li class="list-inline-item"><a href=""><i class="fab fa-twitter"></i></a> </li>
+                            <li class="list-inline-item"><a href=""><i class="fab fa-instagram"></i></a> </li>
                           </ul>
                     </div>
                 </div>

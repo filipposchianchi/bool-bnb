@@ -9,10 +9,21 @@
                     <h3>
                         <b> Prenota alloggi e attività unici.</b>
                     </h3>
-                    <form action="">
+                    <form action="" method="post">
+                        @csrf
+                        @method('POST')
                         <label for="">Prenota</label>
-                        <input type="search" name="search" class="form-control mb-3" placeholder="Ovunque">
-                        <button type="submit">Cerca</button>
+                        <div class="form-group">
+                            <label for="address">address:</label>
+                            <input type="text" name="address" id="address" class="form-control input-lg" autocomplete="off"/>
+                            <div id="addressList">
+                            </div>
+                            </div> 
+                          <div class="form-group position">
+                            <input type="text" name="latitude" id="latitude"/>
+                            <input type="text" name="longitude" id="longitude"/> 
+                          </div>
+                        <button type="submit">CERCA</button>
                     </form>
                 </div>
             </div>
@@ -50,25 +61,6 @@
                 </div>
             
         </div>
-
-        {{-- <div class="row flex-column apartments mt-3">
-
-            @foreach ($apartments as $apartment)
-            <div class="col-sm-12 col-md-4 apartment">
-                <div class="box mx-3 card mb-3 ">
-                    <a class="m-3" href="{{route('apartmentShow', $apartment -> id)}}">
-                        <img src="{{asset('images/'.$apartment -> image)}}" class="card-img-top imgstyle" alt="..." style="height: 20rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">{{$apartment -> title}}</h5>
-                            <p class="card-text">{{$apartment -> address}}</p>
-                            <p class="card-text">{{$apartment -> description}}</p>
-                            <p class="card-text"><small class="text-muted">Aggiunto : {{$apartment -> created_at}}</small></p>
-                        </div>
-                    </a>
-                </div>
-              </div>
-            @endforeach
-        </div> --}}
     </div>
 </div>
 @endsection

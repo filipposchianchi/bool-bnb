@@ -27,7 +27,7 @@
     <div class="form-group">
       <label for="img">img:</label>
       <img src="{{asset('images/'.$apartment -> image)}}" style="width:5rem">
-      <input class="form-control" type="file" name="image" src="{{asset('images/'.$apartment -> image)}}" required>
+      <input class="form-control" type="file" name="image" src="{{asset('images/'.$apartment -> image)}}" >
     </div>
     <div class="row">
 

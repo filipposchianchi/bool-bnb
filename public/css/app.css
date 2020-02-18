@@ -16830,13 +16830,7 @@ a.text-dark:focus {
 }
 
 .apartments {
-  width: 90%;
-  max-height: 70vh;
   overflow-x: auto;
-}
-
-.apartments .apartment {
-  height: 100%;
 }
 
 .heroSearch {

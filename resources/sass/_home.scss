@@ -1,10 +1,9 @@
 .apartments {
-    width: 90%;
-    max-height: 70vh;
     overflow-x: auto;
-    & .apartment {
-        height: 100%;
-    }
+    // white-space: nowrap;
+    // & .apartment {
+    //     height: 100%;
+    // }
 }
 
 .heroSearch {

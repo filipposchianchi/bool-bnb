@@ -99,16 +99,9 @@ function keyUpQuery() {
                 console.log(query);
                 ajaxCall(query);
             }
-<<<<<<< HEAD
-        }, 1300)
-    );
-}
-
-=======
         }, 900)
     );
 }
->>>>>>> master
 function init() {
     keyUpQuery();
     addressClick();

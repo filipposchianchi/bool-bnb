@@ -26,9 +26,9 @@
 <body>
     <div id="sapp">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    boolBnb
+            <div class="container-fluid">
+                <a class="navbar-brand logo" href="{{ url('/') }}">
+                    <img src="{{url('/images/logo.svg')}}" alt="" style="color: red">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -45,11 +45,11 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Accedi') }}</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Registrati') }}</a>
                                 </li>
                             @endif
                         @else
@@ -59,6 +59,9 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('user') }}">
+                                        Appartamenti
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -70,15 +73,74 @@
                                     </form>
                                 </div>
                             </li>
+                            
                         @endguest
                     </ul>
                 </div>
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="">
             @yield('content')
         </main>
+        <footer class="mt-5">
+            <div class="container">
+                <div class="row justify-content-center faqs">
+                    <div class="col-md-3">
+                        <p><b>Airbnb</b></p>
+                        <ul class="list-unstyled">
+                            <li><a href=""> Opportunità di lavoro </a></li>
+                            <li><a href=""> News </a></li>
+                            <li><a href=""> Condizioni </a></li>
+                            <li><a href=""> Diversità e appartenenza </a></li>
+                            <li><a href=""> Accessibilità </a></li>
+                            <li><a href=""> Informazioni di contatto </a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <p><b>Scopri</b></p>
+                        <ul class="list-unstyled">
+                            <li><a href=""> Affidabilità e sicurezza </a></li>
+                            <li><a href=""> Crediti di viaggio </a></li>
+                            <li><a href=""> Cittadino di Airbnb </a></li>
+                            <li><a href=""> Viaggi di lavoro </a></li>
+                            <li><a href=""> Attività </a></li>
+                            <li><a href=""> Airbnbmag </a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <p><b>Ospita</b></p>
+                        <ul class="list-unstyled">
+                            <li><a href=""> Perché affittare </a></li>
+                            <li><a href=""> Ospitalità </a></li>
+                            <li><a href=""> Ospitare responsabilmente </a></li>
+                            <li><a href=""> Community Center </a></li>
+                            <li><a href=""> Offri un'esperienza </a></li>
+                            <li><a href=""> Open Homes </a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <p><b>Assistenza</b></p>
+                        <ul class="list-unstyled">
+                            <li><a href=""> Aiuto </a></li>
+                            <li><a href=""> Servizio di assistenza di quartiere </a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row socials justify-content-between mt-4">
+                    <div class="col-6">
+                        © 2020 Airbnb, Inc. All rights reserved.Termini · Privacy · Mappa del sito
+                    </div>
+                    <div class="col-3">
+                        <ul class="list-inline">
+                            <li class="list-inline-item"><a href=""><i class="fab fa-facebook-f"></i></a> </li>
+                            <li class="list-inline-item"><a href=""><i class="fab fa-twitter"></i></a> </li>
+                            <li class="list-inline-item"><a href=""><i class="fab fa-instagram"></i></a> </li>
+                          </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
     </div>
     <script>
         tt.map({

@@ -6,7 +6,7 @@
     @csrf
     @method('POST')
     <div class="form-group">
-      <label for="title">Title:</label>
+      <label for="title">Nome Appartamento:</label>
       <input class="form-control" type="text" name="title" value="{{$apartment->title}}">
     </div>
     <div class="form-group">
@@ -19,6 +19,7 @@
     <div class="form-group position">
       <input type="text" name="latitude" id="latitude"/>
       <input type="text" name="longitude" id="longitude"/> 
+<<<<<<< HEAD
     </div>
     <div class="form-group">
       <label for="description">description:</label>
@@ -27,26 +28,36 @@
     <div class="form-group">
       <label for="img">img:</label>
       <input class="form-control" type="file" name="image" value="{{$apartment -> image}} {{asset('images/'.$apartment -> image)}}" required>
+=======
     </div>
     <div class="form-group">
-      <label for="roomNum">Room Num:</label>
-      {{-- <input class="form-control" type="text" name="roomNum" value="{{$apartment->roomNum}}"> --}}
-      <input class="form-control" type="number" name="roomNum" value="1" min="0" max="20">
+      <label for="description">Descrizione:</label>
+      <textarea id="description" class="form-control" type="text" name="description" value="">{{$apartment->description}}</textarea>
+>>>>>>> master
     </div>
     <div class="form-group">
-      <label for="bedNum">Bed numbers:</label>
-      {{-- <input class="form-control" type="text" name="bedNum" value="{{$apartment->bedNum}}"> --}}
-      <input class="form-control" type="number" name="bedNum" value="1" min="0" max="20">
+      <label for="img">img:</label>
+      <img src="{{asset('images/'.$apartment -> image)}}" style="width:5rem">
+      <input class="form-control" type="file" name="image" src="{{asset('images/'.$apartment -> image)}}" required>
     </div>
-    <div class="form-group">
-      <label for="mQ">Metri quadrati:</label>
-      {{-- <input class="form-control" type="text" name="mQ" value="{{$apartment->mQ}}"> --}}
-      <input class="form-control" type="number" name="mQ" value="1" min="0">
-    </div>
-    <div class="form-group">
-      <label for="wcNum">Toilette:</label>
-      {{-- <input class="form-control" type="text" name="wcNum" value="{{$apartment->wcNum}}"> --}}
-      <input class="form-control" type="number" name="wcNum" value="1" min="0" max="20">
+    <div class="row">
+
+      <div class="form-group col-3">
+        <label for="roomNum">Numero stanze:</label>
+        <input class="form-control" type="number" name="roomNum" value="{{$apartment->roomNum}}" min="0" max="20">
+      </div>
+      <div class="form-group col-3">
+        <label for="bedNum">Numero letti:</label>
+        <input class="form-control" type="number" name="bedNum" value="{{$apartment->bedNum}}" min="0" max="20">
+      </div>
+      <div class="form-group col-3">
+        <label for="mQ">Metri quadrati:</label>
+        <input class="form-control" type="number" name="mQ" value="{{$apartment->mQ}}" min="0">
+      </div>
+      <div class="form-group col-3">
+        <label for="wcNum">Bagni:</label>
+        <input class="form-control" type="number" name="wcNum" value="{{$apartment->wcNum}}" min="0" max="20">
+      </div>
     </div>
     <div class="form-group">
       <label for="visible">Visibilità dell'annuncio</label>

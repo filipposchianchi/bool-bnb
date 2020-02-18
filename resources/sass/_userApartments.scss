@@ -1,0 +1,7 @@
+.messages {
+    max-height: 20rem;
+    overflow-y: auto;
+}
+.apartmentMsg:nth-child(even) {
+    background-color: lightgray;
+}

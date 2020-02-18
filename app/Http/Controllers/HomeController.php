@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 use App\Apartment;
 use App\Service;
 use App\User;
+use App\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use GuzzleHttp\Client;
+use Session;
 use Auth;
 
 class HomeController extends Controller
@@ -29,6 +31,7 @@ class HomeController extends Controller
     public function index()
     {
         $apartments = Apartment::orderBy('id', 'DESC') -> get();
+<<<<<<< HEAD
         // $apartments = [];
         // foreach ($allAp  as $apartment) {
         //     if ($apartment-> sponsored==1) {
@@ -36,6 +39,8 @@ class HomeController extends Controller
         //     }
         // };
         // dd($apartments);
+=======
+>>>>>>> master
         return view('home', compact('apartments'));
     }
 
@@ -45,10 +50,10 @@ class HomeController extends Controller
         //$apartments = Apartment::find(auth()->user()->id);
         $user = User::findOrFail($userId);
         $apartments = $user -> apartments;
-        $apartmentCount = $apartments->count();
+        // $messages = $apartments -> messages;
         
         // dd($apartments);
-        return view('userApartments', compact('apartments', 'apartmentCount'));
+        return view('userApartments', compact('apartments'));
     }
 
 
@@ -170,6 +175,10 @@ class HomeController extends Controller
         return redirect() -> route('user');
     }
 
+<<<<<<< HEAD
+=======
+    
+>>>>>>> master
     public function searchApartment(Request $request){
         $search = $request->get('search');
         $apartments = DB::table('apartments')->where('municipality', 'like', '%'.$search.'%') ->paginate(7);
@@ -191,5 +200,29 @@ class HomeController extends Controller
         // dd($position['results']['0']['position']);
         // dd($body);ss
         return view('search-result', ['apartments' => $apartments]);
+    }
+
+    public function storeMessage(Request $request, $id) {
+        $data = $request -> validate ([
+            "email" => 'required|string',
+            "title" => 'required|string',
+            "body" => 'required|string'
+        ]);
+        //dd($data);
+        //$data=$request->all();
+        $message = Message::make($data);
+        $message -> apartment_id = $id;
+
+        
+        $message -> save();
+        //Session::flash('msg', 'Thanks');
+
+
+        Session::flash('msg', 'Email inviata'); 
+        Session::flash('alert-class', 'alert-danger');
+
+        return redirect() -> route('apartmentShow', compact('id'));
+
+
     }
 }

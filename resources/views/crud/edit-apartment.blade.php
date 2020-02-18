@@ -19,21 +19,10 @@
     <div class="form-group position">
       <input type="text" name="latitude" id="latitude"/>
       <input type="text" name="longitude" id="longitude"/> 
-<<<<<<< HEAD
-    </div>
-    <div class="form-group">
-      <label for="description">description:</label>
-      <input class="form-control" type="text" name="description" value="{{$apartment->description}}">
-    </div>
-    <div class="form-group">
-      <label for="img">img:</label>
-      <input class="form-control" type="file" name="image" value="{{$apartment -> image}} {{asset('images/'.$apartment -> image)}}" required>
-=======
     </div>
     <div class="form-group">
       <label for="description">Descrizione:</label>
       <textarea id="description" class="form-control" type="text" name="description" value="">{{$apartment->description}}</textarea>
->>>>>>> master
     </div>
     <div class="form-group">
       <label for="img">img:</label>

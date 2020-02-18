@@ -9,23 +9,8 @@
       <label for="title">Nome Appartamento:</label>
       <input class="form-control" type="text" name="title" value="" placeholder="Inserisci nome appartamento">
     </div>
-<<<<<<< HEAD
-
-    {{-- ADDRESS --}}
-    {{-- <div class="form-group">
-      <label for="address">address:</label>
-      <input class="" type="text" name="streetName" value="" placeholder="streetName">
-      <input class="" type="number" name="streetNumber" value="" placeholder="streetNumber">
-      <input class="" type="text" name="municipality" value="" placeholder="municipality">
-      <input class="" type="text" name="postalCode" value="" placeholder="postalCode">
-      <input class="" type="text" name="countryCode" value="" placeholder="countryCode" >
-    </div>  --}}
-    <div class="form-group">
-      <label for="address">address:</label>
-=======
     <div class="form-group">
       <label for="address">Indirizzo:</label>
->>>>>>> master
       <input type="text" name="address" id="address" class="form-control input-lg" placeholder="Inserisci l'indirizzo" autocomplete="off" required/>
       <div id="addressList">
       </div>

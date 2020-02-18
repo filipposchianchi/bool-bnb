@@ -26,27 +26,27 @@
     </div>
     <div class="form-group">
       <label for="img">img:</label>
-      <input class="form-control" type="file" name="image" value="{{$apartment -> image}} {{asset('images/'.$apartment -> image)}}" required>
+      <img src="{{asset('images/'.$apartment -> image)}}" style="width:5rem">
+      <input class="form-control" type="file" name="image" src="{{asset('images/'.$apartment -> image)}}" required>
     </div>
-    <div class="form-group">
-      <label for="roomNum">Numero stanze</label>
-      {{-- <input class="form-control" type="text" name="roomNum" value="{{$apartment->roomNum}}"> --}}
-      <input class="form-control" type="number" name="roomNum" value="1" min="0" max="20">
-    </div>
-    <div class="form-group">
-      <label for="bedNum">Numero letti:</label>
-      {{-- <input class="form-control" type="text" name="bedNum" value="{{$apartment->bedNum}}"> --}}
-      <input class="form-control" type="number" name="bedNum" value="1" min="0" max="20">
-    </div>
-    <div class="form-group">
-      <label for="mQ">Metri quadrati:</label>
-      {{-- <input class="form-control" type="text" name="mQ" value="{{$apartment->mQ}}"> --}}
-      <input class="form-control" type="number" name="mQ" value="1" min="0">
-    </div>
-    <div class="form-group">
-      <label for="wcNum">Bagni:</label>
-      {{-- <input class="form-control" type="text" name="wcNum" value="{{$apartment->wcNum}}"> --}}
-      <input class="form-control" type="number" name="wcNum" value="1" min="0" max="20">
+    <div class="row">
+
+      <div class="form-group col-3">
+        <label for="roomNum">Numero stanze:</label>
+        <input class="form-control" type="number" name="roomNum" value="{{$apartment->roomNum}}" min="0" max="20">
+      </div>
+      <div class="form-group col-3">
+        <label for="bedNum">Numero letti:</label>
+        <input class="form-control" type="number" name="bedNum" value="{{$apartment->bedNum}}" min="0" max="20">
+      </div>
+      <div class="form-group col-3">
+        <label for="mQ">Metri quadrati:</label>
+        <input class="form-control" type="number" name="mQ" value="{{$apartment->mQ}}" min="0">
+      </div>
+      <div class="form-group col-3">
+        <label for="wcNum">Bagni:</label>
+        <input class="form-control" type="number" name="wcNum" value="{{$apartment->wcNum}}" min="0" max="20">
+      </div>
     </div>
     <div class="form-group">
       <label for="visible">Visibilità dell'annuncio</label>

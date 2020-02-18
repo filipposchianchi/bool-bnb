@@ -25,7 +25,7 @@
                     </div>
                     @endforeach
                 @else
-                    <p>0 messaggi</p>
+                    {{-- <p>0 messaggi</p> --}}
                 @endif
                 @endforeach
             </div>

@@ -16821,14 +16821,16 @@ a.text-dark:focus {
   }
 }
 
-.apartments {
-  width: 90%;
-  max-height: 70vh;
-  overflow-x: auto;
+#addressList {
+  position: relative;
 }
 
-.apartments .apartment {
-  height: 100%;
+.position {
+  display: none;
+}
+
+.apartments {
+  overflow-x: auto;
 }
 
 .heroSearch {

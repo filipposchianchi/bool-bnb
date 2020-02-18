@@ -102,14 +102,9 @@ function keyUpQuery() {
         }, 900)
     );
 }
-function textAreaDesc() {
-    document.getElementById("description").value =
-        "Fifth Avenue, New York City";
-}
 function init() {
     keyUpQuery();
     addressClick();
-    textAreaDesc();
 }
 
 $(document).ready(init);

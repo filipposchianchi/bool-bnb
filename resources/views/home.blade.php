@@ -14,7 +14,7 @@
                         @method('POST')
                         <div class="form-group">
                             <label for="address">Dove vuoi andare?</label>
-                            <input type="text" name="address" id="address" class="form-control input-lg" autocomplete="off"/>
+                            <input type="text" name="address" id="address" class="form-control input-lg" autocomplete="off" placeholder="Es: Milano"/>
                             <div id="addressList">
                             </div>
                             </div> 
@@ -29,18 +29,21 @@
         </div>
     </div>
     <div class="row justify-content-center mt-4 p-5">
-        <div class="col-md-8">
+        <!-- <div class="col-md-8">
             <form action="/search-apartment" method="get">
                 <div class="input-group">
                     <input type="search" name="search" class="form-control">
                     <span class="input-group-prepend">
-                        <button class="btn btn-primary">CERCA</button>
+                        <button class="btn btn-primary">CERCAaaaaa</button>
                     </span>
                 </div>
             </form>
-        </div>
+        </div> -->
         <div class="col-md-12 mt-3">
             <h1 class="text-center">Appartamenti in evidenza</h1>
+            <br>
+            <br>
+            <br>
                 <div class="row flex-nowrap apartments">
                     @foreach ($apartments as $apartment)
                         <div class="col-sm-12 col-md-4 apartment">

@@ -7,7 +7,7 @@
             <div class="row align-items-center">
                 <div class="col-3 heroSearch p-5 m-5">
                     <h3>
-                        <b> Prenota alloggi unici.</b>
+                        <b> Prenota alloggi unici</b>
                     </h3>
                     <form action="" method="post">
                         @csrf

@@ -9,7 +9,7 @@
                     <h3>
                         <b> Prenota alloggi e attività unici.</b>
                     </h3>
-                    <form action="" method="post">
+                    <form action="{{route('apartment.search')}}" method="post">
                         @csrf
                         @method('POST')
                         <label for="">Prenota</label>
@@ -18,11 +18,30 @@
                             <input type="text" name="address" id="address" class="form-control input-lg" autocomplete="off"/>
                             <div id="addressList">
                             </div>
-                            </div> 
-                          <div class="form-group position">
+                        </div> 
+                        <span class="form-group">
+                            <label for="roomNum">Numero Stanze:</label>
+                            <input type="number" name="roomNum" id="" class="form-control" autocomplete="off" value ="1"/>
+                            <label for="bedNum">Numero Letti:</label>
+                            <input type="number" name="bedNum" id="" class="form-control" autocomplete="off" value ="1"/>
+                        </span>
+                        <div class="form-group position">
                             <input type="text" name="latitude" id="latitude"/>
                             <input type="text" name="longitude" id="longitude"/> 
-                          </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Radius in km:</label>
+                            <input type="number" name="radius" id="radius" class="" value ="20"autocomplete="off"/>
+                            <div id="addressList">
+                            </div>
+                        </div>
+                        <span class="form-group col-8">
+                            <label for="services">Servizi:</label> <br>
+                            @foreach ($services as $service)
+                            <input name="services[]" type="checkbox"  value="{{$service->id}}">{{$service->name}}
+                            @endforeach
+                        </span> 
+                        <br>
                         <button type="submit">CERCA</button>
                     </form>
                 </div>

@@ -17,8 +17,8 @@
       </div>
       </div> 
     <div class="form-group position">
-      <input type="text" name="latitude" id="latitude"/>
-      <input type="text" name="longitude" id="longitude"/> 
+      <input type="text" name="latitude" id="latitude" value="{{$apartment->latitude}}" />
+      <input type="text" name="longitude" id="longitude" value="{{$apartment->longitude}}" /> 
     </div>
     <div class="form-group">
       <label for="description">Descrizione:</label>

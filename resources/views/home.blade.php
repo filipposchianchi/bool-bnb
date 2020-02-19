@@ -12,9 +12,8 @@
                     <form action="" method="post">
                         @csrf
                         @method('POST')
-                        <label for="">Prenota</label>
                         <div class="form-group">
-                            <label for="address">address:</label>
+                            <label for="address">Dove vuoi andare?</label>
                             <input type="text" name="address" id="address" class="form-control input-lg" autocomplete="off"/>
                             <div id="addressList">
                             </div>

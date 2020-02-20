@@ -30,7 +30,7 @@
                         </div>
                         <div class="form-group">
                             <label for="address">Radius in km:</label>
-                            <input type="number" name="radius" id="radius" class="" value ="20"autocomplete="off"/>
+                            <input type="number" name="radius" id="radius" class="form-control" value ="20"autocomplete="off"/>
                             <div id="addressList">
                             </div>
                         </div>
@@ -41,7 +41,7 @@
                             @endforeach
                         </span> 
                         <br>
-                        <button type="submit">CERCA</button>
+                        <button type="submit" class="btn btn-primary">CERCA</button>
                     </form>
                 </div>
             </div>

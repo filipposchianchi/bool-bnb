@@ -247,11 +247,17 @@ class HomeController extends Controller
 
     public function generalChartsApartments(){
         $userId = auth()->user()->id;
+        // dd($userId);    
         $user = User::findOrFail($userId);
         $apartments = $user-> apartments;
-        dd($apartments);
+        $messagesCount= [];
+        foreach ($apartments as $apartment) {
+            $messagesCount[]= $apartment -> messages ->count();
+        }
+        // dd($messagesCount);
+        // dd($apartments);
 
-        return view('generalCharts');
+        return view('generalCharts', compact('apartments','messagesCount'));
 
     }
 }

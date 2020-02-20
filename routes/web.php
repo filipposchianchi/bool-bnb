@@ -45,7 +45,7 @@ Route::post('/autocomplete/fetch', 'TomtomController@fetch')->name('autocomplete
 Route::post('/message/store/apartment{id}', 'HomeController@storeMessage')->name('message.store');
  
 //rotta per statistiche singolo appartamento
-Route::get('/apartment{id}/charts', 'HomeController@chartsApartment')->name('apartment.charts');
+// Route::get('/apartment{id}/charts', 'HomeController@chartsApartment')->name('apartment.charts');
 
 // rotta per statische generali appartamenti
 Route::get('/apartments/charts', 'HomeController@generalChartsApartments')->name('apartments.generalCharts');

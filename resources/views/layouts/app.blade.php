@@ -21,7 +21,7 @@
 
     {{-- tomtom map --}}
     <link rel='stylesheet' type='text/css' href='https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.47.0/maps/maps.css'>
-    <link rel='stylesheet' type='text/css' href='../assets/ui-library/index.css'/>
+    {{-- <link rel='stylesheet' type='text/css' href='../assets/ui-library/index.css'/> --}}
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
@@ -64,9 +64,9 @@
                                     <a class="dropdown-item" href="{{ route('user') }}">
                                         Appartamenti
                                     </a>
-                                    <a class="dropdown-item" href="{{ route('user') }}">
+                                    {{-- <a class="dropdown-item" href="{{ route('user') }}">
                                         Messaggi
-                                    </a>
+                                    </a> --}}
                                     <a class="dropdown-item" href="{{ route('apartments.generalCharts') }}">
                                         Statistiche appartamenti
                                     </a>

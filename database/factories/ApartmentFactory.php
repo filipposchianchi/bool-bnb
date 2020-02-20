@@ -8,10 +8,6 @@ use Faker\Generator as Faker;
 $factory->define(Apartment::class, function (Faker $faker) {
     return [
         'title' => $faker->word,
-<<<<<<< HEAD
-        // 'address' => $faker->address,
-=======
->>>>>>> master
         'address' => $faker->address,
         'description' => $faker->sentence,
         'image' => 'house1.jpg',

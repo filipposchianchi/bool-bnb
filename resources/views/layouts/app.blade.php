@@ -17,9 +17,8 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     {{-- tomtom map --}}
-    <link rel='stylesheet' type='text/css' href='https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.45.0/maps/maps.css'>
-    <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.45.0/maps/maps-web.min.js"></script>
-
+    <link rel='stylesheet' type='text/css' href='https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.47.0/maps/maps.css'>
+    <link rel='stylesheet' type='text/css' href='../assets/ui-library/index.css'/>
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
@@ -142,13 +141,14 @@
             </div>
         </footer>
     </div>
-    <script>
+    {{-- <script>
         tt.map({
             key: 'yfpz8kRCWBBiIF0WZOIZLdtsH2DhAfBG',
             container: 'map',
+            center:[39.20660000,9.13499000],
             style: 'tomtom://vector/1/basic-main',
             zoom:3
         });
-      </script>
+      </script> --}}
 </body>
 </html>

@@ -31,8 +31,9 @@ class HomeController extends Controller
     public function index()
     {
         $apartments = Apartment::orderBy('id', 'DESC') -> get();
+        $services = Service::all();
 
-        return view('home', compact('apartments'));
+        return view('home', compact('apartments','services'));
     }
 
     public function userApartments()
@@ -171,36 +172,49 @@ class HomeController extends Controller
     }
 
 
-    public function searchApartment(Request $request){
-        // $data = $request -> validate([
-        //     "address" => 'nullable|string',
-        // ]);
-        // dd($data['address']);
-        $lat = $request->get('latitude');;// latitude of centre of bounding circle in degrees
-        $lon = $request->get('longitude');// longitude of centre of bounding circle in degrees
-        $rad = 20; // radius of bounding circle in kilometers
-        $R = 6371; // earth's mean radius, km
+    public function searchRadiusApartment(Request $request){
+        $data = $request ->all();
+        $radius= $request->get('radius');
+        $lat = $request->get('latitude');
+        $lon = $request->get('longitude');
+        $roomNum = $request->get('roomNum');
+        $bedNum = $request->get('bedNum');
+        $services = $request -> validate(["services"=>'nullable|array']);
 
-        $maxLat = $lat + rad2deg($rad/$R);
-        $minLat = $lat - rad2deg($rad/$R);
-        $maxLon = $lon + rad2deg(asin($rad/$R) / cos(deg2rad($lat)));
-        $minLon = $lon - rad2deg(asin($rad/$R) / cos(deg2rad($lat)));
-
-        $apartments = DB::select(
-            'SELECT * FROM
-                 (SELECT id, title, description, image,  (' . $R . ' * acos(cos(radians(' . $lat . ')) * cos(radians(latitude)) *
-                 cos(radians(longitude) - radians(' . $lon . ')) +
-                 sin(radians(' . $lat . ')) * sin(radians(latitude))))
-                 AS distance
-                 FROM apartments) AS distances
-             WHERE distance < ' . $rad . '
-             ORDER BY distance
-             OFFSET 0
-             LIMIT 20;
-         ');
-
-         dd($apartments);
-        return view('search-result', ['apartments' => $apartments]);
+        $toFilterApartments = Apartment::select('apartments.*')
+        // $apartments = Apartment::select('apartments.*')
+        ->selectRaw('( 6371 * acos( cos( radians(?) ) *
+                           cos( radians( latitude ) )
+                           * cos( radians( longitude ) - radians(?)
+                           ) + sin( radians(?) ) *
+                           sin( radians( latitude ) ) )
+                         ) AS distance', [$lat, $lon, $lat])
+        ->havingRaw("distance < ?", [$radius])
+        ->orderBy('distance', 'ASC')->get();
+        // $services = $request -> get('services');
+        // dd($services);
+        $apartments=[];
+        foreach ($toFilterApartments as $toFilterApartment) {
+            if (( $toFilterApartment->roomNum >= $roomNum)&&($toFilterApartment->bedNum >= $bedNum)) {
+                if (!$services == 0) {
+                    $services = $request -> get('services');
+                    
+                        $serviceFilter=[];
+                        foreach ($toFilterApartment-> services as $x) {
+                            $serviceFilter[]=$x -> id;
+                        }
+                        if (count(array_intersect($services, $serviceFilter)) == count($services)) {
+                            $apartments[]=$toFilterApartment;
+                            // echo ' esiste';
+                        }
+                
+                        // </script>";
+                }else {
+                    $apartments[]=$toFilterApartment;   
+                }
+            }
+        }
+        return view('crud.radius-apartment', compact('apartments'));
     }
 
     public function storeMessage(Request $request, $id) {
@@ -220,7 +234,7 @@ class HomeController extends Controller
 
 
         Session::flash('msg', 'Email inviata'); 
-        Session::flash('alert-class', 'alert-success');
+        Session::flash('alert-class', 'alert-danger');
 
         return redirect() -> route('apartmentShow', compact('id'));
 

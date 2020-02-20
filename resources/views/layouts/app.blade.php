@@ -16,9 +16,12 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
+    {{-- ChartJS --}}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
     {{-- tomtom map --}}
     <link rel='stylesheet' type='text/css' href='https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.47.0/maps/maps.css'>
-    <link rel='stylesheet' type='text/css' href='../assets/ui-library/index.css'/>
+    {{-- <link rel='stylesheet' type='text/css' href='../assets/ui-library/index.css'/> --}}
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
@@ -60,6 +63,12 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('user') }}">
                                         Appartamenti
+                                    </a>
+                                    {{-- <a class="dropdown-item" href="{{ route('user') }}">
+                                        Messaggi
+                                    </a> --}}
+                                    <a class="dropdown-item" href="{{ route('apartments.generalCharts') }}">
+                                        Statistiche appartamenti
                                     </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

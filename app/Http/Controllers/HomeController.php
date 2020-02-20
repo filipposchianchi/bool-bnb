@@ -52,7 +52,8 @@ class HomeController extends Controller
     public function showApartments($id)
     {
         $apartment = Apartment::findOrFail($id);
-        // dd($apartments);
+        $apartment -> increment("view");
+        //  dd($apartment);
         return view('crud.show-apartment', compact('apartment'));
     }
     public function createApartment(){
@@ -224,21 +225,33 @@ class HomeController extends Controller
             "title" => 'required|string',
             "body" => 'required|string'
         ]);
-        //dd($data);
-        //$data=$request->all();
+
         $message = Message::make($data);
         $message -> apartment_id = $id;
 
-        
         $message -> save();
         //Session::flash('msg', 'Thanks');
-
 
         Session::flash('msg', 'Email inviata'); 
         Session::flash('alert-class', 'alert-danger');
 
         return redirect() -> route('apartmentShow', compact('id'));
+    }
 
+    public function chartsApartment($id){
+        $apartment = Apartment::findOrFail($id);
+        
+        return view('charts', compact('apartment'));
+
+    }
+
+    public function generalChartsApartments(){
+        $userId = auth()->user()->id;
+        $user = User::findOrFail($userId);
+        $apartments = $user-> apartments;
+        dd($apartments);
+
+        return view('generalCharts');
 
     }
 }

@@ -56,6 +56,8 @@
                 <div class="col-3 mt-5">
                     <a class="btn btn-warning mb-3" href="{{route("apartment.edit" , $apartment -> id)}}" role="button">modifica annuncio</a>
                     <a class="btn btn-danger mb-3" href="{{route("apartment.delete" , $apartment -> id)}}" role="button">cancella annuncio</a>
+                    <a class="btn btn-secondary mb-3" href="{{route("apartment.charts" , $apartment -> id)}}" role="button">statistiche annuncio</a>
+
                     {{-- <a class="btn btn-success" href="{{route("apartment.test" , $apartment -> id)}}" role="button">test annuncio</a> --}}
 
                     @if ($apartment -> visible == 0)

@@ -173,13 +173,15 @@ class HomeController extends Controller
 
 
     public function searchRadiusApartment(Request $request){
+        $services = Service::all();
         $data = $request ->all();
+        $address= $request->get('address');
         $radius= $request->get('radius');
         $lat = $request->get('latitude');
         $lon = $request->get('longitude');
         $roomNum = $request->get('roomNum');
         $bedNum = $request->get('bedNum');
-        $services = $request -> validate(["services"=>'nullable|array']);
+        $servicesQuery = $request -> validate(["services"=>'nullable|array']);
 
         $toFilterApartments = Apartment::select('apartments.*')
         // $apartments = Apartment::select('apartments.*')
@@ -191,19 +193,18 @@ class HomeController extends Controller
                          ) AS distance', [$lat, $lon, $lat])
         ->havingRaw("distance < ?", [$radius])
         ->orderBy('distance', 'ASC')->get();
-        // $services = $request -> get('services');
-        // dd($services);
+        
         $apartments=[];
         foreach ($toFilterApartments as $toFilterApartment) {
             if (( $toFilterApartment->roomNum >= $roomNum)&&($toFilterApartment->bedNum >= $bedNum)) {
-                if (!$services == 0) {
-                    $services = $request -> get('services');
+                if (!$servicesQuery == 0) {
+                    $servicesQuery = $request -> get('services');
                     
                         $serviceFilter=[];
                         foreach ($toFilterApartment-> services as $x) {
                             $serviceFilter[]=$x -> id;
                         }
-                        if (count(array_intersect($services, $serviceFilter)) == count($services)) {
+                        if (count(array_intersect($servicesQuery, $serviceFilter)) == count($servicesQuery)) {
                             $apartments[]=$toFilterApartment;
                             // echo ' esiste';
                         }
@@ -214,7 +215,7 @@ class HomeController extends Controller
                 }
             }
         }
-        return view('crud.radius-apartment', compact('apartments'));
+        return view('crud.radius-apartment', compact('apartments','services','address'));
     }
 
     public function storeMessage(Request $request, $id) {

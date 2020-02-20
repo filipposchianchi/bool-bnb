@@ -48,16 +48,6 @@
         </div>
     </div>
     <div class="row justify-content-center mt-4 p-5">
-        <!-- <div class="col-md-8">
-            <form action="/search-apartment" method="get">
-                <div class="input-group">
-                    <input type="search" name="search" class="form-control">
-                    <span class="input-group-prepend">
-                        <button class="btn btn-primary">CERCAaaaaa</button>
-                    </span>
-                </div>
-            </form>
-        </div> -->
         <div class="col-md-12 mt-3">
             <h1 class="text-center">Appartamenti in evidenza</h1>
             <br>

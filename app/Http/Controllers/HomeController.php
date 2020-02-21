@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use GuzzleHttp\Client;
 use Session;
 use Auth;
+use Braintree_Transaction;
 
 class HomeController extends Controller
 {
@@ -266,5 +267,20 @@ class HomeController extends Controller
         $apartment = Apartment::findOrFail($id);
         // dd($apartment);
         return view('crud.sponsorApartment' ,compact('apartment'));
+    }
+
+    public function processApartment($id){
+        $payload = $request->input('payload', false);
+        $nonce = $payload['nonce'];
+    
+        $status = Braintree_Transaction::sale([
+        'amount' => '10.00',
+        'paymentMethodNonce' => $nonce,
+        'options' => [
+            'submitForSettlement' => True
+        ]
+        ]);
+    
+        return response()->json($status);
     }
 }

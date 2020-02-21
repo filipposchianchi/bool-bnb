@@ -53,8 +53,14 @@ class HomeController extends Controller
     public function showApartments($id)
     {
         $apartment = Apartment::findOrFail($id);
-        $apartment -> increment("view");
-        //  dd($apartment);
+        
+        $apartmentKey = 'apartment_' . $id;
+
+        if (!Session::has($apartmentKey)) {
+            $apartment->increment('view');
+            Session::put($apartmentKey, 1);
+        }
+
         return view('crud.show-apartment', compact('apartment'));
     }
     public function createApartment(){

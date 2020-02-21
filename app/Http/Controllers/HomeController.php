@@ -264,7 +264,7 @@ class HomeController extends Controller
     // sponsor apartment RF8
     public function sponsorApartment($id){
         $apartment = Apartment::findOrFail($id);
-        dd($apartment);
-        return view('sponsorApartment' ,compact('apartment'));
+        // dd($apartment);
+        return view('crud.sponsorApartment' ,compact('apartment'));
     }
 }

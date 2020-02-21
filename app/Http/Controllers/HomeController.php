@@ -258,6 +258,13 @@ class HomeController extends Controller
         // dd($apartments);
 
         return view('generalCharts', compact('apartments','messagesCount'));
+    }
 
+
+    // sponsor apartment RF8
+    public function sponsorApartment($id){
+        $apartment = Apartment::findOrFail($id);
+        dd($apartment);
+        return view('sponsorApartment' ,compact('apartment'));
     }
 }

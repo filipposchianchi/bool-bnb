@@ -1,27 +1,8 @@
 @extends('layouts.app')
 @section('content')
-    {{-- <div class="container">
-        <div class="row flex-nowrap apartments">
-            @foreach ($apartments as $apartment)
-                <div class="col-sm-12 col-md-4 apartment">
-                    <div class="box mx-3 card mb-3 ">
-                        <a class="m-3" href="{{route('apartmentShow', $apartment -> id)}}">
-                            <img src="{{asset('images/'.$apartment -> image)}}" class="card-img-top imgstyle" alt="..." style="height: 20rem;">
-                            <div class="card-body">
-                                <h5 class="card-title">{{$apartment -> title}}</h5>
-                                <p class="card-text">{{$apartment -> address}}</p>
-                                <p class="card-text">{{$apartment -> description}}</p>
-                                <p class="card-text"><small class="text-muted">Aggiunto : {{$apartment -> created_at}}</small></p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            @endforeach
-        </div>
-    </div> --}}
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
+    <div class="container-fluid">
+        <div class="row p-5 search-section justify-content-center align-items-center">
+            <div class="container col-6">
                 <form action="{{route('apartment.search')}}" method="post">
                     @csrf
                     @method('POST')
@@ -49,36 +30,37 @@
                         <input type="text" name="latitude" id="latitude"/>
                         <input type="text" name="longitude" id="longitude"/> 
                     </div>
-                    <div class="row justify-content-between">
+                    <div class="row justify-content-between align-items-center">
                         <div class="form-group col-8">
                             <label for="services">Servizi:</label> <br>
                             @foreach ($services as $service)
                             <input name="services[]" type="checkbox"  value="{{$service->id}}">{{$service->name}}
                             @endforeach
                         </div> 
-                        <button type="submit" class="btn btn-primary col-4">CERCA</button>
+                        <button type="submit" class="btn btn-primary col-4 ">CERCA</button>
                     </div>
                 </form>
             </div>
-            
         </div>
         
-        <div class="row">
-            @foreach ($apartments as $apartment)
-                <div class="col-sm-12 col-md-8 apartment">
-                    <div class="box mx-3 card mb-3 ">
-                        <a class="m-3" href="{{route('apartmentShow', $apartment -> id)}}">
-                            <img src="{{asset('images/'.$apartment -> image)}}" class="card-img-top imgstyle" alt="..." style="height: 20rem;">
-                            <div class="card-body">
-                                <h5 class="card-title">{{$apartment -> title}}</h5>
-                                <p class="card-text">{{$apartment -> address}}</p>
-                                <p class="card-text">{{$apartment -> description}}</p>
-                                <p class="card-text"><small class="text-muted">Aggiunto : {{$apartment -> created_at}}</small></p>
-                            </div>
-                        </a>
+        <div class="container">
+            <div class="row p-5 justify-content-center">
+                @foreach ($apartments as $apartment)
+                    <div class="col-sm-12 col-md-10 apartment">
+                        <div class="box mx-3 card mb-3 ">
+                            <a class="m-3" href="{{route('apartmentShow', $apartment -> id)}}">
+                                <img src="{{asset('images/'.$apartment -> image)}}" class="card-img-top imgstyle" alt="..." style="height: 25rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{$apartment -> title}}</h5>
+                                    <p class="card-text">{{$apartment -> address}}</p>
+                                    <p class="card-text">{{$apartment -> description}}</p>
+                                    <p class="card-text"><small class="text-muted">Aggiunto : {{$apartment -> created_at}}</small></p>
+                                </div>
+                            </a>
+                        </div>
                     </div>
-                </div>
-            @endforeach
+                @endforeach
+            </div>
         </div>
     </div>
     

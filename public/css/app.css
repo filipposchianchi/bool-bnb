@@ -16887,6 +16887,10 @@ a.text-dark:focus {
   background-color: lightgray;
 }
 
+.search-section {
+  background-color: lightgrey;
+}
+
 #addressList {
   position: relative;
 }

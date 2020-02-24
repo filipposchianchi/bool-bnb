@@ -268,7 +268,8 @@ class HomeController extends Controller
         return view('crud.sponsorApartment' ,compact('apartment'));
     }
 
-    public function processApartment(Request $request){
+    public function processApartment(Request $request, $id){
+        $apartment = Apartment::findOrFail($id);
         $amount = $request->amount;
         $nonce = $request->payment_method_nonce;
     
@@ -288,14 +289,25 @@ class HomeController extends Controller
         if ($result->success) {
             // $transaction = $result->transaction;
             
-            echo '<script type="text/javascript">alert("Transazione avvenuta con successo");</script>';
             $userId = auth()->user()->id;
             $user = User::findOrFail($userId);
             $apartments = $user -> apartments;
             // $messages = $apartments -> messages;
-            
+            switch ($amount) {
+                case 2.99:
+                    $apartment -> sponsored = 1;
+                break;
+                case 5.99:
+                    $apartment -> sponsored = 2;
+                    break;
+                    case 9.99:
+                    $apartment -> sponsored = 3;
+                break;
+            }
+            $apartment->update();
             // dd($apartments);
-            return view('userApartments', compact('apartments'));
+            echo '<script type="text/javascript">alert("Transazione avvenuta con successo");</script>';
+            return view('crud.successSponsorApartment', compact('apartments'));
         } else {
             $errorString = "";
     

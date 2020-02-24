@@ -20,7 +20,7 @@
         </div>
         {{-- billing info --}}
         <div class="col-xs-12 col-md-5">
-          <form method="post" id="payment-form" action="{{route('apartment.process')}}">
+          <form method="post" id="payment-form" action="{{route('apartment.process' , $apartment -> id)}}">
             @csrf
             {{-- @method('POST') --}}
             <section>

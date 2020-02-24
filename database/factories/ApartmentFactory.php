@@ -17,7 +17,7 @@ $factory->define(Apartment::class, function (Faker $faker) {
         'wcNum' => rand(1,2),
         'view' => rand(0,100),
         "visible" => rand(0,1),
-        'sponsored' => rand(0,1),
+        'sponsored' => rand(0,3),
         'latitude' => $faker->latitude,
         'longitude' => $faker->longitude
     ];

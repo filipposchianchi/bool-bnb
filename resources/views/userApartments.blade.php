@@ -61,6 +61,12 @@
 
                     {{-- <a class="btn btn-success" href="{{route("apartment.test" , $apartment -> id)}}" role="button">test annuncio</a> --}}
 
+                    @if ($apartment -> sponsored > 0)
+                        <p class="green">Questo annuncio è sponsorizzato</p>
+                    @else
+                        <p class="red">Questo annuncio non è sponsorizzato</p>
+                    @endif
+                    {{-- SE L'APPARTAMENTO E' SPONSORIZZATO --}}
                     @if ($apartment -> visible == 0)
                         <p class="green">Questo annuncio è nascosto</p>
                     @else

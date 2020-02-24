@@ -286,10 +286,16 @@ class HomeController extends Controller
         ]);
     
         if ($result->success) {
-            $transaction = $result->transaction;
-            // header("Location: transaction.php?id=" . $transaction->id);
-            echo "<script> transazione eseguita </script>";
-            return back()->with('success_message', 'Transaction successful. The ID is:'. $transaction->id);
+            // $transaction = $result->transaction;
+            
+            echo '<script type="text/javascript">alert("Transazione avvenuta con successo");</script>';
+            $userId = auth()->user()->id;
+            $user = User::findOrFail($userId);
+            $apartments = $user -> apartments;
+            // $messages = $apartments -> messages;
+            
+            // dd($apartments);
+            return view('userApartments', compact('apartments'));
         } else {
             $errorString = "";
     

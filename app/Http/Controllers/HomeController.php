@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use GuzzleHttp\Client;
 use Session;
+use Braintree_Transaction;
 use Auth;
 
 class HomeController extends Controller
@@ -258,9 +259,8 @@ class HomeController extends Controller
         // dd($apartments);
 
         return view('generalCharts', compact('apartments','messagesCount'));
+    }
 
-<<<<<<< Updated upstream
-=======
     // sponsor apartment RF8
     public function sponsorApartment($id){
         $apartment = Apartment::findOrFail($id);
@@ -275,9 +275,10 @@ class HomeController extends Controller
         //dd($request['prezzo']);
         
         //$option = $request->prezzo;
+        //dd($option);
 
         $status = Braintree_Transaction::sale([
-        'amount' => $request['prezzo'],
+        'amount' => '10.00',
         'paymentMethodNonce' => $nonce,
         'options' => [
             'submitForSettlement' => True
@@ -285,6 +286,5 @@ class HomeController extends Controller
         ]);
     
         return response()->json($status);
->>>>>>> Stashed changes
     }
 }

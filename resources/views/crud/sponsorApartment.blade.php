@@ -20,8 +20,8 @@
         </div>
         {{-- billing info --}}
         <div class="col-xs-12 col-md-5">
-            <form action="{{ route('apartment.process') }}" method="GET">
-              @csrf
+            <form action="/action_page.php" >
+              {{-- @csrf --}}
                 <div class="form-group">
                     <label for="sponsor"><h4>Scegli uno dei seguenti pacchetti promozionali</h4></label>
                     <select name="prezzo"id="sponsor" class="form-control">

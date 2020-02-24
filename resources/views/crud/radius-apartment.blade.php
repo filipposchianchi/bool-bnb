@@ -2,13 +2,13 @@
 @section('content')
     <div class="container-fluid">
         <div class="row p-5 search-section justify-content-center align-items-center">
-            <div class="container col-6">
+            <div class="form-box p-5 col-5">
                 <form action="{{route('apartment.search')}}" method="post">
                     @csrf
                     @method('POST')
                     <div class="form-group">
                         <label for="address">Dove vuoi andare?</label>
-                        <input type="text" name="address" id="address" class="form-control input-lg text-center" autocomplete="off" value="{{$address}}"/>
+                        <input type="text" name="address" id="address" class="form-control input-lg text-center" autocomplete="off" placeholder="{{$address}}" required/>
                         <div id="addressList">
                         </div>
                     </div> 
@@ -43,23 +43,42 @@
             </div>
         </div>
         
+
+        
+
         <div class="container">
             <div class="row p-5 justify-content-center">
-                @foreach ($apartments as $apartment)
-                    <div class="col-sm-12 col-md-10 apartment">
-                        <div class="box mx-3 card mb-3 ">
-                            <a class="m-3" href="{{route('apartmentShow', $apartment -> id)}}">
-                                <img src="{{asset('images/'.$apartment -> image)}}" class="card-img-top imgstyle" alt="..." style="height: 25rem;">
-                                <div class="card-body">
-                                    <h5 class="card-title">{{$apartment -> title}}</h5>
-                                    <p class="card-text">{{$apartment -> address}}</p>
-                                    <p class="card-text">{{$apartment -> description}}</p>
-                                    <p class="card-text"><small class="text-muted">Aggiunto : {{$apartment -> created_at}}</small></p>
-                                </div>
-                            </a>
+                @if($apartments == null)
+                    <div class="row align-items-center justify-content-center mt-3">
+                        <div class="col-8 text-center">
+
+                            <h2>
+                                Mi dispiace non ci sono appartamenti nella zona (prova ad allargare l'area della ricerca)
+                            </h2>
                         </div>
+                        
+                        <img src="https://cdn.dribbble.com/users/1651691/screenshots/5336717/404_v2.png" alt="">
                     </div>
-                @endforeach
+                    
+                @else
+                    <div class="card-deck">
+                        @foreach ($apartments as $apartment)
+                            <div class="col-sm-12 col-md-10 apartment">
+                                <div class="box mx-3 card mb-3 ">
+                                    <a class="m-3" href="{{route('apartmentShow', $apartment -> id)}}">
+                                        <img src="{{asset('images/'.$apartment -> image)}}" class="card-img-top imgstyle" alt="..." style="height: 25rem;">
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{$apartment -> title}}</h5>
+                                            <p class="card-text ">{{$apartment -> address}}</p>
+                                        </div>
+                                        
+                                    </a>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                @endif
+                
             </div>
         </div>
     </div>

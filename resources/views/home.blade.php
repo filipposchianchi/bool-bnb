@@ -14,7 +14,7 @@
                         @method('POST')
                         <div class="form-group">
                             <label for="address">Dove vuoi andare?</label>
-                            <input type="text" name="address" id="address" class="form-control input-lg" autocomplete="off" placeholder="Es: Milano"/>
+                            <input type="text" name="address" id="address" class="form-control input-lg" autocomplete="off" placeholder="Es: Milano" required/>
                             <div id="addressList">
                             </div>
                         </div> 
@@ -58,9 +58,10 @@
                                     <img src="{{asset('images/'.$apartment -> image)}}" class="card-img-top imgstyle" alt="..." style="height: 20rem;">
                                     <div class="card-body">
                                         <h5 class="card-title">{{$apartment -> title}}</h5>
-                                        <p class="card-text">{{$apartment -> address}}</p>
-                                        <p class="card-text">{{$apartment -> description}}</p>
-                                        <p class="card-text"><small class="text-muted">Aggiunto : {{$apartment -> created_at}}</small></p>
+                                        <p class="card-text ellipsis">{{$apartment -> address}}</p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <small class="text-muted">Aggiunto : {{$apartment -> created_at}}</small>
                                     </div>
                                 </a>
                             </div>

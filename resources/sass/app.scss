@@ -53,3 +53,10 @@ footer {
 .imgstyle {
     min-height: 100%;
 }
+
+// metti puntini se la string è troppo lunga
+.ellipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}

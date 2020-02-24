@@ -223,6 +223,7 @@ class HomeController extends Controller
                 }
             }
         }
+        // dd($apartments);
         return view('crud.radius-apartment', compact('apartments','services','address'));
     }
 
@@ -280,7 +281,7 @@ class HomeController extends Controller
         $nonce = $payload['nonce'];
     
         $status = Braintree_Transaction::sale([
-        'amount' => '10.00',
+        'amount' => '1000.00',
         'paymentMethodNonce' => $nonce,
         'options' => [
             'submitForSettlement' => True

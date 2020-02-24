@@ -17,6 +17,7 @@ class Apartment extends Model
         'wcNum',
         'view',
         'visible',
+        'startHourSponsor',
         'latitude',
         'longitude'
     ];

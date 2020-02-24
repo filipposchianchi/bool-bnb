@@ -305,8 +305,6 @@ class HomeController extends Controller
                 break;
             }
             $apartment->update();
-            // dd($apartments);
-            echo '<script type="text/javascript">alert("Transazione avvenuta con successo");</script>';
             return view('crud.successSponsorApartment', compact('apartments'));
         } else {
             $errorString = "";

@@ -18,6 +18,7 @@ $factory->define(Apartment::class, function (Faker $faker) {
         'view' => rand(0,100),
         "visible" => rand(0,1),
         'sponsored' => rand(0,3),
+        'startHourSponsor' => $faker -> time,
         'latitude' => $faker->latitude,
         'longitude' => $faker->longitude
     ];

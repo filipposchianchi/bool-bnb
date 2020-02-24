@@ -269,22 +269,37 @@ class HomeController extends Controller
     }
 
     public function processApartment(Request $request){
-        //dd($request);
-        $payload = $request->input('payload', false);
-        $nonce = $payload['nonce'];
-        //dd($request['prezzo']);
-        
-        //$option = $request->prezzo;
-        //dd($option);
-
-        $status = Braintree_Transaction::sale([
-        'amount' => '10.00',
-        'paymentMethodNonce' => $nonce,
-        'options' => [
-            'submitForSettlement' => True
-        ]
+        $amount = $request->amount;
+        $nonce = $request->payment_method_nonce;
+    
+        $result = Braintree_Transaction::sale([
+            'amount' => $amount,
+            'paymentMethodNonce' => $nonce,
+            'customer' => [
+                'firstName' => 'Tony',
+                'lastName' => 'Stark',
+                'email' => 'tony@avengers.com',
+            ],
+            'options' => [
+                'submitForSettlement' => true
+            ]
         ]);
     
-        return response()->json($status);
+        if ($result->success) {
+            $transaction = $result->transaction;
+            // header("Location: transaction.php?id=" . $transaction->id);
+            echo "<script> transazione eseguita </script>";
+            return back()->with('success_message', 'Transaction successful. The ID is:'. $transaction->id);
+        } else {
+            $errorString = "";
+    
+            foreach ($result->errors->deepAll() as $error) {
+                $errorString .= 'Error: ' . $error->code . ": " . $error->message . "\n";
+            }
+    
+            // $_SESSION["errors"] = $errorString;
+            // header("Location: index.php");
+            return back()->withErrors('An error occurred with the message: '.$result->message);
+        }
     }
 }

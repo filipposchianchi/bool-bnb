@@ -20,47 +20,57 @@
         </div>
         {{-- billing info --}}
         <div class="col-xs-12 col-md-5">
-            <form action="/action_page.php" >
-              {{-- @csrf --}}
-                <div class="form-group">
-                    <label for="sponsor"><h4>Scegli uno dei seguenti pacchetti promozionali</h4></label>
-                    <select name="prezzo"id="sponsor" class="form-control">
-                      <option selected disabled>pacchetti..</option>
-                      <option value="2.99">2.99 € per 24 ore di sponsorizzazione</option>
-                      <option value="5.99">5.99 € per 72 ore di sponsorizzazione</option>
-                      <option value="9.99">9.99 € per 144 ore di sponsorizzazione</option>
-                    </select>
-                  </div>
-                  <input type="submit" value="Submit" class="btn btn-primary">
-              </form>
-              <div class="col-12">
-                <div class="row">
-                  <div class="col-md-12 col-md-offset-2">
-                    <div id="dropin-container"></div>
-                    <button id="submit-button">Request payment method</button>
-                  </div>
+          <form method="post" id="payment-form" action="{{route('apartment.process')}}">
+            @csrf
+            {{-- @method('POST') --}}
+            <section>
+              <div class="form-group">
+                <label for="sponsor"><h4>Scegli uno dei seguenti pacchetti promozionali</h4></label>
+                <select name="amount"id="amount" class="form-control" required>
+                  <option value="0">pacchetti..</option>
+                  <option value="2.99">2.99 € per 24 ore di sponsorizzazione</option>
+                  <option value="5.99">5.99 € per 72 ore di sponsorizzazione</option>
+                  <option value="9.99">9.99 € per 144 ore di sponsorizzazione</option>
+                </select>
+              </div>
+
+                <div class="bt-drop-in-wrapper">
+                    <div id="bt-dropin"></div>
                 </div>
-             </div>
+            </section>
+
+            <input id="nonce" name="payment_method_nonce" type="hidden" />
+            <button class="button" type="submit"><span>Test Transaction</span></button>
+          </form>
         </div>
         
     </div>
 </div>
+<script src="https://js.braintreegateway.com/web/dropin/1.13.0/js/dropin.min.js"></script>
 <script>
-    var button = document.querySelector('#submit-button');
-
+    var form = document.querySelector('#payment-form');
+    var client_token = "{{ Braintree_ClientToken::generate() }}";
     braintree.dropin.create({
-      authorization: "{{ Braintree_ClientToken::generate() }}",
-      container: '#dropin-container'
+      authorization: client_token,
+      selector: '#bt-dropin',
+      paypal: {
+        flow: 'vault'
+      }
     }, function (createErr, instance) {
-      button.addEventListener('click', function () {
+      if (createErr) {
+        console.log('Create Error', createErr);
+        return;
+      }
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
         instance.requestPaymentMethod(function (err, payload) {
-          $.get('{{ route('apartment.process') }}', {payload}, function (response) {
-            if (response.success) {
-              alert('Payment successfull!');
-            } else {
-              alert('Payment failed');
-            }
-          }, 'json');
+          if (err) {
+            console.log('Request Payment Method Error', err);
+            return;
+          }
+          // Add the nonce to the form and submit
+          document.querySelector('#nonce').value = payload.nonce;
+          form.submit();
         });
       });
     });

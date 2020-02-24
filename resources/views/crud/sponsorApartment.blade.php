@@ -27,7 +27,7 @@
               <div class="form-group">
                 <label for="sponsor"><h4>Scegli uno dei seguenti pacchetti promozionali</h4></label>
                 <select name="amount"id="amount" class="form-control" required>
-                  <option value="0">pacchetti..</option>
+                  <option selected disabled>pacchetti..</option>
                   <option value="2.99">2.99 € per 24 ore di sponsorizzazione</option>
                   <option value="5.99">5.99 € per 72 ore di sponsorizzazione</option>
                   <option value="9.99">9.99 € per 144 ore di sponsorizzazione</option>

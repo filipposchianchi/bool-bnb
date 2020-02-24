@@ -50,3 +50,4 @@ Route::post('/message/store/apartment{id}', 'HomeController@storeMessage')->name
 // rotta per statische generali appartamenti
 Route::get('/apartments/charts', 'HomeController@generalChartsApartments')->name('apartments.generalCharts');
 
+

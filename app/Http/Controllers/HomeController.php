@@ -259,5 +259,32 @@ class HomeController extends Controller
 
         return view('generalCharts', compact('apartments','messagesCount'));
 
+<<<<<<< Updated upstream
+=======
+    // sponsor apartment RF8
+    public function sponsorApartment($id){
+        $apartment = Apartment::findOrFail($id);
+        // dd($apartment);
+        return view('crud.sponsorApartment' ,compact('apartment'));
+    }
+
+    public function processApartment(Request $request){
+        //dd($request);
+        $payload = $request->input('payload', false);
+        $nonce = $payload['nonce'];
+        //dd($request['prezzo']);
+        
+        //$option = $request->prezzo;
+
+        $status = Braintree_Transaction::sale([
+        'amount' => $request['prezzo'],
+        'paymentMethodNonce' => $nonce,
+        'options' => [
+            'submitForSettlement' => True
+        ]
+        ]);
+    
+        return response()->json($status);
+>>>>>>> Stashed changes
     }
 }

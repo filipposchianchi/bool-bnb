@@ -8,6 +8,7 @@ use App\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use GuzzleHttp\Client;
+use Carbon\Carbon;
 use Session;
 use Braintree_Transaction;
 use Auth;
@@ -292,16 +293,20 @@ class HomeController extends Controller
             $userId = auth()->user()->id;
             $user = User::findOrFail($userId);
             $apartments = $user -> apartments;
+
             // $messages = $apartments -> messages;
             switch ($amount) {
                 case 2.99:
                     $apartment -> sponsored = 1;
+                    $apartment -> startDaySponsor = Carbon::now();
                 break;
                 case 5.99:
                     $apartment -> sponsored = 2;
-                    break;
+                    $apartment -> startDaySponsor = Carbon::now();
+                break;
                     case 9.99:
                     $apartment -> sponsored = 3;
+                    $apartment -> startDaySponsor = Carbon::now();
                 break;
             }
             $apartment->update();

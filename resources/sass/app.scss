@@ -15,6 +15,7 @@
 @import "maps";
 @import "home";
 @import "userApartments";
+@import "radius";
 @import "crudCreate";
 #map {
     width: 100%;
@@ -26,7 +27,7 @@ body {
     }
 }
 .hero {
-    height: 85vh;
+    // height: 85vh;
     width: 100vw;
     background: url("https://a0.muscache.com/4ea/air/r:w3100-h2074-sfit,e:fjpg-c80/pictures/0ffd8594-f123-43f0-85bb-7ef88c6f0624.jpg");
     background-size: cover;
@@ -51,4 +52,11 @@ footer {
 }
 .imgstyle {
     min-height: 100%;
+}
+
+// metti puntini se la string è troppo lunga
+.ellipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }

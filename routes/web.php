@@ -30,7 +30,11 @@ Route::get('/apartments/create/', 'HomeController@createApartment')->name('apart
 Route::get('/apartments/delete/{id}', 'HomeController@deleteApartment')->name('apartment.delete');
 
 
-Route::get('/apartments/test/{id}', 'HomeController@searchAddress')->name('apartment.test');
+// Route::get('/apartments/test/{id}', 'HomeController@searchAddress')->name('apartment.test');
+
+// sponsor RF8
+Route::get('/apartment/{id}/sponsor', 'HomeController@sponsorApartment')->name('apartment.sponsor');
+Route::get('/apartment/sponsor/process', 'HomeController@processApartment')->name('apartment.process');
 
 // search route rf3
 Route::post('/search-apartment', 'HomeController@searchRadiusApartment')->name('apartment.search');

@@ -14,7 +14,7 @@
                         @method('POST')
                         <div class="form-group">
                             <label for="address">Dove vuoi andare?</label>
-                            <input type="text" name="address" id="address" class="form-control input-lg" autocomplete="off" placeholder="Es: Milano"/>
+                            <input type="text" name="address" id="address" class="form-control input-lg" autocomplete="off" placeholder="Es: Milano" required/>
                             <div id="addressList">
                             </div>
                         </div> 
@@ -30,7 +30,7 @@
                         </div>
                         <div class="form-group">
                             <label for="address">Radius in km:</label>
-                            <input type="number" name="radius" id="radius" class="" value ="20"autocomplete="off"/>
+                            <input type="number" name="radius" id="radius" class="form-control" value ="20"autocomplete="off"/>
                             <div id="addressList">
                             </div>
                         </div>
@@ -41,7 +41,7 @@
                             @endforeach
                         </span> 
                         <br>
-                        <button type="submit">CERCA</button>
+                        <button type="submit" class="btn btn-primary">CERCA</button>
                     </form>
                 </div>
             </div>
@@ -49,10 +49,7 @@
     </div>
     <div class="row justify-content-center mt-4 p-5">
         <div class="col-md-12 mt-3">
-            <h1 class="text-center">Appartamenti in evidenza</h1>
-            <br>
-            <br>
-            <br>
+            <h1 class="text-center mb-5">Appartamenti in evidenza</h1>
                 <div class="row flex-nowrap apartments">
                     @foreach ($apartments as $apartment)
                         <div class="col-sm-12 col-md-4 apartment">
@@ -61,9 +58,10 @@
                                     <img src="{{asset('images/'.$apartment -> image)}}" class="card-img-top imgstyle" alt="..." style="height: 20rem;">
                                     <div class="card-body">
                                         <h5 class="card-title">{{$apartment -> title}}</h5>
-                                        <p class="card-text">{{$apartment -> address}}</p>
-                                        <p class="card-text">{{$apartment -> description}}</p>
-                                        <p class="card-text"><small class="text-muted">Aggiunto : {{$apartment -> created_at}}</small></p>
+                                        <p class="card-text ellipsis">{{$apartment -> address}}</p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <small class="text-muted">Aggiunto : {{$apartment -> created_at}}</small>
                                     </div>
                                 </a>
                             </div>

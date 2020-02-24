@@ -1,33 +1,14 @@
 @extends('layouts.app')
 @section('content')
-    {{-- <div class="container">
-        <div class="row flex-nowrap apartments">
-            @foreach ($apartments as $apartment)
-                <div class="col-sm-12 col-md-4 apartment">
-                    <div class="box mx-3 card mb-3 ">
-                        <a class="m-3" href="{{route('apartmentShow', $apartment -> id)}}">
-                            <img src="{{asset('images/'.$apartment -> image)}}" class="card-img-top imgstyle" alt="..." style="height: 20rem;">
-                            <div class="card-body">
-                                <h5 class="card-title">{{$apartment -> title}}</h5>
-                                <p class="card-text">{{$apartment -> address}}</p>
-                                <p class="card-text">{{$apartment -> description}}</p>
-                                <p class="card-text"><small class="text-muted">Aggiunto : {{$apartment -> created_at}}</small></p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            @endforeach
-        </div>
-    </div> --}}
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
+    <div class="container-fluid">
+        <div class="row p-5 search-section justify-content-center align-items-center">
+            <div class="form-box p-5 col-5">
                 <form action="{{route('apartment.search')}}" method="post">
                     @csrf
                     @method('POST')
                     <div class="form-group">
                         <label for="address">Dove vuoi andare?</label>
-                        <input type="text" name="address" id="address" class="form-control input-lg text-center" autocomplete="off" value="{{$address}}"/>
+                        <input type="text" name="address" id="address" class="form-control input-lg text-center" autocomplete="off" placeholder="{{$address}}" required/>
                         <div id="addressList">
                         </div>
                     </div> 
@@ -49,36 +30,56 @@
                         <input type="text" name="latitude" id="latitude"/>
                         <input type="text" name="longitude" id="longitude"/> 
                     </div>
-                    <div class="row justify-content-between">
+                    <div class="row justify-content-between align-items-center">
                         <div class="form-group col-8">
                             <label for="services">Servizi:</label> <br>
                             @foreach ($services as $service)
                             <input name="services[]" type="checkbox"  value="{{$service->id}}">{{$service->name}}
                             @endforeach
                         </div> 
-                        <button type="submit" class="btn btn-primary col-4">CERCA</button>
+                        <button type="submit" class="btn btn-primary col-4 ">CERCA</button>
                     </div>
                 </form>
             </div>
-            
         </div>
         
-        <div class="row">
-            @foreach ($apartments as $apartment)
-                <div class="col-sm-12 col-md-8 apartment">
-                    <div class="box mx-3 card mb-3 ">
-                        <a class="m-3" href="{{route('apartmentShow', $apartment -> id)}}">
-                            <img src="{{asset('images/'.$apartment -> image)}}" class="card-img-top imgstyle" alt="..." style="height: 20rem;">
-                            <div class="card-body">
-                                <h5 class="card-title">{{$apartment -> title}}</h5>
-                                <p class="card-text">{{$apartment -> address}}</p>
-                                <p class="card-text">{{$apartment -> description}}</p>
-                                <p class="card-text"><small class="text-muted">Aggiunto : {{$apartment -> created_at}}</small></p>
-                            </div>
-                        </a>
+
+        
+
+        <div class="container">
+            <div class="row p-5 justify-content-center">
+                @if($apartments == null)
+                    <div class="row align-items-center justify-content-center mt-3">
+                        <div class="col-8 text-center">
+
+                            <h2>
+                                Mi dispiace non ci sono appartamenti nella zona (prova ad allargare l'area della ricerca)
+                            </h2>
+                        </div>
+                        
+                        <img src="https://cdn.dribbble.com/users/1651691/screenshots/5336717/404_v2.png" alt="">
                     </div>
-                </div>
-            @endforeach
+                    
+                @else
+                    <div class="card-deck">
+                        @foreach ($apartments as $apartment)
+                            <div class="col-sm-12 col-md-10 apartment">
+                                <div class="box mx-3 card mb-3 ">
+                                    <a class="m-3" href="{{route('apartmentShow', $apartment -> id)}}">
+                                        <img src="{{asset('images/'.$apartment -> image)}}" class="card-img-top imgstyle" alt="..." style="height: 25rem;">
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{$apartment -> title}}</h5>
+                                            <p class="card-text ">{{$apartment -> address}}</p>
+                                        </div>
+                                        
+                                    </a>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                @endif
+                
+            </div>
         </div>
     </div>
     

@@ -16887,6 +16887,18 @@ a.text-dark:focus {
   background-color: lightgray;
 }
 
+.form-box {
+  background-color: #fff;
+  border-radius: 0.7rem;
+}
+
+.search-section {
+  background: url("https://a0.muscache.com/4ea/air/r:w3100-h2074-sfit,e:fjpg-c80/pictures/0ffd8594-f123-43f0-85bb-7ef88c6f0624.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
 #addressList {
   position: relative;
 }
@@ -16905,7 +16917,6 @@ body * {
 }
 
 .hero {
-  height: 85vh;
   width: 100vw;
   background: url("https://a0.muscache.com/4ea/air/r:w3100-h2074-sfit,e:fjpg-c80/pictures/0ffd8594-f123-43f0-85bb-7ef88c6f0624.jpg");
   background-size: cover;
@@ -16927,5 +16938,11 @@ footer ul li a {
 
 .imgstyle {
   min-height: 100%;
+}
+
+.ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 

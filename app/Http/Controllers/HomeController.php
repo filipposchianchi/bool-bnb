@@ -290,9 +290,9 @@ class HomeController extends Controller
         if ($result->success) {
             // $transaction = $result->transaction;
             
-            $userId = auth()->user()->id;
-            $user = User::findOrFail($userId);
-            $apartments = $user -> apartments;
+            // $userId = auth()->user()->id;
+            // $user = User::findOrFail($userId);
+            // $apartments = $user -> apartments;
 
             // $messages = $apartments -> messages;
             switch ($amount) {
@@ -310,7 +310,7 @@ class HomeController extends Controller
                 break;
             }
             $apartment->update();
-            return view('crud.successSponsorApartment', compact('apartments'));
+            return view('crud.successSponsorApartment', compact('apartment'));
         } else {
             $errorString = "";
     

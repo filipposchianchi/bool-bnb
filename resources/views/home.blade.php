@@ -49,7 +49,7 @@
     </div>
     <div class="row justify-content-center mt-4 p-5">
         <div class="col-md-12 mt-3">
-            <h1 class="text-center mb-5">Appartamenti in evidenza</h1>
+            <h1 class="text-center mb-5">Appartamenti in evidenza:</h1>
                 <div class="row flex-nowrap apartments">
                     @foreach ($apartments as $apartment)
                         <div class="col-sm-12 col-md-4 apartment">

@@ -57,7 +57,7 @@
         <label for="services">Servizi:</label> <br>
 
           @foreach ($services as $service)
-            <span class=" ">
+            <span class=" d-inline-block">
               <input name="services[]" type="checkbox"  value="{{$service->id}}"> {{$service->name}}
             </span>
             @endforeach

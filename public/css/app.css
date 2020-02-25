@@ -16829,6 +16829,10 @@ a.text-dark:focus {
   display: none;
 }
 
+span {
+  white-space: pre-wrap;
+}
+
 .marker-icon {
   background-position: center;
   background-size: 22px 22px;
@@ -16909,6 +16913,10 @@ a.text-dark:focus {
 
 .position {
   display: none;
+}
+
+span {
+  white-space: pre-wrap;
 }
 
 #map {

@@ -68,11 +68,9 @@
       <div class="form-group col-8">
         <label for="services">Servizi:</label> <br>
         @foreach ($services as $service)
-        <input name="services[]" type="checkbox"  value="{{$service->id}}"
-        @if ($apartment->services()-> find($service->id))
-        checked
-        @endif>
-        <p class="mr-4" style="display:inline;">{{$service->name}}</p>
+          <input name="services[]" type="checkbox"  value="{{$service->id}}" @if ($apartment->services()-> find($service->id)) checked
+          @endif>
+            <p class="mr-4" style="display:inline;">{{$service->name}}</p>
         @endforeach
       </div> 
     </div>

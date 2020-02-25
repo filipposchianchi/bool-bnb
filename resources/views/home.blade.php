@@ -6,7 +6,7 @@
     <div class="row">
         <div class="hero col-md-12">
             <div class="row align-items-center">
-                <div class="col-3 heroSearch p-5 m-5">
+                <div class="col-md-6 heroSearch p-5 m-5">
                     <h3>
                         <b> Prenota alloggi unici</b>
                     </h3>

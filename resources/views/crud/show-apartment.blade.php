@@ -3,10 +3,10 @@
 @section('content')
 <div class="container mt-2">
     <div class="row justify-content-center">
-        <div class="card mb-3 col-9 p-3">
+        <div class="card mb-3 col-12 p-3">
             <img src="{{asset('images/'.$apartment -> image)}}" class="card-img-top" alt="...">
             <div class="card-body row">
-                <div class="col-8">
+                <div class="col-md-8">
                     <h5 class="card-title"><strong>Nome appartamento:</strong> {{$apartment -> title}}</h5>
                     <p class="card-text"><strong>Indirizzo:</strong> {{$apartment -> address}}</p>
                     <p class="card-text"><strong>Descrizione:</strong> {{$apartment -> description}}</p>
@@ -15,14 +15,16 @@
                     <p class="card-text"><strong>Mq:</strong> {{$apartment -> mQ}}</p>
                     <p class="card-text"><strong>Numero di bagni:</strong> {{$apartment -> wcNum}}</p>
                     {{-- <p class="card-text"><strong>view:</strong> {{$apartment -> view}}</p> --}}
-                    <p class="card-text"><small class="text-muted">Aggiunto il: {{$apartment -> created_at -> format('d-m-y')}}</small></p>
                 </div>
-                <div class="col-3 offset-1">
+                <div class="col-md-4 mt-2">
                     @if (!$apartment->services->count() == 0)
-                    <h5 class="card-title"><strong>Servizi</strong></h5>
-                    @foreach ($apartment->services as $service)
-                    <p class="card-text">{{$service -> name}} </p>
-                    @endforeach
+                    <h6 class="card-title"><strong>Servizi</strong></h6>
+                    <ul>
+
+                        @foreach ($apartment->services as $service)
+                        <li class="card-text">{{$service -> name}} </li>
+                        @endforeach
+                    </ul>
                     @endif
                 </div>
             </div>
@@ -32,7 +34,7 @@
     </div>
     <div class="row mt-3 jutify-items-center h-50">
 
-        <div class="card col-6 p-3">
+        <div class="card col-md-6 col-xs-12 p-3">
             <h5 class="card-title">Contatta il proprietario</h5>
 
             <form action="{{route('message.store', $apartment -> id)}}" method="post">
@@ -69,8 +71,8 @@
             </form>
 
         </div>
-        <div class="col-6">
-            <div id='map' class='map'></div>
+        <div class="col-xs-12 col-md-6">
+            <div id='map' class=''></div>
         </div>
     </div>
 </div>

@@ -2,7 +2,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="row p-5 search-section justify-content-center align-items-center">
-            <div class="form-box p-5 col-5">
+            <div class="form-box p-3 col-md-5">
                 <form action="{{route('apartment.search')}}" method="post">
                     @csrf
                     @method('POST')
@@ -12,7 +12,7 @@
                         <div id="addressList">
                         </div>
                     </div> 
-                    <div class="form-group d-flex justify-content-around">
+                    <div class="form-group row">
                         <div class="col-4">
                             <label for="roomNum">Numero Stanze:</label>
                             <input type="number" name="roomNum" id="" class="form-control" autocomplete="off" value ="1"/>
@@ -22,7 +22,7 @@
                             <input type="number" name="bedNum" id="" class="form-control" autocomplete="off" value ="1"/>
                         </div>
                         <div class="col-4">
-                            <label for="address">Area di ricerca(km):</label>
+                            <label for="address">Radius in km:</label>
                             <input type="number" name="radius" id="radius" class="form-control" value ="20"autocomplete="off"/>
                         </div>
                     </div>
@@ -30,15 +30,13 @@
                         <input type="text" name="latitude" id="latitude"/>
                         <input type="text" name="longitude" id="longitude"/> 
                     </div>
-                    <div class="row justify-content-between align-items-center">
-                        <div class="form-group col-8">
-                            <label for="services">Servizi:</label> <br>
-                            @foreach ($services as $service)
-                            <input name="services[]" type="checkbox"  value="{{$service->id}}">{{$service->name}}
-                            @endforeach
-                        </div> 
-                        <button type="submit" class="btn btn-primary col-4 ">CERCA</button>
-                    </div>
+                    <span class="form-group col-8 py-2">
+                        <label for="services">Servizi:</label> <br>
+                        @foreach ($services as $service)
+                        <input class="mr-1"name="services[]" type="checkbox"  value="{{$service->id}}">{{$service->name}}
+                        @endforeach
+                    </span> 
+                    <button type="submit" class="btn btn-primary col-4 ">CERCA</button>
                 </form>
             </div>
         </div>

@@ -10,7 +10,7 @@ $factory->define(Apartment::class, function (Faker $faker) {
         'title' => $faker->word,
         'address' => $faker->address,
         'description' => $faker->sentence,
-        'image' => 'house1.jpg',
+        'image' => 'house2.jpg',
         'roomNum' => rand(1,5),
         'bedNum' => rand(1,3),
         'mQ' => rand(50,200),

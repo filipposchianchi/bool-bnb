@@ -211,7 +211,7 @@ class HomeController extends Controller
                                 $serviceFilter[]=$x -> id;
                             }
                             if (count(array_intersect($servicesQuery, $serviceFilter)) == count($servicesQuery)) {
-                                $apartments[]=$toFilterApartment;
+                                $apartmentsSponsored[]=$toFilterApartment;
                                 // echo ' esiste';
                             }
                     
@@ -231,7 +231,7 @@ class HomeController extends Controller
                                 $serviceFilter[]=$x -> id;
                             }
                             if (count(array_intersect($servicesQuery, $serviceFilter)) == count($servicesQuery)) {
-                                $apartments[]=$toFilterApartment;
+                                $apartmentsNotSponsored[]=$toFilterApartment;
                                 // echo ' esiste';
                             }
                     

@@ -13,14 +13,14 @@ class DeletePromotion1 extends Command
      *
      * @var string
      */
-    protected $signature = 'command:deletepromo24hours';
+    protected $signature = 'command:deletepromo';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Delete the promo after 24 hours';
+    protected $description = 'Delete the promo after 24 or 72 or 144 hours';
 
     /**
      * Create a new command instance.
@@ -40,16 +40,33 @@ class DeletePromotion1 extends Command
     public function handle()
     {
         //echo Carbon::now()->addDay(1);
-        
         $apartments = Apartment::all();
         foreach ($apartments as $apartment) { 
 
-            if($apartment -> sponsored == 1) {
-                if(Carbon::parse($apartment -> startDaySponsor) -> addDay(1) < Carbon::now() ) {
-                    $apartment -> sponsored = 0;
-                    $apartment->update();
-                }
+            switch($apartment -> sponsored) {
+
+                case 1:
+                    if(Carbon::parse($apartment -> startDaySponsor) -> addDay(1) < Carbon::now() ) {
+                        $apartment -> sponsored = 0;
+                        $apartment->update();
+                    }
+                break;
+                case 2:
+                    if(Carbon::parse($apartment -> startDaySponsor) -> addDay(3) < Carbon::now() ) {
+                        $apartment -> sponsored = 0;
+                        $apartment->update();
+                    }
+                break;
+                case 3;
+                    if(Carbon::parse($apartment -> startDaySponsor) -> addDay(6) < Carbon::now() ) {
+                        $apartment -> sponsored = 0;
+                        $apartment->update();
+                    }
+                break;
             }
+
         }
+
+
     }
 }

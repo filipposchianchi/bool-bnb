@@ -32,7 +32,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $apartments = Apartment::orderBy('id', 'DESC') -> get();
+        $apartments = Apartment::orderBy('id', 'DESC') -> where('sponsored', '>' ,'0') -> get();
+        // dd($apartments);
         $services = Service::all();
 
         return view('home', compact('apartments','services'));
@@ -197,28 +198,53 @@ class HomeController extends Controller
         ->havingRaw("distance < ?", [$radius])
         ->orderBy('distance', 'ASC')->get();
         
-        $apartments=[];
+        $apartmentsSponsored=[];
+        $apartmentsNotSponsored=[];
         foreach ($toFilterApartments as $toFilterApartment) {
-            if (( $toFilterApartment->roomNum >= $roomNum)&&($toFilterApartment->bedNum >= $bedNum)) {
-                if (!$servicesQuery == 0) {
-                    $servicesQuery = $request -> get('services');
+            if ($toFilterApartment -> sponsored > 0) {
+                if (( $toFilterApartment->roomNum >= $roomNum)&&($toFilterApartment->bedNum >= $bedNum)) {
+                    if (!$servicesQuery == 0) {
+                        $servicesQuery = $request -> get('services');
+                        
+                            $serviceFilter=[];
+                            foreach ($toFilterApartment-> services as $x) {
+                                $serviceFilter[]=$x -> id;
+                            }
+                            if (count(array_intersect($servicesQuery, $serviceFilter)) == count($servicesQuery)) {
+                                $apartments[]=$toFilterApartment;
+                                // echo ' esiste';
+                            }
                     
-                        $serviceFilter=[];
-                        foreach ($toFilterApartment-> services as $x) {
-                            $serviceFilter[]=$x -> id;
-                        }
-                        if (count(array_intersect($servicesQuery, $serviceFilter)) == count($servicesQuery)) {
-                            $apartments[]=$toFilterApartment;
-                            // echo ' esiste';
-                        }
-                
-                        // </script>";
-                }else {
-                    $apartments[]=$toFilterApartment;   
+                            // </script>";
+                    }else {
+                        $apartmentsSponsored[]=$toFilterApartment;   
+                    }
                 }
             }
+            else {
+                if (( $toFilterApartment->roomNum >= $roomNum)&&($toFilterApartment->bedNum >= $bedNum)) {
+                    if (!$servicesQuery == 0) {
+                        $servicesQuery = $request -> get('services');
+                        
+                            $serviceFilter=[];
+                            foreach ($toFilterApartment-> services as $x) {
+                                $serviceFilter[]=$x -> id;
+                            }
+                            if (count(array_intersect($servicesQuery, $serviceFilter)) == count($servicesQuery)) {
+                                $apartments[]=$toFilterApartment;
+                                // echo ' esiste';
+                            }
+                    
+                            // </script>";
+                    }else {
+                        $apartmentsNotSponsored[]=$toFilterApartment;   
+                    }
+                }
+            }
+
+            
         }
-        return view('crud.radius-apartment', compact('apartments','services','address'));
+        return view('crud.radius-apartment', compact('apartmentsSponsored','apartmentsNotSponsored','services','address'));
     }
 
     public function storeMessage(Request $request, $id) {

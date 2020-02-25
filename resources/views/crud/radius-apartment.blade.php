@@ -46,9 +46,9 @@
 
         
 
-        <div class="container">
+        <div class="">
             <div class="row p-5 justify-content-center">
-                @if($apartments == null)
+                @if(($apartmentsSponsored == null) && ($apartmentsNotSponsored == null) )
                     <div class="row align-items-center justify-content-center mt-3">
                         <div class="col-8 text-center">
 
@@ -61,10 +61,28 @@
                     </div>
                     
                 @else
-                    <div class="card-deck">
-                        @foreach ($apartments as $apartment)
-                            <div class="col-sm-12 col-md-10 apartment">
-                                <div class="box mx-3 card mb-3 ">
+                    <div class="card-deck ">
+                        {{-- if sponsored --}}
+                        @foreach ($apartmentsSponsored as $apartment)
+                            <div class=" col-sm-12 col-md-4 apartment">
+                                <div class="{{ ($apartment -> sponsored > 0) ? "sponsored" : "" }} box mx-3 card mb-3 ">
+                                    <a class="m-3" href="{{route('apartmentShow', $apartment -> id)}}">
+                                        <img src="{{asset('images/'.$apartment -> image)}}" class="card-img-top imgstyle" alt="..." style="height: 25rem;">
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{$apartment -> title}}</h5>
+                                            <p class="card-text ">{{$apartment -> address}}</p>
+                                        </div>
+                                        
+                                    </a>
+                                </div>
+                            </div>
+                        @endforeach
+
+
+                        {{-- if not sponsored --}}
+                        @foreach ($apartmentsNotSponsored as $apartment)
+                            <div class=" col-sm-12 col-md-4 apartment">
+                                <div class="{{ ($apartment -> sponsored > 0) ? "sponsored" : "" }} box mx-3 card mb-3 ">
                                     <a class="m-3" href="{{route('apartmentShow', $apartment -> id)}}">
                                         <img src="{{asset('images/'.$apartment -> image)}}" class="card-img-top imgstyle" alt="..." style="height: 25rem;">
                                         <div class="card-body">

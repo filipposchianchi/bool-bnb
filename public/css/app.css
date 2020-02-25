@@ -16899,6 +16899,10 @@ a.text-dark:focus {
   background-attachment: fixed;
 }
 
+.sponsored {
+  background-color: rgba(255, 0, 0, 0.199);
+}
+
 #addressList {
   position: relative;
 }

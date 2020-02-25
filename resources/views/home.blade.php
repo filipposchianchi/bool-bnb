@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="container-fluid">
+    {{-- ROW RICERCA --}}
     <div class="row">
         <div class="hero col-md-12">
             <div class="row align-items-center">
@@ -47,13 +48,15 @@
             </div>
         </div>
     </div>
+    {{-- APPARTAMENTI IN EVIDENZA --}}
     <div class="row justify-content-center mt-4 p-5">
         <div class="col-md-12 mt-3">
             <h1 class="text-center mb-5">Appartamenti in evidenza:</h1>
                 <div class="row flex-nowrap apartments">
                     @foreach ($apartments as $apartment)
+                    {{-- APARTAMENTO --}}
                         <div class="col-sm-12 col-md-4 apartment">
-                            <div class="box mx-3 card mb-3 ">
+                            <div class="box mx-3 card mb-3 testclass">
                                 <a class="m-3" href="{{route('apartmentShow', $apartment -> id)}}">
                                     <img src="{{asset('images/'.$apartment -> image)}}" class="card-img-top imgstyle" alt="..." style="height: 20rem;">
                                     <div class="card-body">

@@ -7,6 +7,7 @@ use App\User;
 use App\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+// use Illuminate\Pagination\LengthAwarePaginator;
 use GuzzleHttp\Client;
 use Carbon\Carbon;
 use Session;
@@ -244,7 +245,12 @@ class HomeController extends Controller
 
             
         }
-        return view('crud.radius-apartment', compact('apartmentsSponsored','apartmentsNotSponsored','services','address'));
+        $apartments=array_merge($apartmentsSponsored, $apartmentsNotSponsored);
+        // $aparments = $apartments -> forPage(10,5);
+        // whatever is the result of your query that you wish to paginate.
+        $apartments = [];
+        // dd($paginator);
+        return view('crud.radius-apartment', compact('apartments','apartmentsSponsored','apartmentsNotSponsored','services','address'));
     }
 
     public function storeMessage(Request $request, $id) {

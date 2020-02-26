@@ -42,7 +42,7 @@
         </div>
         
 
-        <div class="container text-center p-5 w-50">
+        <div class="container text-center w-50">
             <h2>Appartamenti in evidenza</h2>
             <div id="myCarousel" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">

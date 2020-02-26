@@ -42,28 +42,30 @@
         </div>
         
 
-        <div class="row text-center w-50 mt-3">
+        <div class="row justify-content-center mt-3">
             <h2>Appartamenti in evidenza</h2>
+        </div>
+        <div class="row justify-content-center">
             <div id="myCarousel" class="col-md-6 carousel slide" data-ride="carousel">
                 {{-- <ol class="carousel-indicators">
                     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                 </ol> --}}
                 <div class="carousel-inner">
                     @foreach($apartmentsAdvert as $key => $apartment)
-                        <div class="carousel-item {{$key == 0 ? 'active' : '' }}">  
-                            <div class="box mx-3 card mb-3 testclass">
-                                <a class="m-3" href="{{route('apartmentShow', $apartment -> id)}}">
-                                    <img src="{{asset('images/'.$apartment -> image)}}" class="card-img-top imgstyle" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title">{{$apartment -> title}}</h5>
-                                        <p class="card-text ellipsis">{{$apartment -> address}}</p>
-                                    </div>
-                                    <div class="card-footer">
-                                        <small class="text-muted">Aggiunto : {{$apartment -> created_at}}</small>
-                                    </div>
-                                </a>
-                            </div>
+                    <div class="carousel-item {{$key == 0 ? 'active' : '' }}">  
+                        <div class="box mx-3 card mb-3 testclass">
+                            <a class="m-3" href="{{route('apartmentShow', $apartment -> id)}}">
+                                <img src="{{asset('images/'.$apartment -> image)}}" class="card-img-top imgstyle" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{$apartment -> title}}</h5>
+                                    <p class="card-text ellipsis">{{$apartment -> address}}</p>
+                                </div>
+                                <div class="card-footer">
+                                    <small class="text-muted">Aggiunto : {{$apartment -> created_at}}</small>
+                                </div>
+                            </a>
                         </div>
+                    </div>
                     @endforeach
                 </div>
                 <a class="carousel-control-prev" href="#myCarousel" role="button"  data-slide="prev">

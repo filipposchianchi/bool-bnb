@@ -97,7 +97,7 @@
         <footer class="mt-5">
             <div class="container">
                 <div class="row justify-content-center faqs">
-                    <div class="col-xs-6 col-md-3">
+                    <div class="col-6 col-md-3">
                         <p><b>Airbnb</b></p>
                         <ul class="list-unstyled">
                             <li><a href=""> Opportunità di lavoro </a></li>
@@ -108,7 +108,7 @@
                             <li><a href=""> Informazioni di contatto </a></li>
                         </ul>
                     </div>
-                    <div class="col-xs-6 col-md-3">
+                    <div class="col-6 col-md-3">
                         <p><b>Scopri</b></p>
                         <ul class="list-unstyled">
                             <li><a href=""> Affidabilità e sicurezza </a></li>
@@ -119,7 +119,7 @@
                             <li><a href=""> Airbnbmag </a></li>
                         </ul>
                     </div>
-                    <div class="col-xs-6 col-md-3">
+                    <div class="col-6 col-md-3">
                         <p><b>Ospita</b></p>
                         <ul class="list-unstyled">
                             <li><a href=""> Perché affittare </a></li>
@@ -130,7 +130,7 @@
                             <li><a href=""> Open Homes </a></li>
                         </ul>
                     </div>
-                    <div class="col-xs-6 col-md-3">
+                    <div class="col-6 col-md-3">
                         <p><b>Assistenza</b></p>
                         <ul class="list-unstyled">
                             <li><a href=""> Aiuto </a></li>

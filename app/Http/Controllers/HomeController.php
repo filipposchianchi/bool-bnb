@@ -36,7 +36,7 @@ class HomeController extends Controller
         $apartments = Apartment::orderBy('id', 'DESC') -> where('sponsored', '>' ,'0') -> get();
         // dd($apartments);
         $services = Service::all();
-
+        // dd($apartments);
         return view('home', compact('apartments','services'));
     }
 

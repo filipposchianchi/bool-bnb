@@ -245,11 +245,10 @@ class HomeController extends Controller
 
             
         }
-        $apartments=array_merge($apartmentsSponsored, $apartmentsNotSponsored);
+        $apartments = array_merge($apartmentsSponsored, $apartmentsNotSponsored);
         // $aparments = $apartments -> forPage(10,5);
         // whatever is the result of your query that you wish to paginate.
-        $apartments = [];
-        // dd($paginator);
+        // dd($apartments);
         return view('crud.radius-apartment', compact('apartments','apartmentsSponsored','apartmentsNotSponsored','services','address'));
     }
 

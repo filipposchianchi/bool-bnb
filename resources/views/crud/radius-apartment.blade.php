@@ -45,25 +45,27 @@
         <div class="container text-center w-50">
             <h2>Appartamenti in evidenza</h2>
             <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
+                {{-- <ol class="carousel-indicators">
                     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                </ol>
+                </ol> --}}
                 <div class="carousel-inner">
                     @foreach($apartments as $key => $apartment)
-                    <div class="carousel-item {{$key == 0 ? 'active' : '' }}">  
-                        <div class="box mx-3 card mb-3 testclass">
-                            <a class="m-3" href="{{route('apartmentShow', $apartment -> id)}}">
-                                <img src="{{asset('images/'.$apartment -> image)}}" class="card-img-top imgstyle" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">{{$apartment -> title}}</h5>
-                                    <p class="card-text ellipsis">{{$apartment -> address}}</p>
-                                </div>
-                                <div class="card-footer">
-                                    <small class="text-muted">Aggiunto : {{$apartment -> created_at}}</small>
-                                </div>
-                            </a>
+                    @if ($apartment -> sponsored > 0)
+                        <div class="carousel-item {{$key == 0 ? 'active' : '' }}">  
+                            <div class="box mx-3 card mb-3 testclass">
+                                <a class="m-3" href="{{route('apartmentShow', $apartment -> id)}}">
+                                    <img src="{{asset('images/'.$apartment -> image)}}" class="card-img-top imgstyle" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{$apartment -> title}}</h5>
+                                        <p class="card-text ellipsis">{{$apartment -> address}}</p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <small class="text-muted">Aggiunto : {{$apartment -> created_at}}</small>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
-                    </div>
+                    @endif
                     @endforeach
                 </div>
                 <a class="carousel-control-prev" href="#myCarousel" role="button"  data-slide="prev">
@@ -79,7 +81,7 @@
 
         <div class="p-2">
             <div class="row p-5 justify-content-center">
-                @if(($apartmentsSponsored == null) && ($apartmentsNotSponsored == null) )
+                @if($apartments == null )
                     <div class="row align-items-center justify-content-center mt-3">
                         <div class="col-8 text-center">
 

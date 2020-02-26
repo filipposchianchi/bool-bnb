@@ -42,9 +42,9 @@
         </div>
         
 
-        <div class="container text-center w-50">
+        <div class="row text-center w-50 mt-3">
             <h2>Appartamenti in evidenza</h2>
-            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <div id="myCarousel" class="col-md-6 carousel slide" data-ride="carousel">
                 {{-- <ol class="carousel-indicators">
                     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                 </ol> --}}
@@ -77,7 +77,7 @@
             </div>
         </div>
 
-        <div class="p-2">
+        <div class="container p-2">
             <div class="row p-5 justify-content-center">
                 @if($apartments == null )
                     <div class="row align-items-center justify-content-center mt-3">
@@ -92,11 +92,14 @@
                     </div>
                     
                 @else
-                    <div class="card-deck d-flex justify-content-center align-items-center  flex-wrap">
-                        {{-- if sponsored --}}
-                        @foreach ($apartments as $apartment)
+                    <div >
+
+                        <h2 class="text-center">Risultati ricerca</h2>
+                        <div class=" card-deck d-flex justify-content-center align-items-center  flex-wrap">
+                            {{-- if sponsored --}}
+                            @foreach ($apartments as $apartment)
                             <div class="apartment col-xs-12">
-                                <div class="{{ ($apartment -> sponsored > 0) ? "sponsored" : "" }} box mx-3 card mb-3 " style="height: 22rem; width:23rem"  >
+                                <div class="{{ ($apartment -> sponsored > 0) ? "sponsored" : "" }} box mx-3 card mb-3 " style="width:23rem"  >
                                     <a class="m-3" href="{{route('apartmentShow', $apartment -> id)}}">
                                         <img src="{{asset('images/'.$apartment -> image)}}" class="card-img-top imgstyle w-100" alt="..." ">
                                         <div class="card-body">
@@ -107,8 +110,9 @@
                                     </a>
                                 </div>
                             </div>
-                        @endforeach
-
+                            @endforeach
+                            
+                        </div>
                     </div>
                 @endif
                 

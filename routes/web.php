@@ -21,20 +21,20 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@userApartments')->name('user') ->middleware('auth');
 Route::get('/apartment/{id}', 'HomeController@showApartments')->name('apartmentShow');
 
-Route::get('/apartment/edit/{id}', 'HomeController@editApartment')->name('apartment.edit');
-Route::post('/apartment/update/{id}', 'HomeController@updateApartment')->name('apartment.update');
+Route::get('/apartment/edit/{id}', 'HomeController@editApartment')->name('apartment.edit')->middleware('auth');
+Route::post('/apartment/update/{id}', 'HomeController@updateApartment')->name('apartment.update')->middleware('auth');
 
 Route::post('/apartments/store/', 'HomeController@storeApartments')->name('apartment.store');
 Route::get('/apartments/create/', 'HomeController@createApartment')->name('apartment.create')->middleware('auth');
 
-Route::get('/apartments/delete/{id}', 'HomeController@deleteApartment')->name('apartment.delete');
+Route::get('/apartments/delete/{id}', 'HomeController@deleteApartment')->name('apartment.delete')->middleware('auth');
 
 
 // Route::get('/apartments/test/{id}', 'HomeController@searchAddress')->name('apartment.test');
 
 // sponsor RF8
-Route::get('/apartment/{id}/sponsor', 'HomeController@sponsorApartment')->name('apartment.sponsor');
-Route::post('/apartment/{id}/sponsor/process', 'HomeController@processApartment')->name('apartment.process');
+Route::get('/apartment/{id}/sponsor', 'HomeController@sponsorApartment')->name('apartment.sponsor')->middleware('auth');
+Route::post('/apartment/{id}/sponsor/process', 'HomeController@processApartment')->name('apartment.process')->middleware('auth');
 
 // search route rf3
 Route::post('/search-apartment', 'HomeController@searchRadiusApartment')->name('apartment.search');
@@ -45,13 +45,13 @@ Route::post('/autocomplete/fetch', 'TomtomController@fetch')->name('autocomplete
 
 
 
-
+// route messaggio
 Route::post('/message/store/apartment{id}', 'HomeController@storeMessage')->name('message.store');
  
 //rotta per statistiche singolo appartamento
 // Route::get('/apartment{id}/charts', 'HomeController@chartsApartment')->name('apartment.charts');
 
 // rotta per statische generali appartamenti
-Route::get('/apartments/charts', 'HomeController@generalChartsApartments')->name('apartments.generalCharts');
+Route::get('/apartments/charts', 'HomeController@generalChartsApartments')->name('apartments.generalCharts')->middleware('auth');
 
 

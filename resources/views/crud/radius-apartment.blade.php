@@ -42,7 +42,40 @@
         </div>
         
 
-        
+        <div class="container text-center p-5 w-50">
+            <h2>Appartamenti in evidenza</h2>
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                </ol>
+                <div class="carousel-inner">
+                    @foreach($apartmentsSponsored as $key => $apartment)
+                    <div class="carousel-item {{$key == 0 ? 'active' : '' }}">  
+                        <div class="box mx-3 card mb-3 testclass">
+                            <a class="m-3" href="{{route('apartmentShow', $apartment -> id)}}">
+                                <img src="{{asset('images/'.$apartment -> image)}}" class="card-img-top imgstyle" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{$apartment -> title}}</h5>
+                                    <p class="card-text ellipsis">{{$apartment -> address}}</p>
+                                </div>
+                                <div class="card-footer">
+                                    <small class="text-muted">Aggiunto : {{$apartment -> created_at}}</small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+                <a class="carousel-control-prev" href="#myCarousel" role="button"  data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true">     </span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
 
         <div class="p-2">
             <div class="row p-5 justify-content-center">

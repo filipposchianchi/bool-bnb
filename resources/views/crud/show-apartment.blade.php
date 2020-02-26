@@ -33,8 +33,13 @@
 
     </div>
     <div class="row mt-3 jutify-items-center h-50">
+        <div class="col-xs-12 col-md-6 map" >
+            <div id='map'>
+            </div>
+            
+        </div>
 
-        <div class="card col-md-6 col-xs-12 p-3">
+        <div class="card col-md-6 col-sm-12 p-3">
             <h5 class="card-title">Contatta il proprietario</h5>
 
             <form action="{{route('message.store', $apartment -> id)}}" method="post">
@@ -71,9 +76,7 @@
             </form>
 
         </div>
-        <div class="col-xs-12 col-md-6">
-            <div id='map' class=''></div>
-        </div>
+
     </div>
 </div>
 <script src='https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.47.0/maps/maps-web.min.js'></script>

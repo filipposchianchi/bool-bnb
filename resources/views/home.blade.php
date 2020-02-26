@@ -66,7 +66,7 @@
                             <div class="col-xs-12 col-md-4 apartment">
                                 <a class="" href="{{route('apartmentShow', $apartment -> id)}}">
                                     <div class="box mx-3 card mb-3">
-                                        <img src="{{asset('images/'.$apartment -> image)}}" class="card-img-top imgstyle" alt="...">
+                                        <img src="{{asset('images/'.$apartment -> image)}}" class="card-img-top card-img-sameSize" alt="...">
                                         <div class="card-body">
                                             <h5 class="card-title">{{$apartment -> title}}</h5>
                                             <p class="card-text ellipsis">{{$apartment -> address}}</p>

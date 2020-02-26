@@ -49,8 +49,7 @@
                     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                 </ol> --}}
                 <div class="carousel-inner">
-                    @foreach($apartments as $key => $apartment)
-                    @if ($apartment -> sponsored > 0)
+                    @foreach($apartmentsAdvert as $key => $apartment)
                         <div class="carousel-item {{$key == 0 ? 'active' : '' }}">  
                             <div class="box mx-3 card mb-3 testclass">
                                 <a class="m-3" href="{{route('apartmentShow', $apartment -> id)}}">
@@ -65,7 +64,6 @@
                                 </a>
                             </div>
                         </div>
-                    @endif
                     @endforeach
                 </div>
                 <a class="carousel-control-prev" href="#myCarousel" role="button"  data-slide="prev">
@@ -96,7 +94,7 @@
                 @else
                     <div class="card-deck d-flex justify-content-center align-items-center  flex-wrap">
                         {{-- if sponsored --}}
-                        @foreach ($apartmentsSponsored as $apartment)
+                        @foreach ($apartments as $apartment)
                             <div class="apartment col-xs-12">
                                 <div class="{{ ($apartment -> sponsored > 0) ? "sponsored" : "" }} box mx-3 card mb-3 " style="height: 22rem; width:23rem"  >
                                     <a class="m-3" href="{{route('apartmentShow', $apartment -> id)}}">
@@ -111,22 +109,6 @@
                             </div>
                         @endforeach
 
-
-                        {{-- if not sponsored --}}
-                        @foreach ($apartmentsNotSponsored as $apartment)
-                            <div class="apartment col-xs-12">
-                                <div class="{{ ($apartment -> sponsored > 0) ? "sponsored" : "" }} box mx-3 card mb-3 " style=" width:23rem">
-                                    <a class="m-3" href="{{route('apartmentShow', $apartment -> id)}}">
-                                        <img src="{{asset('images/'.$apartment -> image)}}" class="card-img-top imgstyle w-100" alt="..." ">
-                                        <div class="card-body">
-                                            <h5 class="card-title">{{$apartment -> title}}</h5>
-                                            <p class="card-text ">{{$apartment -> address}}</p>
-                                        </div>
-                                        
-                                    </a>
-                                </div>
-                            </div>
-                        @endforeach
                     </div>
                 @endif
                 

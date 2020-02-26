@@ -187,7 +187,8 @@ class HomeController extends Controller
         $roomNum = $request->get('roomNum');
         $bedNum = $request->get('bedNum');
         $servicesQuery = $request -> validate(["services"=>'nullable|array']);
-
+        $apartmentsAdvert = Apartment::where('sponsored','>',0)->get();
+        // dd($apartmentsAdvert);
         $toFilterApartments = Apartment::select('apartments.*')
         // $apartments = Apartment::select('apartments.*')
         ->selectRaw('( 6371 * acos( cos( radians(?) ) *
@@ -249,7 +250,7 @@ class HomeController extends Controller
         // $aparments = $apartments -> forPage(10,5);
         // whatever is the result of your query that you wish to paginate.
         // dd($apartments);
-        return view('crud.radius-apartment', compact('apartments','apartmentsSponsored','apartmentsNotSponsored','services','address'));
+        return view('crud.radius-apartment', compact('apartmentsAdvert','apartments','services','address'));
     }
 
     public function storeMessage(Request $request, $id) {

@@ -49,7 +49,7 @@
                     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                 </ol>
                 <div class="carousel-inner">
-                    @foreach($apartmentsSponsored as $key => $apartment)
+                    @foreach($apartments as $key => $apartment)
                     <div class="carousel-item {{$key == 0 ? 'active' : '' }}">  
                         <div class="box mx-3 card mb-3 testclass">
                             <a class="m-3" href="{{route('apartmentShow', $apartment -> id)}}">
@@ -113,7 +113,7 @@
                         {{-- if not sponsored --}}
                         @foreach ($apartmentsNotSponsored as $apartment)
                             <div class="apartment col-xs-12">
-                                <div class="{{ ($apartment -> sponsored > 0) ? "sponsored" : "" }} box mx-3 card mb-3 " style="height: 22rem; width:23rem">
+                                <div class="{{ ($apartment -> sponsored > 0) ? "sponsored" : "" }} box mx-3 card mb-3 " style=" width:23rem">
                                     <a class="m-3" href="{{route('apartmentShow', $apartment -> id)}}">
                                         <img src="{{asset('images/'.$apartment -> image)}}" class="card-img-top imgstyle w-100" alt="..." ">
                                         <div class="card-body">

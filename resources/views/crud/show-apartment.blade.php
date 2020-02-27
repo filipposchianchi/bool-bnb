@@ -82,6 +82,11 @@
 <script src='https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.47.0/maps/maps-web.min.js'></script>
 {{-- <script type='text/javascript' src='../assets/js/mobile-or-tablet.js'></script> --}}
 <script>
+    var msg = '{{Session::get('msg')}}';
+    var exist = '{{Session::has('alert')}}';
+    if(exist){
+        alert(msg);
+    }
     // tt.setProductInfo('<your-product-name>', '<your-product-version>');
         var map = tt.map({
             key: 'yfpz8kRCWBBiIF0WZOIZLdtsH2DhAfBG',

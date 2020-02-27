@@ -16,7 +16,7 @@
                                 @endif
                         </h1>
                         <p>
-                            Per adesso non hai nessun appartamento, vuoi eserirne una?
+                            Per adesso non hai nessun appartamento, vuoi inserirne uno?
                         </p>
                         <a class="btn btn-primary" href="{{route("apartment.create")}}" role="button">Inserisci un appartamento</a>
                     </div>
@@ -29,27 +29,31 @@
                         <h2>Inbox</h2>
                     </div>
                     <div class="col-12 messages mt-4">
+                        <p id="msgCounter"></p>
                         @foreach ($apartments as $apartment)
-                        @if (!$apartment -> messages ->count() == 0)
-                            <p class="text-center mb-3">Nome Appartamento:<b> {{$apartment->title}}</b></p>
-                            @foreach ($apartment -> messages as $message)
-                            <div class="apartmentMsg row p-3 align-items-center">
-                                <div class="col-4">
-                                    {{-- <strong><strong>{{$apartment->title}} {{$apartment->id}} </strong></strong> --}}
-                                    <a href="{{route('apartmentShow', $apartment -> id)}}" class="w-100">
-                                        <img src="{{asset('images/'.$apartment -> image)}}" alt="aparment logo" style="width:100%">
-                                    </a>
+                            @if (!$apartment -> messages ->count() == 0)
+                                <p class="text-center mb-3">Nome Appartamento:<b> {{$apartment->title}}</b></p>
+                                @foreach ($apartment -> messages as $message)
+                                <div class="apartmentMsg row p-3 align-items-center">
+                                    <div class="col-4">
+                                        {{-- <strong><strong>{{$apartment->title}} {{$apartment->id}} </strong></strong> --}}
+                                        <a href="{{route('apartmentShow', $apartment -> id)}}" class="w-100">
+                                            <img src="{{asset('images/'.$apartment -> image)}}" alt="aparment logo" style="width:100%">
+                                        </a>
+                                    </div>
+                                    <div class="col-8 ">
+                                        <p>Da: {{$message->email}} </p>
+                                        <p>Titolo: {{$message->title}} [{{$message->id}}] </p>
+                                        <p>Messaggio: {{$message->body}} </p>
+                                    </div>
                                 </div>
-                                <div class="col-8 ">
-                                    <p>Da: {{$message->email}} </p>
-                                    <p>Titolo: {{$message->title}} [{{$message->id}}] </p>
-                                    <p>Messaggio: {{$message->body}} </p>
-                                </div>
-                            </div>
-                            @endforeach
-                        @else
-                            {{-- <p>0 messaggi</p> --}}
-                        @endif
+                                @endforeach
+                            @else
+                            <script>
+                                var apartmentsMsgCheck = false; 
+                            </script>
+                            @endif
+                        
                         @endforeach
                     </div>
                 </div>
@@ -104,4 +108,9 @@
             
         
     </div>
+    <script>
+        if (!apartmentsMsgCheck) {
+            $('#msgCounter').html('Non hai ancora ricevuto messaggi');
+        }
+    </script>
 @endsection

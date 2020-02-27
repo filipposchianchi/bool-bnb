@@ -269,7 +269,7 @@ class HomeController extends Controller
         Session::flash('msg', 'Email inviata'); 
         Session::flash('alert-class', 'alert-danger');
 
-        return redirect() -> route('apartmentShow', compact('id'));
+        return redirect() -> route('apartmentShow', compact('id'))->with('alert', 'Deleted!');
     }
 
     public function chartsApartment($id){

@@ -70,7 +70,7 @@
                                         <div class="card-body">
                                             <h5 class="card-title">{{$apartment -> title}}</h5>
                                             <p class="card-text ellipsis">{{$apartment -> address}}</p>
-                                            <p class="card-text"><small class="text-muted">Aggiunto : {{$apartment -> created_at->format('d-m-Y')}}</small></p>
+                                            <p class="card-text"><small class="text-muted">Aggiunto il: {{$apartment -> created_at->format('d-m-Y')}}</small></p>
                                         </div>
                                     </div>
                                 </a>
@@ -84,7 +84,7 @@
     @else
         <div class="row justify-content-center align-items-center p-5" style="height:50vh">
             <div class="col-6 text-center">
-                <h2>Nessuno appartamento in evidenza</h2>
+                <h2>Nessun appartamento in evidenza</h2>
             </div>
         </div>
     @endif

@@ -29,7 +29,7 @@
                                 <input type="number" name="bedNum" id="" class="form-control" autocomplete="off" value ="1"/>
                             </div>
                             <div class="col-4">
-                                <label for="address">Radius in km:</label>
+                                <label for="address">Area di ricerca(km):</label>
                                 <input type="number" name="radius" id="radius" class="form-control" value ="20"autocomplete="off"/>
                             </div>
                         </div>
@@ -55,31 +55,39 @@
         </div>
     </div>
     {{-- APPARTAMENTI IN EVIDENZA --}}
-    <div class="row justify-content-center mt-4 p-5">
-        <div class="col-md-12 mt-3">
-            <h1 class="text-center mb-5">Appartamenti in evidenza:</h1>
-                <div class="row flex-nowrap apartments">
-                    
-                    {{-- APPARTAMENTO --}}
-                    @foreach ($apartments as $apartment)
-                        <div class="col-sm-12 col-md-4 apartment">
-                            <div class="box mx-3 card mb-3 testclass">
-                                <a class="m-3" href="{{route('apartmentShow', $apartment -> id)}}">
-                                    <img src="{{asset('images/'.$apartment -> image)}}" class="card-img-top imgstyle" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title">{{$apartment -> title}}</h5>
-                                        <p class="card-text ellipsis">{{$apartment -> address}}</p>
-                                    </div>
-                                    <div class="card-footer">
-                                        <small class="text-muted">Aggiunto : {{$apartment -> created_at}}</small>
+    @if (!count($apartments) == 0)
+        <div class="row justify-content-center mt-4 py-5 px-1">
+            <div class="col-md-12 mt-3">
+                <h1 class="text-center mb-5">Appartamenti in evidenza:</h1>
+                    <div class="row flex-nowrap apartments px-3">
+                        
+                        {{-- APPARTAMENTO --}}
+                        @foreach ($apartments as $apartment)
+                            <div class="col-xs-12 col-md-4 apartment">
+                                <a class="" href="{{route('apartmentShow', $apartment -> id)}}">
+                                    <div class="box mx-3 card mb-3">
+                                        <img src="{{asset('images/'.$apartment -> image)}}" class="card-img-top card-img-sameSize" alt="...">
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{$apartment -> title}}</h5>
+                                            <p class="card-text ellipsis">{{$apartment -> address}}</p>
+                                            <p class="card-text"><small class="text-muted">Aggiunto il: {{$apartment -> created_at->format('d-m-Y')}}</small></p>
+                                        </div>
                                     </div>
                                 </a>
                             </div>
-                        </div>
-                    @endforeach
-                </div>
-            
+                        @endforeach
+                    </div>
+                
+            </div>
         </div>
-    </div>
+        
+    @else
+        <div class="row justify-content-center align-items-center p-5" style="height:50vh">
+            <div class="col-6 text-center">
+                <h2>Nessun appartamento in evidenza</h2>
+            </div>
+        </div>
+    @endif
+    
 </div>
 @endsection

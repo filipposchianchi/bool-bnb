@@ -49367,7 +49367,7 @@ function ajaxCall(query) {
 }
 
 function addressClick() {
-  $(document).on("click", "li", function () {
+  $("form").on("click", "li", function () {
     $("#latitude").val($(this).data("lat"));
     $("#longitude").val($(this).data("lon"));
     $("#address").val($(this).text());

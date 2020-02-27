@@ -186,6 +186,8 @@ class HomeController extends Controller
         $lon = $request->get('longitude');
         $roomNum = $request->get('roomNum');
         $bedNum = $request->get('bedNum');
+        $searchParam = [$address, $radius, $lat, $lon, $roomNum, $bedNum];
+
         $servicesQuery = $request -> validate(["services"=>'nullable|array']);
         $apartmentsAdvert = Apartment::where('sponsored','>',0)->get();
         // dd($apartmentsAdvert);
@@ -250,7 +252,7 @@ class HomeController extends Controller
         // $aparments = $apartments -> forPage(10,5);
         // whatever is the result of your query that you wish to paginate.
         // dd($apartments);
-        return view('crud.radius-apartment', compact('apartmentsAdvert','apartments','services','address'));
+        return view('crud.radius-apartment', compact('servicesQuery','searchParam','apartmentsAdvert','apartments','services','address'));
     }
 
     public function storeMessage(Request $request, $id) {

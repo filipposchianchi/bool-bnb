@@ -16915,6 +16915,82 @@ a.text-dark:focus {
   background-color: rgba(255, 0, 0, 0.199);
 }
 
+.dimension {
+  width: 80%;
+  height: 100%;
+}
+
+.freccia-destra {
+  font-size: 30px;
+  position: absolute;
+  top: 190px;
+  left: 55px;
+}
+
+.freccia-sinistra {
+  font-size: 30px;
+  position: absolute;
+  top: 190px;
+  right: 55px;
+}
+
+.altezza {
+  height: 400px;
+}
+
+.float {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 30px;
+  right: 30px;
+  background-color: #6cb2eb;
+  color: #fff;
+  border-radius: 50px;
+  text-align: center;
+  box-shadow: 2px 2px 2px #999;
+}
+
+.my-float {
+  margin-top: 22px;
+}
+
+/* On screens that are px wide or less, go from four columns to two columns */
+
+@media screen and (max-width: 1800px) {
+  a {
+    width: 80%;
+    height: 50%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  a {
+    width: 80%;
+    height: 40%;
+  }
+}
+
+@media screen and (min-width: 1300px) {
+  .freccia-destra {
+    font-size: 30px;
+    position: absolute;
+    top: 230px;
+    left: 80px;
+  }
+
+  .freccia-sinistra {
+    font-size: 30px;
+    position: absolute;
+    top: 230px;
+    right: 80px;
+  }
+
+  .altezza {
+    min-height: 450px;
+  }
+}
+
 #addressList {
   position: relative;
 }

@@ -88,7 +88,7 @@
       <img src="https://staticmapmaker.com/img/google@2x.png" alt="" class="w-100 h-100" style="filter: grayscale(100%)">
     </div>
     <div class="col-md-6">
-      <img id="blah" src="https://cdn0.iconfinder.com/data/icons/photography-11/400/camera-photo-settings-photography-setting-tool-tools-digital-reflex_169-512.png" alt="your image" class="img-fluid"/>
+      <img id="blah" src="https://cdn0.iconfinder.com/data/icons/photography-11/400/camera-photo-settings-photography-setting-tool-tools-digital-reflex_169-512.png" alt="your image" class="img-fluid w-100" />
     </div>
   </div>
 </div>

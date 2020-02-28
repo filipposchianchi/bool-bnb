@@ -4,7 +4,7 @@
     <div class="container-fluid mt-2">
         {{-- DIV MESSAGES --}}
         @if (count($apartments) == 0)
-            <div class="container-fluid my-5  welcomeUser">
+            <div class="container-fluid  welcomeUser">
                 <div class="row justify-content-center align-items-center" style="height: 80vh">
                     <div class="col-md-5 text-center p-5" style="background: white; border-radius: 0.6rem">
                         <h1>
@@ -77,7 +77,7 @@
                             <div class="messages">
                                 @if (!$apartment -> messages ->count() == 0)
                                     @foreach ($apartment-> messages as $message)
-                                        <div class="col-8 ">
+                                        <div class="col border">
                                             <p>Da: {{$message->email}} </p>
                                             <p>Titolo: {{$message->title}} [{{$message->id}}] </p>
                                             <p>Messaggio: {{$message->body}} </p>

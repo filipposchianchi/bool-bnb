@@ -6,7 +6,7 @@
         @if (count($apartments) == 0)
             <div class="container-fluid my-5  welcomeUser">
                 <div class="row justify-content-center align-items-center" style="height: 80vh">
-                    <div class="col-md-6 text-center p-4" style="background: white; border-radius: 0.6rem">
+                    <div class="col-md-5 text-center p-5" style="background: white; border-radius: 0.6rem">
                         <h1>
                             Benvenuto 
                                 @if (!Auth::user()->name ==null )

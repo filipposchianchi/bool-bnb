@@ -17011,6 +17011,7 @@ a.text-dark:focus {
 
 #map div canvas {
   position: relative !important;
+  height: 450px;
 }
 
 body * {

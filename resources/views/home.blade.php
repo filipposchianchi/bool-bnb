@@ -4,8 +4,8 @@
 <div class="container-fluid">
     {{-- ROW RICERCA --}}
     <div class="row">
-        <div class="hero col-md-12  h-100">
-            <div class="row align-items-center">
+        <div class="col-md-12  h-100">
+            <div class="hero row align-items-center" style="min-height:80vh">
                 <div class="col-md-4 heroSearch p-3 m-5">
                     <h3>
                         <b> Prenota alloggi unici</b>

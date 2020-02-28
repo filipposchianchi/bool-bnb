@@ -16898,7 +16898,7 @@ a.text-dark:focus {
 }
 
 .messages {
-  max-height: 20rem;
+  max-height: 10rem;
   overflow-y: auto;
 }
 

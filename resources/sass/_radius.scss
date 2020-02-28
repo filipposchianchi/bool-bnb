@@ -48,19 +48,19 @@
     margin-top: 22px;
 }
 /* On screens that are px wide or less, go from four columns to two columns */
-@media screen and (max-width: 1800px) {
-    a {
-        width: 80%;
-        height: 50%;
-    }
-}
+// @media screen and (max-width: 1800px) {
+//     a {
+//         width: 80%;
+//         height: 50%;
+//     }
+// }
 
-@media screen and (max-width: 600px) {
-    a {
-        width: 80%;
-        height: 40%;
-    }
-}
+// @media screen and (max-width: 600px) {
+//     a {
+//         width: 80%;
+//         height: 40%;
+//     }
+// }
 @media screen and (min-width: 1300px) {
     .freccia-destra {
         font-size: 30px;

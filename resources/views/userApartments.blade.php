@@ -24,7 +24,7 @@
             </div>
         @else
             <div class="container">
-                <div class="row p-3 justify-items-center" >
+                <div class="row p-3 justify-items-center text-center" >
                     <div class="col text-center">
                         <h2>Inbox</h2>
                     </div>
@@ -58,12 +58,14 @@
                     </div>
                 </div>
     
-                <div class="row justify-content-around align-items-around my-3">
-                    <div class="col-xs-12 text-center">
-                        <h2>Appartamenti:</h2>
+                <div class="row justify-content-center p-5 text-center">
+                    <div class="col-md-6">
+                        <h2>
+                            Lista appartamenti
+                        </h2>
                     </div>
-                    <div class="col-xs-12 text-center">
-                        <a class="btn btn-success" href="{{route("apartment.create")}}" role="button">Inserisci un nuovo appartamento</a>
+                    <div class="col-md-5">
+                        <a class="btn btn-primary" href="{{route("apartment.create")}}">Inserisci un nuovo&nbspappartamento</a>
                     </div>
                 </div>
                 @foreach ($apartments as $apartment)

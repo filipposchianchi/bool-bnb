@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-md-12  h-100">
             <div class="hero row align-items-center" style="min-height:80vh">
-                <div class="col-md-4 heroSearch p-3 m-5">
+                <div class="col-md-5 heroSearch p-3 m-2 m-md-5">
                     <h3>
                         <b> Prenota alloggi unici</b>
                     </h3>
@@ -21,15 +21,15 @@
                         </div> 
                         <div class="form-group row">
                             <div class="col-4">
-                                <label for="roomNum">Numero Stanze:</label>
+                                <label for="roomNum">Numero<br>stanze:</label>
                                 <input type="number" name="roomNum" id="" class="form-control" autocomplete="off" value ="1"/>
                             </div>
                             <div class="col-4">
-                                <label for="bedNum">Numero Letti:</label>
+                                <label for="bedNum">Numero<br>letti:</label>
                                 <input type="number" name="bedNum" id="" class="form-control" autocomplete="off" value ="1"/>
                             </div>
                             <div class="col-4">
-                                <label for="address">Area di ricerca(km):</label>
+                                <label for="address">Area di<br>ricerca(km):</label>
                                 <input type="number" name="radius" id="radius" class="form-control" value ="20"autocomplete="off"/>
                             </div>
                         </div>
@@ -44,7 +44,7 @@
                         <span class="form-group col-8">
                             <label for="services">Servizi:</label> <br>
                             @foreach ($services as $service)
-                            <input class=""name="services[]" type="checkbox"  value="{{$service->id}}">{{$service->name}}
+                            <label class="mx-2"style="white-space: nowrap;"><input  class=""name="services[]" type="checkbox"  value="{{$service->id}}" /> {{$service->name}}</label>
                             @endforeach
                         </span> 
                         <br>

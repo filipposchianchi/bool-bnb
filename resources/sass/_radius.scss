@@ -16,22 +16,22 @@
     width: 80%;
     height: 100%;
 }
-.freccia-destra {
-    font-size: 30px;
-    position: absolute;
-    top: 190px;
-    left: 55px;
-}
-.freccia-sinistra {
-    font-size: 30px;
-    position: absolute;
-    top: 190px;
-    right: 55px;
-}
+// .freccia-destra {
+//     font-size: 30px;
+//     position: absolute;
+//     top: 190px;
+//     left: 55px;
+// }
+// .freccia-sinistra {
+//     font-size: 30px;
+//     position: absolute;
+//     top: 190px;
+//     right: 55px;
+// }
 
-.altezza {
-    height: 400px;
-}
+// .altezza {
+//     height: 400px;
+// }
 .float {
     position: fixed;
     width: 60px;
@@ -61,20 +61,20 @@
 //         height: 40%;
 //     }
 // }
-@media screen and (min-width: 1300px) {
-    .freccia-destra {
-        font-size: 30px;
-        position: absolute;
-        top: 230px;
-        left: 80px;
-    }
-    .freccia-sinistra {
-        font-size: 30px;
-        position: absolute;
-        top: 230px;
-        right: 80px;
-    }
-    .altezza {
-        min-height: 450px;
-    }
-}
+// @media screen and (min-width: 1300px) {
+//     .freccia-destra {
+//         font-size: 30px;
+//         position: absolute;
+//         top: 230px;
+//         left: 80px;
+//     }
+//     .freccia-sinistra {
+//         font-size: 30px;
+//         position: absolute;
+//         top: 230px;
+//         right: 80px;
+//     }
+//     .altezza {
+//         min-height: 450px;
+//     }
+// }

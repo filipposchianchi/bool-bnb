@@ -3,53 +3,35 @@
     <a href="#" class="float" id="float-but" style="z-index:99999">
         <i  class="fa fa-search my-float" data-toggle="modal" data-target="#exampleModal"></i>
     </a>
-    <div class="container-fluid " style="padding-left: 0px;padding-right: 0px;">
-        
-        <div class="search-section  ">
-
-            <div class=" justify-content-center">
-                <h2 class="text-center pt-4 mb-3">Appartamenti in evidenza</h2>
+    <div class="container-fluid">
+        <div class="row justify-content-center align-items-center hero" style="min-height:80vh">
+            <div class="col-md-8 mt-4">
+                <h2 class="text-center">Appartamenti in evidenza</h2>
                 @if ($apartmentsAdvert -> isEmpty())
                 <h6 class="row justify-content-center"">Non ci sono appartamenti sponsorizzati</h6>          
                 @endif
             </div>
-            
-            
-            <div class="d-flex justify-content-center">
-                <div id="myCarousel" class=" mb-4 col-9 col-sm-9 col-md-5 carousel slide" data-ride="carousel">
-                    <div class="carousel-inner">
-                        @foreach($apartmentsAdvert as $key => $apartment)
-                        <div class="carousel-item {{$key == 0 ? 'active' : '' }}">  
-                            <div class="box mx-3 card mb-3 testclass altezza">
-                                <a class="m-3 mx-auto" href="{{route('apartmentShow', $apartment -> id)}}">
-                                    <img src="{{asset('images/'.$apartment -> image)}}" class="card-img-top imgstyle" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title">{{$apartment -> title}}</h5>
-                                        <p class="card-text ellipsis">{{$apartment -> address}}</p>
+            <div id="myCarousel" class=" mb-4 col-md-5 carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    @foreach($apartmentsAdvert as $key => $apartment)
+                    <div class="carousel-item {{$key == 0 ? 'active' : '' }}">  
+                        <a class="" href="{{route('apartmentShow', $apartment -> id)}}">
+                            <div class="box mx-3 card mb-3">
+                                <img src="{{asset('images/'.$apartment -> image)}}" class="card-img-top card-img-sameSize" alt="..." >
+                                <div class="card-body">
+                                    <h5 class="card-title">{{$apartment -> title}}</h5>
+                                    <p class="card-text ellipsis">{{$apartment -> address}}</p>
+                                    <p class="card-text"><small class="text-muted">Aggiunto il: {{$apartment -> created_at->format('d-m-Y')}}</small></p>
                                 </div>
-                                <div class="card-footer">
-                                    <small class="text-muted">Aggiunto : {{$apartment -> created_at}}</small>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    @endforeach
+                            </div>
+                        </a>
                 </div>
-                <a class="carousel-control-prev" href="#myCarousel" role="button"  data-slide="prev">
-                    <i class="fas fa-chevron-left freccia-sinistra" ></i>
-                </a>
-                <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-                    <i class="fas fa-chevron-right freccia-destra"></i>
-                </a>
+                @endforeach
             </div>
         </div>
     </div>
-        
-    </div>
-        
-
-    <div class="container-fluid ">
-        <div class=" p-5 justify-content-center">
+    <div class="container-fluid">
+        <div class="justify-content-center">
             @if($apartments == null )
                 <div class="row align-items-center justify-content-center mt-3">
                     <div class="col-12 text-center">
@@ -99,23 +81,23 @@
                                 
                         </div>
                     </div>
-                    <div class=" mt-3 card-deck d-flex justify-content-center align-items-center  flex-wrap">
+                    <div class=" mt-3 card-deck d-flex align-items-center  flex-wrap">
                         {{-- if sponsored --}}
+                        {{-- {{ ($apartment -> sponsored > 0) ? "sponsored" : "" }} --}}
                         @foreach ($apartments as $apartment)
-                        <div class="apartment col-xs-12">
-                            <div class="{{ ($apartment -> sponsored > 0) ? "sponsored" : "" }} box mx-3 card mb-3 " style="width:300px; height: 350px;" >
-                                <a class="m-3 mx-auto" href="{{route('apartmentShow', $apartment -> id)}}">
-                                    <img src="{{asset('images/'.$apartment -> image)}}" class="card-img-top imgstyle" alt="..." ">
-                                    <div class="card-body">
-                                        <h5 class="card-title">{{$apartment -> title}}</h5>
-                                        <p class="card-text ">{{$apartment -> address}}</p>
+                            <div class="col-md-3 apartment">
+                                <a class="" href="{{route('apartmentShow', $apartment -> id)}}">
+                                    <div class="box mx-3 card mb-3 {{ ($apartment -> sponsored > 0) ? "sponsored" : "" }}">
+                                        <img src="{{asset('images/'.$apartment -> image)}}" class="card-img-top card-img-sameSize" alt="..." >
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{$apartment -> title}}</h5>
+                                            <p class="card-text ellipsis">{{$apartment -> address}}</p>
+                                            <p class="card-text"><small class="text-muted">Aggiunto il: {{$apartment -> created_at->format('d-m-Y')}}</small></p>
+                                        </div>
                                     </div>
-                                    
                                 </a>
                             </div>
-                        </div>
                         @endforeach
-                        
                     </div>
                 </div>
             @endif

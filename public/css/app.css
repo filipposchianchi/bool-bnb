@@ -16885,6 +16885,13 @@ a.text-dark:focus {
      object-fit: cover;
 }
 
+.card-img-Radius {
+  width: 100%;
+  height: 20vh;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 .welcomeUser {
   background: url(https://i.pinimg.com/originals/12/b2/3a/12b23a7752e8a7a4464c1ff5e596237f.gif) no-repeat center center;
   background-size: cover;
@@ -16920,24 +16927,6 @@ a.text-dark:focus {
   height: 100%;
 }
 
-.freccia-destra {
-  font-size: 30px;
-  position: absolute;
-  top: 190px;
-  left: 55px;
-}
-
-.freccia-sinistra {
-  font-size: 30px;
-  position: absolute;
-  top: 190px;
-  right: 55px;
-}
-
-.altezza {
-  height: 400px;
-}
-
 .float {
   position: fixed;
   width: 60px;
@@ -16956,26 +16945,6 @@ a.text-dark:focus {
 }
 
 /* On screens that are px wide or less, go from four columns to two columns */
-
-@media screen and (min-width: 1300px) {
-  .freccia-destra {
-    font-size: 30px;
-    position: absolute;
-    top: 230px;
-    left: 80px;
-  }
-
-  .freccia-sinistra {
-    font-size: 30px;
-    position: absolute;
-    top: 230px;
-    right: 80px;
-  }
-
-  .altezza {
-    min-height: 450px;
-  }
-}
 
 #addressList {
   position: relative;

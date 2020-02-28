@@ -56,6 +56,7 @@
     </div>
     {{-- APPARTAMENTI IN EVIDENZA --}}
     @if (!count($apartments) == 0)
+    <div class="container">
         <div class="row justify-content-center mt-4 py-5 px-1">
             <div class="col-md-12 mt-3">
                 <h1 class="text-center mb-5">Appartamenti in evidenza:</h1>
@@ -63,10 +64,10 @@
                         
                         {{-- APPARTAMENTO --}}
                         @foreach ($apartments as $apartment)
-                            <div class="col-xs-12 col-md-4 apartment">
+                            <div class="col-md-5 apartment">
                                 <a class="" href="{{route('apartmentShow', $apartment -> id)}}">
                                     <div class="box mx-3 card mb-3">
-                                        <img src="{{asset('images/'.$apartment -> image)}}" class="card-img-top card-img-sameSize" alt="...">
+                                        <img src="{{asset('images/'.$apartment -> image)}}" class="card-img-top card-img-sameSize" alt="..." >
                                         <div class="card-body">
                                             <h5 class="card-title">{{$apartment -> title}}</h5>
                                             <p class="card-text ellipsis">{{$apartment -> address}}</p>
@@ -80,6 +81,8 @@
                 
             </div>
         </div>
+    </div>
+        
         
     @else
         <div class="row justify-content-center align-items-center p-5" style="height:50vh">

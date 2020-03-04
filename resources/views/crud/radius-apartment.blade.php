@@ -33,7 +33,7 @@
     <div class="container-fluid">
         <div class="justify-content-center">
             @if($apartments == null )
-                <div class="row align-items-center justify-content-center mt-3">
+                <div class="row align-items-center justify-content-center mt-3" style="min-height:70vh">
                     <div class="col-12 text-center">
 
                         <h2>

@@ -25,6 +25,9 @@
                         <li class="card-text">{{$service -> name}} </li>
                         @endforeach
                     </ul>
+                        
+                    @else
+                        <p>Questo Appartamento non offre servizi</p>
                     @endif
                 </div>
             </div>
